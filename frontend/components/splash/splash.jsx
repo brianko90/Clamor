@@ -22,6 +22,8 @@ class Greeting extends React.Component {
     if(this.props.loggedIn) {
       logOpenButton = <Link>Open Accord</Link>
     }
+    //Link should lead to /@me when click Open Accord
+    
 
     return (
       <div id="splash">
