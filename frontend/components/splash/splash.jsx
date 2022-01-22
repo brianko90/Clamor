@@ -11,7 +11,7 @@ class Splash extends React.Component {
     let logOpenButton;
     let testLogout = <button onClick={() => this.props.logout()}>Logout</button>
     if(this.props.loggedIn) {
-      logOpenButton = <Link id="splash-button" to='/'>Open Accord</Link>
+      logOpenButton = <Link id="splash-button" to='/'>Open Clamor</Link>
     } else {
       logOpenButton = <Link id="splash-button" to='/login'>Login</Link>
     }
@@ -21,7 +21,7 @@ class Splash extends React.Component {
       <div id="splash">
         <div id="splash-header">
           <div id="logo-links"> 
-            <i className="fab fa-discord fa-3x"></i>
+            <i className="fab fa-discord fa-2x"></i>
             <h2>Clamor</h2>
           </div>
           <nav id="nav-links">

@@ -1,5 +1,6 @@
 import { Link, Redirect } from 'react-router-dom';
 import React from 'react';
+import background from '../../../app/assets/images/loginbackground.png'
 
 class SignupForm extends React.Component {
   constructor(props) {
@@ -25,25 +26,31 @@ class SignupForm extends React.Component {
   render() {
   
     return (
-      <div id="signup-form">
-        <h2>Signup</h2>
-        <form onSubmit={this.handleSubmit}>
-          <label>Username:
-            <input type="text" onChange={this.update('username')} value={this.state.username} />
-          </label>
-          <label>Email:
-            <input type="text" onChange={this.update('email')} value={this.state.email} />
-          </label>
-          <label>Password:
-            <input type="password" onChange={this.update('password')} value={this.state.password} />
-          </label>
-          <button onClick={this.handleSubmit}>Button</button>
-        </form>
-        <Link to='/login'>Log In</Link>
-        <ul>
-          {this.props.errors.map((error, idx) => <li key={idx}>{error}</li>)}
-        </ul>
-      </div>
+      <div id="signup-container">
+        <img id="background" src={background} />
+        <div id="signup-form">
+          <div id="welcome">
+            <h2>Create an account</h2>
+          </div>
+          <form onSubmit={this.handleSubmit}>
+            <label className="form-label">Email
+              <input type="text" onChange={this.update('email')} value={this.state.email} />
+            </label>
+            <label className="form-label">Username
+              <input type="text" onChange={this.update('username')} value={this.state.username} />
+            </label>
+            <label className="form-label">Password
+              <input type="password" onChange={this.update('password')} value={this.state.password} />
+            </label>
+            <button className="form-button" onClick={this.handleSubmit}>Continue</button>
+          </form>
+          <div id="alternate">Already have an account?  <Link to='/login'>Log In</Link></div>
+          <div id="disclaimer">By registering, you agree to Clamor's Terms of Service and Privacy Policy</div>
+          <ul id="errors">
+            {this.props.errors.map((error, idx) => <li key={idx}>{error}</li>)}
+          </ul>
+        </div>
+      </div >
     )
   }
 }

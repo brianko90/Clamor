@@ -1,0 +1,57 @@
+/* Splash Page */
+#splash-header {
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 10px;
+  background-color: #5865F2
+}
+
+#splash a {
+  text-decoration: none;
+}
+
+#logo-links:first-child {
+  display: flex;
+  text-align: center;
+  vertical-align: middle;
+}
+
+#logo-links {
+  position: relative;
+  margin-left: 40px;
+  display: flex;
+  align-items: center;
+  width: 33.33%;
+}
+
+#login-button {
+  display: flex;
+  margin-right: 40px;
+  /* padding: 10px; */
+  /* border-radius: 20px;
+  border: 1px solid black; */
+  width: 33.33%;
+  justify-content: right;
+}
+
+#login-button a {
+  border-radius: 20px;
+  padding: 10px;
+  border: 1px solid black;
+}
+
+#splash-content {
+  margin-top: 200px;
+  text-align: center;
+}
+
+i {
+  text-decoration: none;
+  color: black;
+}
+
+#nav-links {
+  width: 33.33%;
+  display: flex;
+  justify-content: center;
+}
