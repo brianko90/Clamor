@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-
+import splash1 from '../../../app/assets/images/splashimg1v2.png'
 
 class Splash extends React.Component {
   constructor(props) {
@@ -16,9 +16,10 @@ class Splash extends React.Component {
       logOpenButton = <Link id="splash-button" to='/login'>Login</Link>
     }
     //Link should lead to /@me when click Open Accord
-
+    
     return (
       <div id="splash">
+        <img src={splash1} alt="splash1" />
         <div id="splash-header">
           <div id="logo-links"> 
             <i className="fab fa-discord fa-2x"></i>
@@ -40,9 +41,6 @@ class Splash extends React.Component {
         <div id="splash-content">
           <Link to='/signup'>Create an Account Here!</Link>
         </div>
-        
-        
-        
       </div>
     )
   }
