@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faLinkedin, faGithub, faDiscord } from '@fortawesome/free-brands-svg-icons'
+
 
 class Splash extends React.Component {
   constructor(props) {
@@ -23,7 +22,7 @@ class Splash extends React.Component {
         <div id="splash-header">
           <i className="fab fa-discord fa-3x"></i>
           <h2>Clamor</h2>
-          <nav>
+          <nav id="nav-links">
             <a href="https://github.com/brianko90/Clamor" target="_blank">
               <i className="fab fa-github fa-2x"></i>
             </a>
@@ -31,12 +30,15 @@ class Splash extends React.Component {
               <i className="fab fa-linkedin fa-2x"></i>
             </a>
           </nav>
-          {logOpenButton}
-          {this.props.loggedIn ? testLogout : ""}
+          <div id="login-button">
+            {logOpenButton}
+            {this.props.loggedIn ? testLogout : ""}
+          </div>
         </div>
         <div id="splash-content">
           <Link to='/signup'>Create an Account Here!</Link>
         </div>
+        
         
         
       </div>
