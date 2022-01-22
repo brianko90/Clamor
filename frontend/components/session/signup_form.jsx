@@ -1,12 +1,13 @@
 import { Link, Redirect } from 'react-router-dom';
 import React from 'react';
 
-class SessionForm extends React.Component {
+class SignupForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       username: '',
-      password: ''
+      password: '',
+      email: ''
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -18,29 +19,27 @@ class SessionForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    this.props.processForm(this.state)
+    this.props.signup(this.state)
   }
 
   render() {
-    const link = (this.props.formType === "signup") ? (
-      <Link to='/login'>Log In</Link>
-    ) : (
-      <Link to='/signup'>Sign Up</Link>
-    )
-
+  
     return (
-      <div>
-        <h2>{this.props.formType}</h2>
+      <div id="signup-form">
+        <h2>Signup</h2>
         <form onSubmit={this.handleSubmit}>
           <label>Username:
             <input type="text" onChange={this.update('username')} value={this.state.username} />
+          </label>
+          <label>Email:
+            <input type="text" onChange={this.update('email')} value={this.state.email} />
           </label>
           <label>Password:
             <input type="password" onChange={this.update('password')} value={this.state.password} />
           </label>
           <button onClick={this.handleSubmit}>Button</button>
         </form>
-        {link}
+        <Link to='/login'>Log In</Link>
         <ul>
           {this.props.errors.map((error, idx) => <li key={idx}>{error}</li>)}
         </ul>
@@ -49,5 +48,5 @@ class SessionForm extends React.Component {
   }
 }
 
-export default SessionForm;
+export default SignupForm;
 

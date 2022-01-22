@@ -5,7 +5,13 @@ import Splash from './splash';
 
 const mapStateToProps = state => {
   return {
-    loggedIn: Boolean(state.session.currentUser)
+    loggedIn: Boolean(state.session.id)
+  }
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+    logout: () => dispatch(logout())
   }
 }
 

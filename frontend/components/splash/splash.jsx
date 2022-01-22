@@ -1,48 +1,48 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faLinkedin, faGithub, faDiscord } from '@fortawesome/free-brands-svg-icons'
 
-class Greeting extends React.Component {
+class Splash extends React.Component {
   constructor(props) {
     super(props);
   }
 
   render() {
-    // const display = this.props.currentUser ? (
-    //   <div>
-    //     <p>Welcome, {this.props.currentUser.username}</p>
-    //     <button onClick={this.props.logout}>Log Out</button>
-    //   </div>
-    // ) : (
-    //   <div>
-    //     <Link to="/signup">Sign Up</Link>
-    //     <Link to="/login">Log In</Link>
-    //   </div>
-    // )
     let logOpenButton;
+    let testLogout = <button onClick={() => this.props.logout()}>Logout</button>
     if(this.props.loggedIn) {
-      logOpenButton = <Link>Open Accord</Link>
+      logOpenButton = <Link id="splash-button" to='/'>Open Accord</Link>
+    } else {
+      logOpenButton = <Link id="splash-button" to='/login'>Login</Link>
     }
     //Link should lead to /@me when click Open Accord
-    
 
     return (
       <div id="splash">
         <div id="splash-header">
-          <i class="fab fa-discord"></i>
-          <h1>Clamor</h1>
+          <i className="fab fa-discord fa-3x"></i>
+          <h2>Clamor</h2>
+          <nav>
+            <a href="https://github.com/brianko90/Clamor" target="_blank">
+              <i className="fab fa-github fa-2x"></i>
+            </a>
+            <a href="https://www.linkedin.com/in/brian-ko-ba5742229/" target="_blank">
+              <i className="fab fa-linkedin fa-2x"></i>
+            </a>
+          </nav>
+          {logOpenButton}
+          {this.props.loggedIn ? testLogout : ""}
         </div>
-        <nav>
-          <a href="https://github.com/brianko90/Clamor" target="_blank">
-            <i class="fab fa-github"></i>
-          </a>
-          <a href="https://www.linkedin.com/in/brian-ko-ba5742229/" target="_blank">
-            <i class="fab fa-linkedin"></i>
-          </a>
-        </nav>
+        <div id="splash-content">
+          <Link to='/signup'>Create an Account Here!</Link>
+        </div>
+        
+        
       </div>
     )
   }
 }
 
 
-export default Greeting;
+export default Splash;
