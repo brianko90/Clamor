@@ -15,10 +15,16 @@
  */
 
 
+
+/* Splash Page */
  #splash-header {
    display: flex;
+   justify-content: space-between;
  }
 
- /* #splash-button {
+ #splash a {
+   text-decoration: none;
+ }
 
- } */
+
+ 

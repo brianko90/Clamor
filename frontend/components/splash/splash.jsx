@@ -20,8 +20,10 @@ class Splash extends React.Component {
     return (
       <div id="splash">
         <div id="splash-header">
-          <i className="fab fa-discord fa-3x"></i>
-          <h2>Clamor</h2>
+          <div id="logo-links"> 
+            <i className="fab fa-discord fa-3x"></i>
+            <h2>Clamor</h2>
+          </div>
           <nav id="nav-links">
             <a href="https://github.com/brianko90/Clamor" target="_blank">
               <i className="fab fa-github fa-2x"></i>
