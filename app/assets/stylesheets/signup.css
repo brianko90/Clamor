@@ -6,7 +6,7 @@
   position: absolute;
   left: 0;
   top: 0;
-  font-family: arial;
+  font-family: 'whitneybook';
 }
 
 #signup-form {
@@ -28,6 +28,7 @@
   margin-top: 15px;
   font-weight: 600;
   font-size: 24px;
+  font-family: 'whitneybold';
 }
 
 #welcome div {

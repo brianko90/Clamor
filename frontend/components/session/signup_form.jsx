@@ -8,7 +8,8 @@ class SignupForm extends React.Component {
     this.state = {
       username: '',
       password: '',
-      email: ''
+      email: '',
+      errors: []
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -20,7 +21,7 @@ class SignupForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    this.props.signup(this.state)
+    this.props.signup(this.state).fail(() => this.setState({ errors: this.props.errors}))
   }
 
   render() {
@@ -33,13 +34,13 @@ class SignupForm extends React.Component {
             <h2>Create an account</h2>
           </div>
           <form onSubmit={this.handleSubmit}>
-            <label className="form-label">Email
+            <label className="form-label">EMAIL
               <input type="text" onChange={this.update('email')} value={this.state.email} />
             </label>
-            <label className="form-label">Username
+            <label className="form-label">USERNAME
               <input type="text" onChange={this.update('username')} value={this.state.username} />
             </label>
-            <label className="form-label">Password
+            <label className="form-label">PASSWORD
               <input type="password" onChange={this.update('password')} value={this.state.password} />
             </label>
             <button className="form-button" onClick={this.handleSubmit}>Continue</button>
@@ -47,7 +48,7 @@ class SignupForm extends React.Component {
           <div id="alternate">Already have an account?  <Link to='/login'>Log In</Link></div>
           <div id="disclaimer">By registering, you agree to Clamor's Terms of Service and Privacy Policy</div>
           <ul id="errors">
-            {this.props.errors.map((error, idx) => <li key={idx}>{error}</li>)}
+            {this.state.errors.map((error, idx) => <li key={idx}>{error}</li>)}
           </ul>
         </div>
       </div >

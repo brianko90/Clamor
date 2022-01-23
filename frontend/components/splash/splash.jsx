@@ -24,10 +24,10 @@ class Splash extends React.Component {
           <img id="splash-image1" src={splash1} alt="splash1" />
         </div>
         <div id="splash-header">
-          <div id="logo-links"> 
+          <Link id="logo-links" to='/'> 
             <i className="fab fa-discord fa-2x"></i>
             <h2>Clamor</h2>
-          </div>
+          </Link>
           <nav id="nav-links">
             <a href="https://github.com/brianko90/Clamor" target="_blank">
               <i className="fab fa-github fa-2x"></i>
@@ -65,11 +65,11 @@ class Splash extends React.Component {
             </div>
           </div>
           <div id="footer-bottom">
-            <div id="footer-left">
+            <Link id="footer-left">
               <i className="fab fa-discord fa-2x"></i>
               <h2>Clamor</h2>
-            </div>
-            <Link to='/signup'>Sign up</Link>
+            </Link>
+            <Link id='footer-signup' to='/signup'>Sign up</Link>
           </div>
           <div id="footer-disclaimer">Disclaimer: This is a clone website of Discord and images were used from the Discord website. Credit belongs to Discord</div>
         </footer>

@@ -7,10 +7,12 @@ class LoginForm extends React.Component {
     super(props);
     this.state = {
       username: '',
-      password: ''
+      password: '',
+      errors: []
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.loginDemo = this.loginDemo.bind(this);
   }
 
   update(field) {
@@ -19,7 +21,12 @@ class LoginForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    this.props.login(this.state)
+    this.props.login(this.state).fail(() => this.setState({ errors: this.props.errors}))
+  }
+
+  loginDemo(e) {
+    e.preventDefault();
+    this.props.login({ username: 'brian', password: "1234" })
   }
 
   render() {
@@ -42,8 +49,9 @@ class LoginForm extends React.Component {
             <button className="form-button" onClick={this.handleSubmit}>Login</button>
           </form>
           <div id="alternate">Need an account?  <Link to='/signup'>Register</Link></div>
+          <button id="demo-login" onClick={this.loginDemo}>DEMO</button>
           <ul id="errors">
-            {this.props.errors.map((error, idx) => <li key={idx}>{error}</li>)}
+            {this.state.errors.map((error, idx) => <li key={idx}>{error}</li>)}
           </ul>
         </div>
       </div >

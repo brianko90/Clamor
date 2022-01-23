@@ -1,4 +1,20 @@
 /* Splash Page */
+@font-face {
+    font-family: 'whitneybold';
+    src: url('whitneybold-webfont.woff2') format('woff2'),
+         url('whitneybold-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'whitneybook';
+    src: url('whitneybook-webfont.woff2') format('woff2'),
+         url('whitneybook-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
 #splash {
   height: 100%;
   width: 100%;
@@ -12,9 +28,8 @@
   justify-content: space-evenly;
   padding-top: 10px;
   padding-bottom: 10px;
-  font-family: arial;
+  font-family: 'whitneybold';
   z-index: 500;
-  /* position: absolute; */
 }
 
 #splash a {
@@ -36,6 +51,11 @@
   color: white;
 }
 
+#nav-links > a > i:hover {
+  color: rgb(51, 49, 49);
+  text-shadow: 2px 2px 5px white;
+}
+
 #logo-links h2 {
   margin-left: 10px;
   font-size: 20px;
@@ -55,6 +75,12 @@
   border: 1px solid black;
   background-color: white;
   font-size: 12px;
+  font-family: 'whitneybook';
+}
+
+#login-button a:hover {
+  color: #5865F2;
+  box-shadow: 2px 2px 5px black;
 }
 
 #splash-content {
@@ -67,11 +93,12 @@
   border: 1px solid black;
   border-radius: 25px;
   background-color: white;
-  font-family: arial;
+  font-family: 'whitneybook';
 }
 
 #splash-content a:hover {
   color: #5865F2;
+  box-shadow: 2px 2px 5px black;
 }
 
 i {
@@ -105,10 +132,8 @@ i {
 
 #splash-footer {
   background-color: rgb(51, 49, 49);
-  /* display: flex; */
-  /* margin-top: 20%; */
   height: 200px;
-  font-family: arial;
+  font-family: 'whitneybold';
   color: white;
 }
 
@@ -131,6 +156,11 @@ i {
   margin-right: 20px;
 }
 
+#footer-links > a > i:hover {
+  color: #5865F2;
+  text-shadow: 2px 2px 5px black;
+}
+
 #footer-top {
   display: flex;
   padding-top: 20px;
@@ -141,7 +171,6 @@ i {
   justify-content: space-evenly;
   vertical-align: middle;
   align-items: center;
-
 }
 
 #footer-message {
@@ -154,13 +183,14 @@ i {
   display: flex;
   justify-content: space-between;
   margin-top: 20px;
-  padding-left: 20px;
+  padding-left: 10px;
 }
 
 #footer-left {
   display: flex;
   align-items: center;
-  margin-left: 10%;
+  margin-left: 8%;
+  color: white;
 }
 
 #footer-left h2 {
@@ -168,14 +198,20 @@ i {
   font-size: 20px;
 }
 
-#footer-bottom a {
+#footer-signup {
   margin-right: 7%;
   padding: 10px;
   border: 1px solid black;
   border-radius: 20px;
+  font-family: 'whitneybook';
   font-size: 12px;
   color: white;
   background-color: #5865F2;
+}
+
+#footer-signup:hover {
+  background-color: #5865f2a1;
+  box-shadow: 2px 2px 5px black;
 }
 
 #footer-disclaimer {
@@ -183,4 +219,5 @@ i {
   margin-top: 25px;
   font-size: 14px;
   color: gray;
+  font-family: 'whitneybook'
 }
