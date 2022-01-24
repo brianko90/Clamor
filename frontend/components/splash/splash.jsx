@@ -65,7 +65,7 @@ class Splash extends React.Component {
             </div>
           </div>
           <div id="footer-bottom">
-            <Link id="footer-left">
+            <Link to='/' id="footer-left">
               <i className="fab fa-discord fa-2x"></i>
               <h2>Clamor</h2>
             </Link>

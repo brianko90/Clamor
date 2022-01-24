@@ -49,7 +49,9 @@ class LoginForm extends React.Component {
             <button className="form-button" onClick={this.handleSubmit}>Login</button>
           </form>
           <div id="alternate">Need an account?  <Link to='/signup'>Register</Link></div>
-          <button id="demo-login" onClick={this.loginDemo}>DEMO</button>
+          <div id="demo-container">
+            <button id="demo-login" onClick={this.loginDemo}>DEMO</button>
+          </div>
           <ul id="errors">
             {this.state.errors.map((error, idx) => <li key={idx}>{error}</li>)}
           </ul>

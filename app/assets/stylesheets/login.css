@@ -138,6 +138,7 @@ label > input {
   margin-bottom: 10px;
   margin-top: 10px;
   text-align: center;
+  list-style-type: none;
 }
 
  #demo-login {
@@ -146,10 +147,15 @@ label > input {
    border-radius: 20px;
    background-color: #5865F2;
    color: white;
-   font-family: 'whitneybook'
+   font-family: 'whitneybook';
  }
 
  #demo-login:hover {
    cursor: pointer;
    background-color: #5865f290;
+ }
+
+ #demo-container {
+   align-items: center;
+   text-align: center;
  }
