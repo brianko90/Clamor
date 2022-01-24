@@ -81,7 +81,7 @@ a {
 }
 
 .form-button {
-  width: 98%;
+  width: 97%;
   margin-top: 20px;
   background-color: #5865F2;
   color: rgb(238, 231, 231);
@@ -89,7 +89,9 @@ a {
   padding-top: 5px;
   padding-bottom: 5px;
   border-radius: 5px;
-  font-family: 'whitneybook'
+  font-family: 'whitneybook';
+  border: none;
+  height: 25px;
 }
 
 .form-button:hover {
@@ -148,6 +150,7 @@ label > input {
    background-color: #5865F2;
    color: white;
    font-family: 'whitneybook';
+   border: none;
  }
 
  #demo-login:hover {

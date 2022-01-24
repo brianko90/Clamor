@@ -72,7 +72,7 @@
 #login-button a {
   border-radius: 20px;
   padding: 10px;
-  border: 1px solid black;
+  /* border: 1px solid black; */
   background-color: white;
   font-size: 12px;
   font-family: 'whitneybook';
@@ -80,7 +80,7 @@
 
 #login-button a:hover {
   color: #5865F2;
-  box-shadow: 2px 2px 5px black;
+  box-shadow: 2px 2px 5px rgba(27, 26, 26, 0.495);
 }
 
 #splash-content {
@@ -90,7 +90,7 @@
 
 #splash-content a {
   padding: 10px;
-  border: 1px solid black;
+  color:rgb(51, 49, 49);
   border-radius: 25px;
   background-color: white;
   font-family: 'whitneybook';
@@ -98,7 +98,7 @@
 
 #splash-content a:hover {
   color: #5865F2;
-  box-shadow: 2px 2px 5px black;
+  box-shadow: 2px 2px 5px rgba(27, 26, 26, 0.495);
 }
 
 i {
@@ -201,7 +201,6 @@ i {
 #footer-signup {
   margin-right: 7%;
   padding: 10px;
-  border: 1px solid black;
   border-radius: 20px;
   font-family: 'whitneybook';
   font-size: 12px;
@@ -211,7 +210,7 @@ i {
 
 #footer-signup:hover {
   background-color: #5865f2a1;
-  box-shadow: 2px 2px 5px black;
+  box-shadow: 2px 2px 5px rgba(27, 26, 26, 0.495);
 }
 
 #footer-disclaimer {
