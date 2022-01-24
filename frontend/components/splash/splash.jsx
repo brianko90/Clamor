@@ -1,7 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import splash1 from '../../../app/assets/images/splashmain.png'
-import splash2 from '../../../app/assets/images/splashimg2.png'
 
 class Splash extends React.Component {
   constructor(props) {
@@ -21,7 +19,7 @@ class Splash extends React.Component {
     return (
       <div id="splash">
         <div>
-          <img id="splash-image1" src={splash1} alt="splash1" />
+          <img id="splash-image1" src={window.splash1URL} alt="splash1" />
         </div>
         <div id="splash-header">
           <Link id="logo-links" to='/'> 
@@ -44,7 +42,7 @@ class Splash extends React.Component {
         <div id="splash-content">
           <Link to='/signup'>Create an Account Here!</Link>
         </div>
-        <img id="splash-image2" src={splash2} alt="splash2" />
+        <img id="splash-image2" src={window.splash2URL} alt="splash2" />
         <footer id="splash-footer">
           <div id="footer-top">
             <div id="footer-main">

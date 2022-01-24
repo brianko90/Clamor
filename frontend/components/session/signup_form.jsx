@@ -1,6 +1,5 @@
 import { Link, Redirect } from 'react-router-dom';
 import React from 'react';
-import background from '../../../app/assets/images/loginbackground.png'
 
 class SignupForm extends React.Component {
   constructor(props) {
@@ -28,7 +27,7 @@ class SignupForm extends React.Component {
   
     return (
       <div id="signup-container">
-        <img id="background" src={background} />
+        <img id="background" src={window.background} />
         <div id="signup-form">
           <div id="welcome">
             <h2>Create an account</h2>
