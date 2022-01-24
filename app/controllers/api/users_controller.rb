@@ -1,6 +1,9 @@
 class Api::UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
+    # @owned_servers = @user.owned_servers
+    # @server_memberships = @user.server_memberships
+
     render :show
   end
 

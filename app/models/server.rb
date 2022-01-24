@@ -15,4 +15,13 @@
 #  index_servers_on_owner_id  (owner_id)
 #
 class Server < ApplicationRecord
+  belongs_to :owner,
+  class_name: "User"
+
+  has_many :memberships,
+  class_name: "ServerMembership"
+
+  has_many :members, 
+  through: :memberships,
+  source: :user
 end

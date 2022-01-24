@@ -16,6 +16,19 @@
 #  index_users_on_username  (username) UNIQUE
 #
 class User < ApplicationRecord
+  has_many :server_memberships,
+  foreign_key: :user_id,
+  class_name: "ServerMembership"
+  
+  
+  has_many :servers,
+  through: :server_memberships,
+  source: :server
+
+  has_many :owned_servers,
+  foreign_key: :owner_id,
+  class_name: "Server"
+
   validates :username, :password_digest, presence: true
   validates :username, uniqueness: true
   validates :password, length: {minimum: 4}, allow_nil: true

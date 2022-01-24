@@ -34,6 +34,3 @@ document.addEventListener("DOMContentLoaded", () => {
   // Testing End
 });
 
-
-// Work on putting in user model and controller
-// then need to update the views and routes

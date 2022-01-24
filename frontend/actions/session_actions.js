@@ -4,10 +4,10 @@ export const RECEIVE_SESSION_ERRORS = 'RECEIVE_SESSION_ERRORS '
 
 import * as sessionApiUtil from '../util/session_api_util'
 
-const receiveCurrentUser = currentUser => {
+const receiveCurrentUser = payload => {
   return {
     type: RECEIVE_CURRENT_USER,
-    currentUser
+    payload
   }
 }
 
@@ -28,8 +28,6 @@ export const login = user => dispatch => {
   return sessionApiUtil.login(user)
     .then(user => dispatch(receiveCurrentUser(user)),
       error => dispatch(receiveErrors(error.responseJSON)))
-
-
 }
 
 export const logout = () => dispatch => {

@@ -1,6 +1,6 @@
 export const fetchServers = () => {
   return $.ajax({
-    url: '/api/servers',
+    url: `/api/servers`,
     method: "GET"
   })
 }

@@ -1,7 +1,7 @@
 class Api::ServersController < ApplicationController
   def index
     @servers = Server.all 
-    render :index 
+    render :index
   end
   
   def show
@@ -11,7 +11,7 @@ class Api::ServersController < ApplicationController
 
   def create
     @server = Server.new(server_params)
-
+    
     if @server.save
       login!(@server)
       render :show
@@ -33,7 +33,6 @@ class Api::ServersController < ApplicationController
   def delete
     @server = Server.find_by(id: params[:id])
     @server.destroy 
-    # want to redirect to home page 
   end
 
   private

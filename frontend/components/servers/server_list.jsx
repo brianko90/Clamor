@@ -12,6 +12,14 @@ class ServerList extends React.Component {
   }
 
   render() {
-
+    return (
+      <div>
+        <ul>
+          {/* {this.props.servers.map(server => <Link to="/">{server.name}</Link>)} */}
+        </ul>
+      </div>
+    )
   }
 }
+
+export default ServerList;

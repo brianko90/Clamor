@@ -50,7 +50,7 @@ class LoginForm extends React.Component {
           </form>
           <div id="alternate">Need an account?  <Link to='/signup'>Register</Link></div>
           <div id="demo-container">
-            <button id="demo-login" onClick={this.loginDemo}>DEMO</button>
+            <Link to='/@me'><button id="demo-login" onClick={this.loginDemo}>DEMO</button></Link>
           </div>
           <ul id="errors">
             {this.state.errors.map((error, idx) => <li key={idx}>{error}</li>)}
