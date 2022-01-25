@@ -17,17 +17,37 @@
 #
 class User < ApplicationRecord
   has_many :server_memberships,
-  foreign_key: :user_id,
-  class_name: "ServerMembership"
-  
+    foreign_key: :user_id,
+    class_name: "ServerMembership",
+    dependent: :destroy
   
   has_many :servers,
-  through: :server_memberships,
-  source: :server
+    through: :server_memberships,
+    source: :server,
+    dependent: :destroy
 
   has_many :owned_servers,
-  foreign_key: :owner_id,
-  class_name: "Server"
+    foreign_key: :owner_id,
+    class_name: "Server",
+    dependent: :destroy
+
+  has_many :friendships
+
+  has_many :friends,
+    -> { where friendships: { status: 3} },
+    through: :friendships,
+    source: :friend
+
+  has_many :incoming_requests,
+    -> { where friendships: { status: 2} },
+    through: :friendships,
+    source: :friend 
+
+  has_many :outgoing_requests,
+    -> { where friendships: { status: 1}  },
+    through: :friendships,
+    source: :friend
+
 
   validates :username, :password_digest, presence: true
   validates :username, uniqueness: true

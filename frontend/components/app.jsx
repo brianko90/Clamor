@@ -5,12 +5,12 @@ import SignupFormContainer from './session/signup_form_container';
 import LoginFormContainer from './session/login_form_container';
 import { AuthRoute } from "../util/route_util";
 import ServerListContainer from './servers/server_list_container';
-
+import ServerMainContainer from './servers/server_main_container'
 const App = () => (
   <div>
     <Switch>
       <Route exact path='/' component={SplashContainer} />
-      <Route exact path='/@me' component={ServerListContainer} />
+      <Route exact path='/@me' component={ServerMainContainer} />
       <AuthRoute path='/login' component={LoginFormContainer} />
       <AuthRoute path='/signup' component={SignupFormContainer} />
       <Redirect to="/" />

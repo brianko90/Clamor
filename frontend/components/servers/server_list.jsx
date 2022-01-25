@@ -7,15 +7,15 @@ class ServerList extends React.Component {
     super(props);
   }
 
-  componentDidMount() {
-    
-  }
-
   render() {
+
     return (
-      <div>
-        <ul>
-          {/* {this.props.servers.map(server => <Link to="/">{server.name}</Link>)} */}
+      <div id="server-list-container">
+        <div>
+          <i className="fab fa-discord fa-2x"></i>
+        </div>
+        <ul id="server-list">
+          {this.props.servers.map(server => <li key={server.id}>{server.name}</li>)}
         </ul>
       </div>
     )

@@ -8,6 +8,7 @@
 User.destroy_all
 Server.destroy_all
 ServerMembership.destroy_all
+Friendship.destroy_all
 
 user1 = User.create({username: 'brian', email: 'brian@gmail.com', password: "1234"})
 user2 = User.create({username: 'chris', email: 'chris@gmail.com', password: "1234"})
@@ -34,3 +35,9 @@ member7 = ServerMembership.create({user_id: user1.id, server_id: server3.id})
 member8 = ServerMembership.create({user_id: user1.id, server_id: server5.id})
 member9 = ServerMembership.create({user_id: user1.id, server_id: server2.id})
 
+friend1 = Friendship.create({user_id: user1.id, friend_id: user2.id, status: 3})
+friend2 = Friendship.create({user_id: user1.id, friend_id: user3.id, status: 3})
+friend3 = Friendship.create({user_id: user1.id, friend_id: user4.id, status: 3})
+friend4 = Friendship.create({user_id: user1.id, friend_id: user5.id, status: 3})
+friend5 = Friendship.create({user_id: user1.id, friend_id: user6.id, status: 3})
+friend6 = Friendship.create({user_id: user1.id, friend_id: user7.id, status: 3})
