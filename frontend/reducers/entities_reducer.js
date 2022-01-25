@@ -4,7 +4,8 @@ import usersReducer from "./users_reducer";
 import serversReducer from './server_list_reducer';
 
 const entitiesReducer = combineReducers({
-  users: usersReducer
+  users: usersReducer,
+  servers: serversReducer
 });
 
 export default entitiesReducer;

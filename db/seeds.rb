@@ -5,15 +5,32 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+User.destroy_all
+Server.destroy_all
+ServerMembership.destroy_all
 
+user1 = User.create({username: 'brian', email: 'brian@gmail.com', password: "1234"})
+user2 = User.create({username: 'chris', email: 'chris@gmail.com', password: "1234"})
+user3 = User.create({username: 'amanda', email: 'amanda@gmail.com', password: "1234"})
+user4 = User.create({username: 'jerry', email: 'jerry@gmail.com', password: "1234"})
+user5 = User.create({username: 'laney', email: 'laney@gmail.com', password: "1234"})
+user6 = User.create({username: 'jessie', email: 'jessie@gmail.com', password: "1234"})
+user7 = User.create({username: 'keith', email: 'keith@gmail.com', password: "1234"})
 
-User.create({username: 'brian', email: 'brian@gmail.com', password: "1234"})
-User.create({username: 'chris', email: 'chris@gmail.com', password: "1234"})
-User.create({username: 'amanda', email: 'amanda@gmail.com', password: "1234"})
-User.create({username: 'jerry', email: 'jerry@gmail.com', password: "1234"})
-User.create({username: 'laney', email: 'laney@gmail.com', password: "1234"})
+server1 = Server.create({name: 'aa-cohort', owner_id: user1.id, public: false})
+server2 = Server.create({name: 'Anime Group', owner_id: user5.id, public: true})
+server3 = Server.create({name: "LoL", owner_id: user3.id, public: true})
+server4 = Server.create({name: "cars", owner_id: user7.id, public: true})
+server5 = Server.create({name: 'valk fan club', owner_id: user4.id, public: true})
+server6 = Server.create({name: 'You Joe', owner_id: user2.id, public: true})
 
-Server.create({name: 'aa-cohort', owner_id: 1, public: false})
-Server.create({name: 'Anime Group', owner_id: 5, public: true})
-Server.create({name: "LoL", owner_id: 3, public: true})
+member1 = ServerMembership.create({user_id: user1.id, server_id: server1.id})
+member2 = ServerMembership.create({user_id: user5.id, server_id: server2.id})
+member3 = ServerMembership.create({user_id: user3.id, server_id: server3.id})
+member4 = ServerMembership.create({user_id: user7.id, server_id: server4.id})
+member5 = ServerMembership.create({user_id: user4.id, server_id: server5.id})
+member6 = ServerMembership.create({user_id: user2.id, server_id: server6.id})
+member7 = ServerMembership.create({user_id: user1.id, server_id: server3.id})
+member8 = ServerMembership.create({user_id: user1.id, server_id: server5.id})
+member9 = ServerMembership.create({user_id: user1.id, server_id: server2.id})
 
