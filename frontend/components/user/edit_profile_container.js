@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import UserSettings from './user_settings';
+import EditProfile from './user_settings';
 import { openModal, closeModal } from '../../actions/modal_actions'
 
 const mapStateToProps = state => {
@@ -10,9 +10,9 @@ const mapStateToProps = state => {
 }
 
 const mapDispatchToProps = dispatch => {
-  return {  
+  return {
     closeModal: () => dispatch(closeModal())
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(UserSettings)
+export default connect(mapStateToProps, mapDispatchToProps)(EditProfile)

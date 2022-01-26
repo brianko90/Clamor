@@ -13,7 +13,7 @@ function Modal({ modal, closeModal }) {
   let component;
   switch (modal) {
     case 'settings':
-      component = <UserSetting />;
+      component = <UserSettingsContainer />;
       break;
     default:
       return null;

@@ -1,7 +1,7 @@
 import React from 'react';
 
-class UserSettings extends React.Component {
-  
+class EditProfile extends React.Component {
+
   constructor(props) {
     super(props)
   }
@@ -18,25 +18,13 @@ class UserSettings extends React.Component {
         </div>
         <div id="modal-right">
           <div className="modal-right-content">
-            <h2>My Account</h2>
+            <h2>User Profile</h2>
             <div onClick={this.props.closeModal}>X</div>
           </div>
           <div className="modal-right-content">
-            <div >
-              <div>USERNAME</div>
-              <div>EDIT USER PROFILE BUTTON</div>
-            </div>
             <div>
-              <div>
-                <div>
-                  <div>USERNAME</div>
-                  <div>ACTUAL NAME</div>
-                </div>
-                <div>
-                  <div>Email</div>
-                  <div>user email</div>
-                </div>
-              </div>
+              <img>OF PROFILE PIC</img>
+              <div>USERNAME</div>
             </div>
           </div>
         </div>
@@ -45,4 +33,4 @@ class UserSettings extends React.Component {
   }
 }
 
-export default UserSettings
+export default EditProfile

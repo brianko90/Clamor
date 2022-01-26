@@ -1,10 +1,26 @@
+@font-face {
+    font-family: 'whitneybold';
+    src: url('whitneybold-webfont.woff2') format('woff2'),
+         url('whitneybold-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'whitneybook';
+    src: url('whitneybook-webfont.woff2') format('woff2'),
+         url('whitneybook-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
 .modal-background {
   position: fixed;
   top: 0;
   bottom: 0;
   right: 0;
   left: 0;
-  background: rgb(70, 63, 63);
+  background: rgb(44, 47, 51);
   z-index: 10;
 }
 
@@ -13,4 +29,57 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  color: white;
+  font-family: 'Mukta', sans-serif;
 }
+
+#modal {
+  display: flex;
+}
+
+#modal-left {
+  height: 100vh;
+  width: 10vw;
+  text-align: left;
+  margin-right: 15px;
+  padding-top: 20vh;
+  padding-left: 25vw;
+  font-size: 14px;
+}
+
+#modal-left div:last-child {
+  color: rgb(225, 67, 67);
+  border-top: 1px solid rgb(85, 82, 82);
+  margin-top: 10px;
+  /* padding-top: 5px; */
+}
+
+#modal-left > h4 {
+  padding-left: 15px;
+  padding-top: 3px;
+  padding-bottom: 3px;
+  font-size: 10px;
+  font-weight: 800;
+}
+
+.settings-tab {
+  margin-top: 10px;
+  padding-left: 15px;
+  padding-top: 3px;
+  padding-bottom: 3px;
+  justify-content: right;
+  background-color: rgb(44, 47, 51)
+}
+
+.settings-tab:hover {
+  background-color: rgba(83, 88, 94, 0.486);
+  border-radius: 5px;
+}
+
+#modal-right {
+  height: 100vh;
+  background-color: #303339;
+  width: 70vw;
+  padding-top: 20vh;
+}
+
