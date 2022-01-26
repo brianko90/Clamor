@@ -6,6 +6,10 @@ import UserProfile from './user_profile';
 
 class ServerMain extends React.Component {
 
+  constructor(props) {
+    super(props);
+  }
+
   render() {
     // if(!this.props.chosenServer) {
     //   return null;
@@ -20,7 +24,7 @@ class ServerMain extends React.Component {
             <h6>SERVER NAME GOES HERE</h6>
             <div>CHANNEL INDEX GOES HERE</div>
             <div>
-              <UserProfile user={this.props.user}/>
+              <UserProfile user={this.props.user} openModal={this.props.openModal} closeModal={this.props.closeModal}/>
             </div>
           </div>
           <div id="server-nav-chat-friend">

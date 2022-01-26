@@ -6,9 +6,11 @@ import LoginFormContainer from './session/login_form_container';
 import { AuthRoute, ProtectedRoute } from "../util/route_util";
 import FriendMainContainer from './friends/friend_main_container';
 import ServerMainContainer from './servers/server_main_container';
+import Modal from './modal/modal'
+
 const App = () => (
   <div>
-    <Route></Route> 
+    <Modal /> 
     <Switch>
       <Route exact path='/' component={SplashContainer} />
       <AuthRoute path='/login' component={LoginFormContainer} />
@@ -22,4 +24,3 @@ const App = () => (
 
 export default App;
 
-// "/channel" route will be protected

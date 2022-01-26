@@ -5,8 +5,7 @@ export const RECEIVE_SESSION_ERRORS = 'RECEIVE_SESSION_ERRORS '
 import * as sessionApiUtil from '../util/session_api_util'
 
 export const receiveCurrentUser = payload => {
-  
-  console.log(payload)
+
   return {
     type: RECEIVE_CURRENT_USER,
     payload

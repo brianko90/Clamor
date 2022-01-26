@@ -4,7 +4,6 @@ import { getUserFriends } from '../../actions/friend_actions';
 
 
 const mapStateToProps = state => {
-  console.log('TESTESTEST', state);
   return {
     currentUserId: state.session.id,
     friends: Object.values(state.entities.friends)

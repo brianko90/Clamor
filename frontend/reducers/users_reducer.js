@@ -3,7 +3,6 @@ import { CURRENT_USER_SERVERS } from "../actions/user_actions";
 
 const usersReducer = (state = {}, action) => {
   Object.freeze(state);
-  // console.log(action)
   switch (action.type) {
     case RECEIVE_CURRENT_USER:
       return { [action.payload.user.id]: action.payload.user };

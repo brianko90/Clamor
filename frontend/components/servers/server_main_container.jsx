@@ -2,6 +2,7 @@ import {connect} from 'react-redux';
 import ServerMain from './server_main';
 import {fetchServer} from '../../actions/server_actions';
 import { getUserInfo } from '../../actions/user_actions';
+import {openModal, closeModal} from '../../actions/modal_actions'; 
 
 const mapStateToProps = (state, ownProps) => {
   return {
@@ -15,7 +16,9 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = dispatch => {
   return {
     fetchServer: (serverId) => dispatch(fetchServer(serverId)),
-    getUserInfo: (userId) => dispatch(getUserInfo(userId))
+    getUserInfo: (userId) => dispatch(getUserInfo(userId)),
+    openModal: modal => dispatch(openModal(modal)),
+    closeModal: () => dispatch(closeModal())
   }
 }
 
