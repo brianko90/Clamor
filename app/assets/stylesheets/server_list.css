@@ -1,0 +1,37 @@
+#server-list-container {
+  width: 5vw;
+  height: 100vh;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  margin: auto;
+  background-color: rgb(51, 49, 49);
+}
+
+#home-icon {
+  width: 3vw;
+  justify-content: center;
+  margin: auto;
+}
+
+#home-icon > i {
+  color: white;
+  background-color: #5865F2;
+  font-size: 20px;
+  padding: 6px;
+  border-radius: 10px;
+  margin-top: 10px;
+}
+
+#server-list-ul {
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  margin-top: 12px;
+  border-top: 1px solid black;
+  color: white;
+}
+
+.server-list-item {
+  margin-top: 8px;
+}

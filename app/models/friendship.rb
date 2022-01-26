@@ -1,6 +1,6 @@
 # == Schema Information
 #
-# Table name: friends
+# Table name: friendships
 #
 #  id         :bigint           not null, primary key
 #  status     :integer

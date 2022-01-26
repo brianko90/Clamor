@@ -4,7 +4,9 @@ export const RECEIVE_SESSION_ERRORS = 'RECEIVE_SESSION_ERRORS '
 
 import * as sessionApiUtil from '../util/session_api_util'
 
-const receiveCurrentUser = payload => {
+export const receiveCurrentUser = payload => {
+  
+  console.log(payload)
   return {
     type: RECEIVE_CURRENT_USER,
     payload
@@ -18,6 +20,7 @@ const logoutCurrentUser = () => {
 }
 
 const receiveErrors = errors => {
+  debugger
   return {
     type: RECEIVE_SESSION_ERRORS,
     errors
@@ -38,6 +41,6 @@ export const logout = () => dispatch => {
 
 export const signup = (user) => dispatch => {
   return sessionApiUtil.signup(user)
-    .then((user) => dispatch(receiveCurrentUser(user)),
+    .then((data) => dispatch(receiveCurrentUser(data)),
       error => dispatch(receiveErrors(error.responseJSON)))
 }

@@ -21,11 +21,13 @@ class LoginForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     this.props.login(this.state).fail(() => this.setState({ errors: this.props.errors}))
+    return <Redirect to="/channels/@me" />
   }
 
   loginDemo(e) {
     e.preventDefault();
     this.props.login({ username: 'brian', password: "1234" })
+    return <Redirect to="/channels/@me" />
   }
 
   render() {
@@ -49,7 +51,7 @@ class LoginForm extends React.Component {
           </form>
           <div id="alternate">Need an account?  <Link to='/signup'>Register</Link></div>
           <div id="demo-container">
-            <Link to='/@me'><button id="demo-login" onClick={this.loginDemo}>DEMO</button></Link>
+            <button id="demo-login" onClick={this.loginDemo}>DEMO</button>
           </div>
           <ul id="errors">
             {this.state.errors.map((error, idx) => <li key={idx}>{error}</li>)}

@@ -1,24 +1,33 @@
 class Api::FriendsController < ApplicationController
+  def index 
+    @user = User.find_by(id: current_user.id)
+    render :index
+  end
+  
   def create 
-    @friend = Friendship.new(friend_params)
+    @friendship = Friendship.new(user_id: current_user.id, friend_id: friendship_params[:friend_id], status: 1);
+    other_friendship = Friendship.new(user_id: friendship_params[:friend_id], friend_id: current_user.id, status: 2);
     
     #Need to refactor this to handle friends
-    if @server.save
+    if @friendship.save
       render :show
-    else 
-      render json: @server.errors.full_messages, status: 422
     end
-
   end 
 
-  def destroy 
-    @friend = Friendship.find_by(id: params[:id])
-    @friend.destroy 
+  def update
+    @friendship = Friendship.find_by(id: params[:id])
+    
+  end
+
+  def destroy
+    #this params[:id] may not suffice depending on how the url wildcard is setup. May not even show up 
+    @friendship = Friendship.find_by(id: params[:id])
+    @friendship.destroy 
   end
 
   private 
 
-  def friend_params 
-    params.require(:friend).permit(:user1_id, :user2_id)
+  def friendship_params 
+    params.require(:friend).permit(:user_id, :friend_id)
   end
 end

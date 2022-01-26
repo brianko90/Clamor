@@ -1,17 +1,19 @@
 import {connect} from 'react-redux';
 import ServerList from './server_list';
 import {fetchServers} from '../../actions/server_actions';
+import {getUserInfo} from '../../actions/user_actions';
 
 const mapStateToProps = state => {
+  console.log(state)
   return {
-    currentUser: state.session.id,
-    servers: Object.values(state.entities.serverMemberships)
+    currentUserId: state.session.id,
+    servers: Object.values(state.entities.servers)
   }
 }
 
 const mapDispatchToProps = dispatch => {
   return {
-    fetchServers: () => dispatch(fetchServers())
+    getUserInfo: (userId) => dispatch(getUserInfo(userId))
   }
 }
 

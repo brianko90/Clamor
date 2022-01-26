@@ -1,0 +1,45 @@
+#server {
+  display: flex;
+}
+
+#server-main {
+  display: flex;
+  height: 100vh;
+  width: 95vw;
+}
+
+#server-main-left {
+  width: 20vw;
+}
+
+#server-main-center {
+  width: 65vw;
+}
+
+#server-main-right {
+  text-align: center;
+  width: 15vw;
+  height: 100vh;
+  background-color: rgb(51, 49, 49);
+  color: white;
+}
+
+#server-main-under-bar {
+  display: flex;
+}
+
+#server-main-nav {
+  width: 100%;
+}
+
+#server-main-bottom {
+  display: flex;
+}
+
+#server-main-top {
+  display: flex;
+  color: white;
+  background-color: rgb(63, 62, 62);
+  justify-content: space-between;
+}
+

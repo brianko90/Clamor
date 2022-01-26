@@ -16,6 +16,9 @@
 #  index_users_on_username  (username) UNIQUE
 #
 class User < ApplicationRecord
+
+  has_one_attached :pfp
+
   has_many :server_memberships,
     foreign_key: :user_id,
     class_name: "ServerMembership",
@@ -36,17 +39,20 @@ class User < ApplicationRecord
   has_many :friends,
     -> { where friendships: { status: 3} },
     through: :friendships,
-    source: :friend
+    source: :friend,
+    dependent: :destroy
 
   has_many :incoming_requests,
     -> { where friendships: { status: 2} },
     through: :friendships,
-    source: :friend 
+    source: :friend,
+    dependent: :destroy
 
   has_many :outgoing_requests,
     -> { where friendships: { status: 1}  },
     through: :friendships,
-    source: :friend
+    source: :friend,
+    dependent: :destroy
 
 
   validates :username, :password_digest, presence: true
