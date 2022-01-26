@@ -7,7 +7,6 @@ class EditProfile extends React.Component {
   }
 
   render() {
-    console.log(this.props)
     return (
       <div id="modal">
         <div id="modal-left">
@@ -23,7 +22,6 @@ class EditProfile extends React.Component {
           </div>
           <div className="modal-right-content">
             <div>
-              <img>OF PROFILE PIC</img>
               <div>USERNAME</div>
             </div>
           </div>

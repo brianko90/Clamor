@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 // import LoginFormContainer from '../session_form/login_form_container';
 // import SignupFormContainer from '../session_form/signup_form_container';
 import UserSettingsContainer from '../user/user_settings_container';
-import UserSetting from '../user/user_settings'
+import EditProfileContainer from '../user/edit_profile_container';
 
 function Modal({ modal, closeModal }) {
   if (!modal) {
@@ -15,6 +15,8 @@ function Modal({ modal, closeModal }) {
     case 'settings':
       component = <UserSettingsContainer />;
       break;
+    case 'editProfile':
+      component = <EditProfileContainer />
     default:
       return null;
   }

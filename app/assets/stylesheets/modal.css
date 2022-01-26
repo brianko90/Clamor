@@ -83,3 +83,9 @@
   padding-top: 20vh;
 }
 
+.settings-pfp {
+  width: 10%;
+  height: auto;
+  border-radius: 50%;
+}
+

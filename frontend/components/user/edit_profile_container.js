@@ -5,13 +5,14 @@ import { openModal, closeModal } from '../../actions/modal_actions'
 
 const mapStateToProps = state => {
   return {
-    // user: state.entities.users[state.session.id]
+    user: state.entities.users[state.session.id]
   }
 }
 
 const mapDispatchToProps = dispatch => {
   return {
-    closeModal: () => dispatch(closeModal())
+    closeModal: () => dispatch(closeModal()),
+    openModal: (modal) => dispatch(openModal(modal))
   }
 }
 

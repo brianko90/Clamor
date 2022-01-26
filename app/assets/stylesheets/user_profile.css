@@ -5,11 +5,85 @@
   height: 5vh;
   background-color: rgb(58, 55, 55);
   width: 15vw;
-  justify-content: space-between;
+  /* justify-content: space-between; */
   color: white;
+  vertical-align: middle;
 }
 
-#profile-setting > i {
+#user-profile > i {
   color: rgb(182, 173, 173);
+  vertical-align: middle;
+  margin: auto;
 }
 
+#user-pfp {
+  size: 80%;
+  padding: 5px;
+  width: 30%;
+}
+
+#pfp-name {
+  width: 80%;
+  display: flex;
+}
+
+#profile-cog {
+  vertical-align: middle;
+  width: 20%;
+  /* margin: auto; */
+  padding-top: 8px;
+  text-align: center;
+}
+
+#profile-cog:hover {
+  background-color: rgb(82, 79, 79);
+}
+
+#profile-username {
+  vertical-align: middle;
+  text-align: center;
+  width: 70%;
+  margin: auto;
+  margin-right: 50%;
+}
+
+.tooltip {
+  position: relative;
+  display: inline-block;
+  border-bottom: 1px dotted black; /* If you want dots under the hoverable text */
+}
+
+/* Tooltip text */
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 80px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  padding: 5px 0;
+  border-radius: 6px;
+  font-family: 'Mukta', sans-serif;
+  font-size: 12px;
+  /* Position the tooltip text - see examples below! */
+  position: absolute;
+  z-index: 1;
+  bottom: 100%;
+  left: 50%;
+  margin-left: -40px;
+}
+
+/* Show the tooltip text when you mouse over the tooltip container */
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+}
+
+.tooltip .tooltiptext::after {
+  content: " ";
+  position: absolute;
+  top: 100%; /* At the bottom of the tooltip */
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: black transparent transparent transparent;
+}

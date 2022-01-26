@@ -21,7 +21,7 @@ class FriendMain extends React.Component {
             <h6>Search for Convo</h6>
             <div>List of DM's</div>
             <div>
-              <UserProfile user={this.props.user}/>
+              <UserProfile user={this.props.user} openModal={this.props.openModal} closeModal={this.props.closeModal}/>
             </div>
           </div>
           <div id="server-nav-chat-friend">

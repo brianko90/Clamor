@@ -6,7 +6,8 @@ class Api::UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-    if @user.save!
+    @user.pfp.attach(io: File.open('app/assets/images/discordblackicon.png'), filename: 'discordblackicon.png')
+    if @user.save
       login!(@user)
       render :show
     else 
@@ -34,5 +35,10 @@ class Api::UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:username, :password, :email)
+  end
+
+  def add_default_pfp 
+    colors = [self.class.helpers.asset_url('discordblackicon.png', type: :image)]
+    colors.sample
   end
 end

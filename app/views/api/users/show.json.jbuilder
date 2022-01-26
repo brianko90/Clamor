@@ -1,7 +1,7 @@
 json.user do 
   json.partial! "user", user: @user
+  json.pfp url_for(@user.pfp)
 end
-
 
 json.servers do 
   @user.servers.each do |server|
@@ -43,5 +43,6 @@ json.outgoing do
     end
   end
 end
+
 
 

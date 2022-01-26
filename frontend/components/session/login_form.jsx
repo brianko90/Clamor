@@ -21,13 +21,11 @@ class LoginForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     this.props.login(this.state).fail(() => this.setState({ errors: this.props.errors}))
-    return <Redirect to="/channels/@me" />
   }
 
   loginDemo(e) {
     e.preventDefault();
     this.props.login({ username: 'brian', password: "1234" })
-    return <Redirect to="/channels/@me" />
   }
 
   render() {

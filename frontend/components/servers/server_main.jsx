@@ -8,12 +8,14 @@ class ServerMain extends React.Component {
 
   constructor(props) {
     super(props);
+    console.log(props)
   }
 
   render() {
     // if(!this.props.chosenServer) {
     //   return null;
     // }
+
     return (
       <div id="server">
         <div id="server-list">
