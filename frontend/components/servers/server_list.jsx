@@ -1,5 +1,5 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 
 class ServerList extends React.Component {
@@ -19,7 +19,7 @@ class ServerList extends React.Component {
           <i className="fab fa-discord fa-2x"></i>
         </div>
         <ul id="server-list-ul">
-          {this.props.servers.map(server => <li className="server-list-item" key={server.id}>{server.name}</li>)}
+          {this.props.servers.map(server => <li className="server-list-item" key={server.id}><Link to={`/channels/${server.id}`} >{server.name}</Link></li>)}
           <div>Button to add server</div>
         </ul>
       </div>

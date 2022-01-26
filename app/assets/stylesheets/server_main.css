@@ -8,8 +8,8 @@
   width: 95vw;
 }
 
-#server-main-left {
-  width: 20vw;
+#channel-index {
+  width: 15vw;
 }
 
 #server-main-center {
@@ -19,7 +19,7 @@
 #server-main-right {
   text-align: center;
   width: 15vw;
-  height: 100vh;
+  height: 95vh;
   background-color: rgb(51, 49, 49);
   color: white;
 }
@@ -28,12 +28,9 @@
   display: flex;
 }
 
-#server-main-nav {
-  width: 100%;
-}
-
 #server-main-bottom {
   display: flex;
+  width: 80vw;
 }
 
 #server-main-top {
@@ -41,5 +38,10 @@
   color: white;
   background-color: rgb(63, 62, 62);
   justify-content: space-between;
+  height: 5vh;
+}
+
+#user-container {
+  width: 15vw;
 }
 

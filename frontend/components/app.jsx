@@ -4,8 +4,8 @@ import { Route, Redirect, Switch } from 'react-router-dom';
 import SignupFormContainer from './session/signup_form_container';
 import LoginFormContainer from './session/login_form_container';
 import { AuthRoute, ProtectedRoute } from "../util/route_util";
-import ServerListContainer from './servers/server_list_container';
-import ServerMainContainer from './servers/server_main_container'
+import FriendMainContainer from './friends/friend_main_container';
+import ServerMainContainer from './servers/server_main_container';
 const App = () => (
   <div>
     <Route></Route> 
@@ -13,7 +13,8 @@ const App = () => (
       <Route exact path='/' component={SplashContainer} />
       <AuthRoute path='/login' component={LoginFormContainer} />
       <AuthRoute path='/signup' component={SignupFormContainer} />
-      <ProtectedRoute path='/channels/@me' component={ServerMainContainer} />
+      <ProtectedRoute path='/channels/@me' component={FriendMainContainer} />
+      <ProtectedRoute path='/channels/:serverId' component={ServerMainContainer} />
       <Redirect to="/" />
     </Switch>
   </div>

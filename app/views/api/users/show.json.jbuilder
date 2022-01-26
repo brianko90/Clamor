@@ -28,4 +28,20 @@ json.friends do
   end
 end
 
+json.incoming do 
+  @user.incoming_requests.each do |friend|
+    json.set! friend.id do
+      json.extract! friend, :id, :username, :email
+    end
+  end
+end
+
+json.outgoing do 
+  @user.outgoing_requests.each do |friend|
+    json.set! friend.id do
+      json.extract! friend, :id, :username, :email
+    end
+  end
+end
+
 

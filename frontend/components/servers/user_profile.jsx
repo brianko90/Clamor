@@ -1,9 +1,11 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const UserProfile = (props) => {
   return (
-    <div>
-
+    <div id="user-profile">
+      <div>{props.user.username}</div>
+      <button><i className="fas fa-cog"></i></button>
     </div>
   )
 }

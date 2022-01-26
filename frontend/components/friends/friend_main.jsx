@@ -1,10 +1,11 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
-import ServerListContainer from './server_list_container';
-import FriendListContainer from '../friends/friend_list_container';
-import UserProfile from './user_profile';
+import ServerListContainer from '../servers/server_list_container';
+import UserProfile from '../servers/user_profile';
 
-class ServerMain extends React.Component {
+class FriendMain extends React.Component {
+  constructor(props) {
+    super(props)
+  }
 
   render() {
     // if(!this.props.chosenServer) {
@@ -17,24 +18,21 @@ class ServerMain extends React.Component {
         </div>
         <div id="server-main">
           <div id="channel-index">
-            <h6>SERVER NAME GOES HERE</h6>
-            <div>CHANNEL INDEX GOES HERE</div>
+            <h6>Search for Convo</h6>
+            <div>List of DM's</div>
             <div>
               <UserProfile user={this.props.user}/>
             </div>
           </div>
           <div id="server-nav-chat-friend">
             <div id="server-main-top">
-              <h6>Channel Name goes here</h6>
-              <div>other nav bar stuff goes here</div>
+              <h6>Friend Nav Bar</h6>
+              <div>All friends tab, and pending friends tab</div>
             </div>
             <div id="server-main-bottom">
               <div id="server-main-center">
-                <div>CHATBOX GOES HERE</div>
-                <div>CHAT TYPE INPUT GOES HERE</div>
-              </div>
-              <div id="server-main-right">
-                <FriendListContainer />
+                <div>List of friends depending on tab</div>
+                
               </div>
             </div>
           </div>
@@ -44,4 +42,4 @@ class ServerMain extends React.Component {
   }
 }
 
-export default ServerMain
+export default FriendMain

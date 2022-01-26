@@ -5,10 +5,10 @@ import { getUserInfo } from '../../actions/user_actions';
 
 const mapStateToProps = (state, ownProps) => {
   return {
-    //Will need to map channels of particular server to state
-    // Ownprops will probably provide the server_id and maybe the channel_id
+    user: state.entities.users[state.session.id],
     servers: Object.values(state.entities.servers),
-    currentUserId: state.session.id
+    currentUserId: state.session.id,
+    chosenServer: state.entities.servers[ownProps.match.params.serverId]
   }
 }
 
@@ -19,4 +19,4 @@ const mapDispatchToProps = dispatch => {
   }
 }
 
-export default connect(null, mapDispatchToProps)(ServerMain)
+export default connect(mapStateToProps, mapDispatchToProps)(ServerMain)

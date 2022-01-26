@@ -1,0 +1,15 @@
+#user-profile {
+  display: flex;
+  position: fixed;
+  bottom: 0;
+  height: 5vh;
+  background-color: rgb(58, 55, 55);
+  width: 15vw;
+  justify-content: space-between;
+  color: white;
+}
+
+#profile-setting > i {
+  color: rgb(182, 173, 173);
+}
+
