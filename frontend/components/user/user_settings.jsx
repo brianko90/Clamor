@@ -5,6 +5,7 @@ class UserSettings extends React.Component {
   constructor(props) {
     super(props)
     this.handleLogout = this.handleLogout.bind(this);
+    this.state = { toggle: false };
   }
 
   handleLogout(e) {
@@ -33,9 +34,12 @@ class UserSettings extends React.Component {
               <div >
                 <div>USERNAME</div>
                 <img className="settings-pfp" src={this.props.user.pfp} alt="" />
-                <div>EDIT USER PROFILE BUTTON</div>
+                <div onClick={() => this.setState({toggle: !this.state.toggle})}>EDIT USER PROFILE BUTTON</div>
               </div>
               <div>
+                {
+                !this.state.toggle && 
+
                 <div>
                   <div>
                     <div>USERNAME</div>
@@ -46,6 +50,7 @@ class UserSettings extends React.Component {
                     <div>user email</div>
                   </div>
                 </div>
+                }
               </div>
             </div>
           </div>

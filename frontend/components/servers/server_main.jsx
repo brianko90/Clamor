@@ -8,22 +8,31 @@ class ServerMain extends React.Component {
 
   constructor(props) {
     super(props);
-    console.log(props)
+    console.log("TESTTEST", props)
+  }
+
+  componentDidMount() {
+    this.props.getUserInfo(this.props.currentUserId)
+  }
+
+  componentDidUpdate(prevProps) {
+    if (this.props.getUserInfo !== prevProps.getUserInfo) {
+      this.componentDidMount()
+    }
   }
 
   render() {
-    // if(!this.props.chosenServer) {
-    //   return null;
-    // }
-
+    if(!this.props.chosenServer) {
+      return null;
+    }
     return (
       <div id="server">
         <div id="server-list">
-          <ServerListContainer servers={this.props.servers} />
+          <ServerListContainer servers={this.props.servers} openModal={this.props.openModal} closeModal={this.props.closeModal}/>
         </div>
         <div id="server-main">
           <div id="channel-index">
-            <h6>SERVER NAME GOES HERE</h6>
+            <h6>{this.props.chosenServer.name}</h6>
             <div>CHANNEL INDEX GOES HERE</div>
             <div>
               <UserProfile user={this.props.user} openModal={this.props.openModal} closeModal={this.props.closeModal}/>

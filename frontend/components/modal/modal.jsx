@@ -1,10 +1,9 @@
 import React from 'react';
 import { closeModal } from '../../actions/modal_actions';
 import { connect } from 'react-redux';
-// import LoginFormContainer from '../session_form/login_form_container';
-// import SignupFormContainer from '../session_form/signup_form_container';
 import UserSettingsContainer from '../user/user_settings_container';
 import EditProfileContainer from '../user/edit_profile_container';
+import ServerFormContainer from '../servers/server_form_container';
 
 function Modal({ modal, closeModal }) {
   if (!modal) {
@@ -16,7 +15,11 @@ function Modal({ modal, closeModal }) {
       component = <UserSettingsContainer />;
       break;
     case 'editProfile':
-      component = <EditProfileContainer />
+      component = <EditProfileContainer />;
+      break;
+    case 'addServer':
+      component = <ServerFormContainer />;
+      break;
     default:
       return null;
   }

@@ -59,9 +59,16 @@ class User < ApplicationRecord
   validates :username, uniqueness: true
   validates :password, length: {minimum: 4}, allow_nil: true
 
-  after_initialize :ensure_session_token 
-
+  after_initialize :ensure_session_token, :ensure_pfp
+  # after_save :ensure_pfp
   attr_reader :password
+
+  def ensure_pfp
+    if !self.pfp.attached?
+      file = File.open('app/assets/images/discordblueicon.png')
+      self.pfp.attach(io: file, filename: 'discordblueicon.png')
+    end
+  end
 
   def self.find_by_credentials(username, password)
     user = User.find_by(username: username)

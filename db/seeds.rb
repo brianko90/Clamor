@@ -5,6 +5,9 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+# require 'open-uri'
+
+
 User.destroy_all
 Server.destroy_all
 ServerMembership.destroy_all
@@ -23,7 +26,7 @@ server2 = Server.create({name: 'Anime Group', owner_id: user5.id, public: true})
 server3 = Server.create({name: "LoL", owner_id: user3.id, public: true})
 server4 = Server.create({name: "cars", owner_id: user7.id, public: true})
 server5 = Server.create({name: 'valk fan club', owner_id: user4.id, public: true})
-server6 = Server.create({name: 'You Joe', owner_id: user2.id, public: true})
+server6 = Server.create({name: 'Coding 101', owner_id: user2.id, public: true})
 
 member1 = ServerMembership.create({user_id: user1.id, server_id: server1.id})
 member2 = ServerMembership.create({user_id: user5.id, server_id: server2.id})
@@ -41,3 +44,8 @@ friend3 = Friendship.create({user_id: user1.id, friend_id: user4.id, status: 3})
 friend4 = Friendship.create({user_id: user1.id, friend_id: user5.id, status: 3})
 friend5 = Friendship.create({user_id: user1.id, friend_id: user6.id, status: 3})
 friend6 = Friendship.create({user_id: user1.id, friend_id: user7.id, status: 3})
+
+channel1 = Channel.create({name: "General", server_id: server1.id})
+channel2 = Channel.create({name: "Homework", server_id: server1.id})
+channel3 = Channel.create({name: "Study Group", server_id: server1.id})
+channel4 = Channel.create({name: "Off-topic", server_id: server1.id})

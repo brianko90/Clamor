@@ -3,7 +3,14 @@ import React from 'react';
 class EditProfile extends React.Component {
 
   constructor(props) {
-    super(props)
+    super(props);
+    this.handleLogout = this.handleLogout.bind(this);
+  }
+
+  handleLogout(e) {
+    e.preventDefault();
+    this.props.closeModal();
+    this.props.logout();
   }
 
   render() {
@@ -13,7 +20,7 @@ class EditProfile extends React.Component {
           <h4>USER SETTINGS</h4>
           <div className="settings-tab">My Account</div>
           <div className="settings-tab">User Profile</div>
-          <div className="settings-tab">Logout</div>
+          <div onClick={this.handleLogout} className="settings-tab">Logout</div>
         </div>
         <div id="modal-right">
           <div className="modal-right-content">
@@ -23,6 +30,7 @@ class EditProfile extends React.Component {
           <div className="modal-right-content">
             <div>
               <div>USERNAME</div>
+              <img className="settings-pfp" src={this.props.user.pfp} alt="" />
             </div>
           </div>
         </div>

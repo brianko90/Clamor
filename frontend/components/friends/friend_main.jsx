@@ -14,7 +14,7 @@ class FriendMain extends React.Component {
     return (
       <div id="server">
         <div id="server-list">
-          <ServerListContainer servers={this.props.servers} />
+          <ServerListContainer servers={this.props.servers} openModal={this.props.openModal} closeModal={this.props.closeModal}/>
         </div>
         <div id="server-main">
           <div id="channel-index">

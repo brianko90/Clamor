@@ -20,7 +20,7 @@
   bottom: 0;
   right: 0;
   left: 0;
-  background: rgb(44, 47, 51);
+  background-color: rgba(44, 47, 51, 0.488);
   z-index: 10;
 }
 
@@ -30,11 +30,13 @@
   left: 50%;
   transform: translate(-50%, -50%);
   color: white;
+  /* background-color: blue; */
   font-family: 'Mukta', sans-serif;
 }
 
 #modal {
   display: flex;
+  background-color:rgba(44, 47, 51);
 }
 
 #modal-left {
