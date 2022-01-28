@@ -71,7 +71,11 @@
   border-radius: 10px;
 }
 
-.channel-item > i {
+.channel-item > a {
+  color: rgba(255, 255, 255, 0.568);
+}
+
+.channel-item > a > i {
   color: rgba(255, 255, 255, 0.568);
   padding-left: 4px;
   padding-right: 4px;

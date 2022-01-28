@@ -90,6 +90,12 @@ channel2 = Channel.create({name: "Homework", server_id: server1.id})
 channel3 = Channel.create({name: "Study Group", server_id: server1.id})
 channel4 = Channel.create({name: "Off-topic", server_id: server1.id})
 
+channel5 = Channel.create({name: "General", server_id: server2.id})
+channel6 = Channel.create({name: "General", server_id: server3.id})
+channel7 = Channel.create({name: "General", server_id: server4.id})
+channel8 = Channel.create({name: "General", server_id: server5.id})
+channel9 = Channel.create({name: "General", server_id: server6.id})
+
 user8 = User.create({username: 'Jimbo', email: 'jimbo@gmail.com', password: "1234", tag: "6782"})
 file = open('https://clamor-aa-dev.s3.us-west-1.amazonaws.com/Pastel-Red.png')
 user8.pfp.attach(io: file, filename: 'discordblueicon.png')

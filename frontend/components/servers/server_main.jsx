@@ -33,7 +33,7 @@ class ServerMain extends React.Component {
             <h6>{this.props.chosenServer.name}</h6>
           </div>
           <div id="channel-list-container">
-            <ChannelListContainer channels={this.props.channels} />
+            <ChannelListContainer channels={this.props.channels} server={this.props.chosenServer}/>
           </div>
           <div id="profile">
             <UserProfile user={this.props.user} openModal={this.props.openModal} closeModal={this.props.closeModal} />

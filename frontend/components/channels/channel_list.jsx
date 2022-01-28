@@ -1,4 +1,6 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
+
 
 class ChannelList extends React.Component {
   constructor(props) {
@@ -8,12 +10,11 @@ class ChannelList extends React.Component {
 
   render() {
 
-    console.log("CHANNELS", this.props.channels)
     return(
       <div>
         <ul id="channel-list">
           <li>TEXT CHANNELS <span id="add-class">+</span></li>
-          {this.props.channels.map(channel => <li className="channel-item" key={channel.id}><i className="fas fa-hashtag"></i>  {channel.name.toLowerCase()}</li>)}
+          {this.props.channels.map(channel => <li className="channel-item" key={channel.id}><Link to={`/channels/${this.props.server.id}/${channel.id}`}><i className="fas fa-hashtag"></i>  {channel.name.toLowerCase()}</Link></li>)}
         </ul>
       </div>
     )
