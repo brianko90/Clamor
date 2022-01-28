@@ -33,23 +33,7 @@ class Api::UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:username, :password, :email)
+    params.require(:user).permit(:username, :password, :email, :tag)
   end
 
-  # def ensure_pfp
-  #   colors = ["discordblackicon.png",
-  #           "discordblueicon.png",
-  #           "discordorangeicon.png",
-  #           "discordyellowicon.png",
-  #           "discordgreenicon.png",
-  #           "discordpurpleicon.png"
-  #             ]
-
-  #   color = colors.sample
-
-  #   if !self.pfp.attached?
-  #     file = File.open(`app/assets/images/#{color}`)
-  #     self.pfp.attach(io: file, filename: color)
-  #   end
-  # end
 end

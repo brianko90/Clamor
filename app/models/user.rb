@@ -6,6 +6,7 @@
 #  email           :string           not null
 #  password_digest :string           not null
 #  session_token   :string           not null
+#  tag             :string
 #  username        :string           not null
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
@@ -68,15 +69,29 @@ class User < ApplicationRecord
   validates :username, uniqueness: true
   validates :password, length: {minimum: 4}, allow_nil: true
 
-  after_initialize :ensure_session_token, :ensure_pfp
+  after_initialize :ensure_session_token, :ensure_pfp, :ensure_tag
   # after_save :ensure_pfp
   attr_reader :password
 
   def ensure_pfp
     if !self.pfp.attached?
-      file = File.open('app/assets/images/discordblackicon.png')
-      self.pfp.attach(io: file, filename: 'discordblackicon.png')
+      file = File.open('app/assets/images/Pastel-Gray.png')
+      self.pfp.attach(io: file, filename: 'Pastel-Gray.png')
     end
+  end
+
+  def ensure_tag
+    if !self.tag 
+      tag = rand(1..9999);
+      if tag < 1000 
+        tag = "0" + tag.to_s
+      elsif tag < 100
+        tag = "00" + tag.to_s
+      elseif tag < 10
+        tag = "000" + tag.to_s
+      end
+    end
+    self.tag = tag;
   end
 
   def self.find_by_credentials(username, password)

@@ -1,37 +1,91 @@
 #server-list-container {
-  width: 5vw;
-  height: 100vh;
-  align-items: center;
+  width: 100%;
+  height: 100%;
   text-align: center;
   justify-content: center;
   margin: auto;
   background-color: rgb(51, 49, 49);
+  align-items: center;
 }
 
 #home-icon {
-  width: 80%;
+  display: flex;
   justify-content: center;
-  margin: auto;
+  align-items: center;
+  text-align: center;
 }
 
-#home-icon > i {
-  color: white;
+#home-icon > a {
+  width: 36px;
+  height: 36px;
   background-color: #5865F2;
-  font-size: 20px;
-  padding: 6px;
-  border-radius: 10px;
-  margin-top: 10px;
+  border-radius: 50%;
+}
+
+#home-icon > a > i {
+  padding-top: 7px;
+  font-size: 22px;
+}
+
+#main-logo {
+  padding-bottom: 10px;
+  padding-top: 10px;
+  box-shadow: 0px 17px 1px -16px rgb(97, 95, 95);
+}
+
+
+#home-icon > a:hover {
+  border-radius: 12px;
+}
+
+#server-pic {
+  width: 36px;
+  border-radius: 50%;
+  background-color: black;
+  margin-top: 5px;
+}
+
+#server-pic:hover {
+  border-radius: 12px;
 }
 
 #server-list-ul {
+  justify-content: center;
   align-items: center;
   text-align: center;
+}
+
+.server-buttons {
+  display:flex;
+  margin: auto;
+  background-color:#424549;
+  color: #228B22;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  vertical-align: middle;
   justify-content: center;
-  margin-top: 12px;
-  border-top: 1px solid black;
+  text-align: center;
+  align-items: center;
+  margin-top: 5px;
+}
+
+.server-buttons > #server-plus {
+  color: inherit;
+  font-size: 24px;
+  margin-bottom: 5px;
+}
+
+.server-buttons > i {
+  color: inherit;
+}
+
+.server-buttons:hover {
+  border-radius: 12px;
+  cursor: pointer;
+  background-color: #7da565;
   color: white;
 }
 
-.server-list-item {
-  margin-top: 8px;
-}
+
+

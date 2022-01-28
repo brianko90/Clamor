@@ -8,8 +8,12 @@ class ServerMembersList extends React.Component {
   render() {
     return (
       <div>
-        <ul>
-          {this.props.serverMembers.map(member => <li className="member-item" key={member.id}>{member.username}</li>)}
+        <ul id="members-list">
+          <li>Members - {this.props.serverMembers.length}</li>
+          {this.props.serverMembers.map(member => <li className="member-item" key={member.id}>
+                                                    <img src={member.pfp} alt="" />
+                                                    <span>{member.username}</span>
+                                                  </li>)}
         </ul>
       </div>
     )

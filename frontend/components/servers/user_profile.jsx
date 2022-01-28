@@ -7,9 +7,12 @@ const UserProfile = (props) => {
     <div id="user-profile">
       <div id="pfp-name">
         <img id="user-pfp" src={props.user.pfp} alt="" />
-        <div id="profile-username">{props.user.username}</div>
+        <div id="username-info">
+          <div id="profile-username">{props.user.username}</div>
+          <div id="user-tag">#PH</div>
+        </div>
       </div>
-      <div className="tooltip" id="profile-cog" onClick={() => props.openModal("settings")}><i className="fas fa-cog"><span className="tooltiptext">User Settings</span></i></div>
+      <div id="profile-cog" onClick={() => props.openModal("settings")}><i className="tooltip fas fa-cog"><span className="tooltiptext">User Settings</span></i></div>
     </div>
   )
 }

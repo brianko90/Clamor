@@ -15,8 +15,6 @@ class UserSettings extends React.Component {
   }
 
   render() {
-      
-    
       return (
         <div id="modal">
           <div id="modal-left">

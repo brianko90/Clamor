@@ -6,24 +6,15 @@ class ChannelList extends React.Component {
     this.state = {toggle: true}
   }
 
-  // componentDidMount() {
-  //   this.props.fetchServer(this.props.serverId);
-  // }
-
   render() {
 
     console.log("CHANNELS", this.props.channels)
     return(
-      <div id="channel-list">
-        <div>TEXT CHANNELS</div>
-        <div>
-          {
-            this.state.toggle &&
-            <div>
-              {this.props.channels.map(channel => <li key={channel.id}>{channel.name}</li>)}
-            </div>
-          }
-        </div>
+      <div>
+        <ul id="channel-list">
+          <li>TEXT CHANNELS <span id="add-class">+</span></li>
+          {this.props.channels.map(channel => <li className="channel-item" key={channel.id}><i className="fas fa-hashtag"></i>  {channel.name.toLowerCase()}</li>)}
+        </ul>
       </div>
     )
   }
