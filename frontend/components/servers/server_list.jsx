@@ -6,10 +6,6 @@ class ServerList extends React.Component {
   constructor(props) {
     super(props);
   }
-
-  // componentDidMount() {
-  //   this.props.fetchServer(this.props.chosenServer.id);
-  // }
   
   render() {
     return (

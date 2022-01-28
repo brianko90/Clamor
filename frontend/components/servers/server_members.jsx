@@ -9,7 +9,7 @@ class ServerMembersList extends React.Component {
     return (
       <div>
         <ul>
-          {this.props.serverMembers.map(member => <li key={member.id}>{member.username}</li>)}
+          {this.props.serverMembers.map(member => <li className="member-item" key={member.id}>{member.username}</li>)}
         </ul>
       </div>
     )
