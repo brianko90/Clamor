@@ -7,11 +7,16 @@ class FriendMain extends React.Component {
     super(props)
   }
 
+  componentDidMount() {
+    this.props.getUserFriends(this.props.user.id)
+  }
+
   render() {
-    // if(!this.props.chosenServer) {
-    //   return null;
-    // }
+    if(!this.props.servers) {
+      return null;
+    }
     return (
+
       <div id="server">
         <div id="server-list">
           <ServerListContainer servers={this.props.servers} openModal={this.props.openModal} closeModal={this.props.closeModal}/>
@@ -32,7 +37,6 @@ class FriendMain extends React.Component {
             <div id="server-main-bottom">
               <div id="server-main-center">
                 <div>List of friends depending on tab</div>
-                
               </div>
             </div>
           </div>

@@ -11,14 +11,14 @@ class Api::ServersController < ApplicationController
 
   def create
     @server = Server.new(server_params)
-    
+    @user = @server.owner
     if @server.save
-      login!(@server)
+      selfMember = ServerMembership.new(user_id: current_user.id, server_id: @server.id)
+      selfMember.save
       render :show
     else 
       render json: @server.errors.full_messages, status: 422
     end
-
   end
 
   def update 

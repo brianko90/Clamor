@@ -15,6 +15,9 @@
 #  index_servers_on_owner_id  (owner_id)
 #
 class Server < ApplicationRecord
+  
+  has_one_attached :serverpic
+  
   belongs_to :owner,
   class_name: "User"
 

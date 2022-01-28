@@ -1,4 +1,5 @@
 import React from 'react';
+import {Redirect} from 'react-router-dom';
 
 class ServerForm extends React.Component {
   constructor(props) {
@@ -14,6 +15,13 @@ class ServerForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     this.props.createServer(this.state)
+      .then(
+        () => {
+          this.props.closeModal();
+          let lastServerId = this.props.servers[this.props.servers.length - 1].id;
+          this.props.history.push(`/channels/${lastServerId}`)
+        }
+      );
   }
 
   render() {
@@ -30,13 +38,13 @@ class ServerForm extends React.Component {
           <div>
             <div>Server Type</div>
             <label>For me and my friends
-              <input type="radio" value="false" onChange={this.update('public')} />
+              <input type="radio" name="type" value="false" onChange={this.update('public')} />
             </label>
             <label>For a club or community
-              <input type="radio" value="true" onChange={this.update('public')} />
+              <input type="radio" name="type" value="true" onChange={this.update('public')} />
             </label>
           </div>
-          <button>Create Server</button>
+          <button onClick={this.handleSubmit}>Create Server</button>
         </form>
       </div>
     )

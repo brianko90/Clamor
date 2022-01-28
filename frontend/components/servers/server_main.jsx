@@ -3,23 +3,25 @@ import {Link} from 'react-router-dom';
 import ServerListContainer from './server_list_container';
 import FriendListContainer from '../friends/friend_list_container';
 import UserProfile from './user_profile';
+import FriendMain from '../friends/friend_main';
+import ChannelListContainer from '../channels/channel_list_container';
+import ServerMembersList from './server_members';
 
 class ServerMain extends React.Component {
 
   constructor(props) {
     super(props);
-    console.log("TESTTEST", props)
   }
 
   componentDidMount() {
+    console.log("TEST", this.props)
     this.props.getUserInfo(this.props.currentUserId)
+      .then(() => {
+        this.props.fetchServer(this.props.chosenServer.id)
+      })
   }
 
-  componentDidUpdate(prevProps) {
-    if (this.props.getUserInfo !== prevProps.getUserInfo) {
-      this.componentDidMount()
-    }
-  }
+
 
   render() {
     if(!this.props.chosenServer) {
@@ -28,12 +30,12 @@ class ServerMain extends React.Component {
     return (
       <div id="server">
         <div id="server-list">
-          <ServerListContainer servers={this.props.servers} openModal={this.props.openModal} closeModal={this.props.closeModal}/>
+          <ServerListContainer chosenServer={this.props.chosenServer} servers={this.props.servers} openModal={this.props.openModal} closeModal={this.props.closeModal}/>
         </div>
         <div id="server-main">
           <div id="channel-index">
             <h6>{this.props.chosenServer.name}</h6>
-            <div>CHANNEL INDEX GOES HERE</div>
+            <ChannelListContainer channels={this.props.channels}/>
             <div>
               <UserProfile user={this.props.user} openModal={this.props.openModal} closeModal={this.props.closeModal}/>
             </div>
@@ -49,7 +51,7 @@ class ServerMain extends React.Component {
                 <div>CHAT TYPE INPUT GOES HERE</div>
               </div>
               <div id="server-main-right">
-                <FriendListContainer />
+                <ServerMembersList serverMembers={this.props.serverMembers} fetchServer={this.props.fetchServer}/>
               </div>
             </div>
           </div>

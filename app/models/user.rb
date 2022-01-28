@@ -15,6 +15,15 @@
 #  index_users_on_email     (email) UNIQUE
 #  index_users_on_username  (username) UNIQUE
 #
+
+
+# COLORS = ["discordblackicon.png",
+#   "discordblueicon.png",
+#   "discordorangeicon.png",
+#   "discordyellowicon.png",
+#   "discordgreenicon.png",
+#   "discordpurpleicon.png"
+# ]
 class User < ApplicationRecord
 
   has_one_attached :pfp
@@ -65,8 +74,8 @@ class User < ApplicationRecord
 
   def ensure_pfp
     if !self.pfp.attached?
-      file = File.open('app/assets/images/discordblueicon.png')
-      self.pfp.attach(io: file, filename: 'discordblueicon.png')
+      file = File.open('app/assets/images/discordblackicon.png')
+      self.pfp.attach(io: file, filename: 'discordblackicon.png')
     end
   end
 

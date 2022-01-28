@@ -11,10 +11,10 @@ const receiveServers = (servers) => {
   }
 }
 
-const receiveServer = server => {
+const receiveServer = payload => {
   return {
     type: RECEIVE_SERVER,
-    server 
+    payload 
   }
 }
 

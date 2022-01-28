@@ -10,7 +10,7 @@ class Splash extends React.Component {
     let logOpenButton;
     let testLogout = <button onClick={() => this.props.logout()}>Logout</button>
     if(this.props.loggedIn) {
-      logOpenButton = <Link id="splash-button" to='/'>Open Clamor</Link>
+      logOpenButton = <Link id="splash-button" to='/channels/@me'>Open Clamor</Link>
     } else {
       logOpenButton = <Link id="splash-button" to='/login'>Login</Link>
     }
