@@ -26,20 +26,20 @@ class UserSettings extends React.Component {
           <div id="modal-right">
             <div className="modal-right-content">
               <h2>My Account</h2>
-              <div onClick={this.props.closeModal}>X</div>
+              <div id="close-modal" onClick={this.props.closeModal}>X</div>
             </div>
-            <div className="modal-right-content">
-              <div >
-                <div>USERNAME</div>
+            <div id="modal-right-container">
+              <div id="modal-main-user">
                 <img className="settings-pfp" src={this.props.user.pfp} alt="" />
-                <div onClick={() => this.setState({toggle: !this.state.toggle})}>EDIT USER PROFILE BUTTON</div>
+                <div>USERNAME</div>
+                <div onClick={() => this.setState({toggle: !this.state.toggle})}>EDIT USER PROFILE</div>
               </div>
               <div>
                 {
                 !this.state.toggle && 
 
-                <div>
-                  <div>
+                <div id="user-info">
+                  <div id="main-setting">
                     <div>USERNAME</div>
                     <div>ACTUAL NAME</div>
                   </div>
