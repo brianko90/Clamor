@@ -87,8 +87,6 @@
 }
 
 #profile {
-  /* position: fixed; */
-  /* width: 100%; */
   font-family: 'Mukta', sans-serif;
   color: white;
   height: 40px;
@@ -126,8 +124,8 @@
 }
 
 #friend-nav > a > i {
-  font-size: 30px;
-  padding-top: 5px;
+  font-size: 20px;
+  padding-top: 10px;
   padding-left: 10px;
 }
 
@@ -148,23 +146,28 @@
 }
 
 #friend-main-top > h6 > a {
-  color: rgba(255, 255, 255, 0.555);
+  color: #b8bbbe;
 }
 
 #friend-option {
   display: flex;
   margin-left: 20px;
   height: 25px;
-  border-left: 1px solid black;
+  border-left: 1px solid #4c4e5287;
   padding-left: 10px;
   font-size: 12px;
   font-family: 'Mukta', sans-serif;
   align-items: center;
   margin-top: 7px;
+  color: #b8bbbe;
 }
 
 #friend-option > div:first-child {
-  padding-right: 20px;
+  margin-right: 20px;
+}
+
+#friend-option div:hover {
+  color: white;
 }
 
 #friend-top-nav {
@@ -175,15 +178,44 @@
   height: 100vh;
   background-color: #36393f;
   width: 100%;
+  margin-top: 40px;
 }
 
 .friend-item {
   display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #4c4e5287;
+  margin-left: 30px;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  color: white;
+  font-family: 'Mukta', sans-serif;
+  font-size: 13px;
+}
+
+.friend-item:hover {
+  background-color:#393c42;
+  border-radius: 10px;
+}
+
+.friend-item > div:first-child {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.friend-item > div:first-child > img {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  margin-right: 10px;
+  margin-left: 10px;
 }
 
 .friend-buttons {
   display: flex;
-  margin-left:80%
+  padding-right: 310px;
 }
 
 #friend-tag {
@@ -202,4 +234,41 @@
   color: grey;
   background-color: rgb(32, 30, 30);
   padding-left: 5px;
+}
+
+#friend-list {
+  width: 100vw;
+  background-color: #36393e;
+}
+
+.friend-buttons i{
+  background-color: #2e3136;
+  width:25px;
+  height:25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  font-size: 12px;
+  color: #b8bbbe;
+}
+
+.friend-buttons i:hover {
+  cursor: pointer;
+  color: white;
+}
+
+.friend-buttons i:last-child:hover {
+  color: #eb4044;
+}
+
+.friend-buttons > i:last-child{
+  margin-left: 10px;
+}
+
+.selected-tab {
+  color: white;
+  background-color: #3e4247;
+  padding: 5px;
+  border-radius: 4px;
 }

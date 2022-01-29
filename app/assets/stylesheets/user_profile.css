@@ -58,7 +58,7 @@
 .tooltip .tooltiptext {
   visibility: hidden;
   width: 80px;
-  background-color: rgb(48, 46, 46);
+  background-color: rgb(33, 31, 31);
   color: #fff;
   text-align: center;
   padding: 5px 0;
@@ -66,8 +66,8 @@
   font-family: 'Mukta', sans-serif;
   font-size: 12px;
   position: absolute;
-  z-index: 1;
-  bottom: 100%;
+  z-index: 10000000;
+  bottom: 110%;
   left: 50%;
   margin-left: -40px;
 }
@@ -84,5 +84,6 @@
   margin-left: -5px;
   border-width: 5px;
   border-style: solid;
-  border-color: rgb(48, 46, 46) transparent transparent transparent;
+  border-color: rgb(33, 31, 31) transparent transparent transparent;
+  z-index: 10000;
 }

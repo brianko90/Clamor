@@ -86,7 +86,6 @@
 
 #profile {
   position: fixed;
-  /* width: 100%; */
   font-family: 'Mukta', sans-serif;
   color: white;
   height: 40px;
@@ -179,8 +178,8 @@
 }
 
 #server-nav > a > i {
-  font-size: 30px;
-  padding-top: 5px;
+  font-size: 20px;
+  padding-top: 10px;
   padding-left: 10px;
 }
 

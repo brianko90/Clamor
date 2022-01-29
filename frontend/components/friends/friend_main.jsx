@@ -6,14 +6,28 @@ import FriendListContainer from './friend_list_container';
 class FriendMain extends React.Component {
   constructor(props) {
     super(props)
+    this.state = {pending: false}
   }
 
   componentDidMount() {
     this.props.getUserFriends(this.props.user.id)
   }
 
+  handleSelect(e) {
+    e.preventDefault();
+    let notSelected = document.getElementsByClassName('friend-nav');
+    notSelected = Array.prototype.slice.call(notSelected);
+    notSelected.map((ele) => {
+      if(ele.classList.contains('selected-tab')) ele.classList.remove('selected-tab');
+    });
+    e.currentTarget.classList.add('selected-tab')
+  }
+
   render() {
     if(!this.props.servers) {
+      return null;
+    }
+    if(!this.props.friends) {
       return null;
     }
     return (
@@ -37,8 +51,8 @@ class FriendMain extends React.Component {
           <div id="friend-main-top">
             <h6><i className="fas fa-user-friends"></i> <span>Friends</span></h6>
             <div id="friend-option">
-              <div>All</div>
-              <div>Pending</div>
+              <div className="friend-nav selected-tab" onClick={(e) => { this.setState({ pending: false }); this.handleSelect(e)}}>All</div>
+              <div className="friend-nav" onClick={(e) => {this.setState({ pending: true }); this.handleSelect(e)}}>Pending</div>
             </div>
             <div id="friend-top-nav">
               <nav id="friend-nav">
@@ -52,7 +66,14 @@ class FriendMain extends React.Component {
             </div>
           </div>
           <div id="friend-main-bottom">
-            <FriendListContainer removeFriend={this.props.removeFriend}/>
+            {
+              !this.state.pending &&
+              <FriendListContainer pendingStatus={this.state.pending} deleteFriend={this.props.deleteFriend} friends={this.props.friends} pending={this.props.incoming.concat(this.props.outgoing)} />
+            }
+            {
+              this.state.pending && 
+                <FriendListContainer pendingStatus={this.state.pending} deleteFriend={this.props.deleteFriend} friends={this.props.pending} pending={this.props.incoming.concat(this.props.outgoing)} />
+            }
           </div>
         </div>
       </div>

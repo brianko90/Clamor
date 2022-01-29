@@ -1,4 +1,4 @@
-class Api::FriendsController < ApplicationController
+class Api::FriendshipsController < ApplicationController
   def index 
     @user = User.find_by(id: current_user.id)
     render :index
@@ -21,8 +21,9 @@ class Api::FriendsController < ApplicationController
 
   def destroy
     #this params[:id] may not suffice depending on how the url wildcard is setup. May not even show up 
-    @friendship = Friendship.find_by(id: params[:id])
+    @friendship = Friendship.find_by(user_id: params[:user_id], friend_id: params[:id])
     @friendship.destroy
+    @user = User.find_by(id: current_user.id)
     render '/api/users/show';
   end
 

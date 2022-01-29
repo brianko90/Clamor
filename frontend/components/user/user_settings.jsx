@@ -4,8 +4,11 @@ class UserSettings extends React.Component {
   
   constructor(props) {
     super(props)
-    this.handleLogout = this.handleLogout.bind(this);
     this.state = { toggle: false, username: this.props.user.username, email: this.props.user.email };
+
+    this.handleLogout = this.handleLogout.bind(this);
+    this.modalButtonClick = this.modalButtonClick.bind(this.modalButtonClick);
+    this.modalCloseClick = this.modalCloseClick.bind(this.modalCloseClick);
   }
 
   handleLogout(e) {
@@ -16,6 +19,16 @@ class UserSettings extends React.Component {
 
   update(field) {
     return (e) => this.setState({[field]: e.currentTarget.value})
+  }
+
+  modalButtonClick() {
+    let modal = document.getElementById('myModal');
+    modal.style.display = "block";
+  }
+
+  modalCloseClick() {
+    let modal = document.getElementById('myModal');
+    modal.style.display = "none";
   }
 
   render() {
@@ -52,14 +65,28 @@ class UserSettings extends React.Component {
                         <div className="edit-label">USERNAME</div>
                         <div>{this.props.user.username}</div>
                       </div>
-                      <input type="text" className="edit-input" value={this.state.username} onChange={this.update('username')}/>
+                      <button id="myBtn" onClick={this.modalButtonClick}>Edit</button>
+                      <div id="myModal" className="modal">
+                        <div className="modal-content">
+                          <span className="close" onClick={this.modalCloseClick} >&times;</span>
+                          <p>Some text in the Modal..</p>
+                        </div>
+                      </div>
+                      {/* <input type="text" className="edit-input" value={this.state.username} onChange={this.update('username')}/> */}
                     </div>
                     <div className="setting-container">
                       <div className='setting-cat'>
                         <div className="edit-label">EMAIL</div>
                         <div>{this.props.user.email}</div>
                       </div>
-                      <input type="text" className="edit-input" value={this.state.email} onChange={this.update('email')}/>
+                      <button id="myBtn" onClick={this.modalButtonClick}>Edit</button>
+                      <div id="myModal" className="modal">
+                        <div className="modal-content">
+                          <span className="close" onClick={this.modalCloseClick} >&times;</span>
+                          <p>Some text in the Modal..</p>
+                        </div>
+                      </div>
+                      {/* <input type="text" className="edit-input" value={this.state.email} onChange={this.update('email')}/> */}
                     </div>
                     <button id="update-button">UPDATE USER PROFILE</button>
                   </form>

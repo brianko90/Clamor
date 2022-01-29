@@ -26,6 +26,7 @@ json.friends do
   @user.friends.each do |friend|
     json.set! friend.id do
       json.extract! friend, :id, :username, :email
+      json.pfp url_for(friend.pfp)
     end
   end
 end
@@ -34,6 +35,7 @@ json.incoming do
   @user.incoming_requests.each do |friend|
     json.set! friend.id do
       json.extract! friend, :id, :username, :email
+      json.pfp url_for(friend.pfp)
     end
   end
 end
@@ -42,6 +44,7 @@ json.outgoing do
   @user.outgoing_requests.each do |friend|
     json.set! friend.id do
       json.extract! friend, :id, :username, :email
+      json.pfp url_for(friend.pfp)
     end
   end
 end
