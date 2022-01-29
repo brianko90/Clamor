@@ -1,0 +1,205 @@
+#friend {
+  display: flex;
+}
+
+#server-list {
+  width: 70px;
+  height: 100vh;
+}
+
+#dm-index {
+  width: 200px;
+  background-color: #2e3136;
+  height: 100vh;
+  color: rgba(255, 255, 255, 0.568);
+  display: flex;
+  flex-direction: column;
+}
+
+#friend-tag {
+  height: 40px;
+  width: 200px;
+  background-color:#2e3136;
+  position: fixed;
+  font-family: 'Mukta', sans-serif;
+  color: white;
+  border-bottom: 1px solid rgb(27, 23, 23);
+}
+
+#friend-tag:hover {
+  background-color:#444548;
+}
+
+#friend-tag > h6 {
+  padding-top: 14px;
+  padding-left: 16px;
+}
+
+#dm-list-container {
+  margin-top: 40px;
+}
+
+#dm-list {
+  padding-top: 10px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+#dm-list > li:first-child {
+  font-family: 'Mukta', sans-serif;
+  font-size: 14px;
+}
+
+#dm-list > li:first-child > span {
+  padding-left: 30px;
+  font-size: 20px;
+  vertical-align: middle;
+}
+
+#dm-list > li:first-child:hover {
+  color: white;
+}
+
+.dm-item {
+  color: inherit;
+  padding-top: 6px;
+  padding-bottom: 6px;
+  font-size: 14px;
+  font-family: 'Mukta', sans-serif;
+  font-weight: 500; 
+}
+
+.dm-item:hover {
+  background-color:#444548;
+  border-radius: 10px;
+}
+
+.dm-item > a {
+  color: #8e9296;
+  font-weight: 600;
+}
+
+.friend-item > a > i {
+  color: #8e9296;
+  padding-left: 4px;
+  padding-right: 4px;
+  font-size: 16px;
+}
+
+#profile {
+  /* position: fixed; */
+  /* width: 100%; */
+  font-family: 'Mukta', sans-serif;
+  color: white;
+  height: 40px;
+}
+
+
+#friend-main-top {
+  border-bottom: 1px solid rgb(27, 23, 23);
+}
+
+#friend-top-nav {
+  padding-right: 280px;
+}
+
+
+#friend-main-bottom {
+  display: flex;
+  position: fixed;
+  width: 100%;
+}
+
+#friend-main-top {
+  position: fixed;
+  display: flex;
+  color: white;
+  font-weight: 600;
+  background-color: #36393e;
+  height: 40px;
+  width: 100%;
+  z-index: 4;
+}
+
+#friend-main-top > h6 > i {
+  color: #8e9296;
+}
+
+#friend-nav > a > i {
+  font-size: 30px;
+  padding-top: 5px;
+  padding-left: 10px;
+}
+
+#friend-nav > a > i:hover {
+  color: #5865F2;
+}
+
+#friend-main-top > h6 {
+  display: flex;
+  font-family: 'Mukta', sans-serif;
+  padding-top: 12px;
+  padding-left: 10px;
+}
+
+#friend-main-top > h6 > span {
+  font-size: 14px;
+  padding-left: 5px;
+}
+
+#friend-main-top > h6 > a {
+  color: rgba(255, 255, 255, 0.555);
+}
+
+#friend-option {
+  display: flex;
+  margin-left: 20px;
+  height: 25px;
+  border-left: 1px solid black;
+  padding-left: 10px;
+  font-size: 12px;
+  font-family: 'Mukta', sans-serif;
+  align-items: center;
+  margin-top: 7px;
+}
+
+#friend-option > div:first-child {
+  padding-right: 20px;
+}
+
+#friend-top-nav {
+  margin-left: auto;
+}
+
+#friend-main-bottom {
+  height: 100vh;
+  background-color: #36393f;
+  width: 100%;
+}
+
+.friend-item {
+  display: flex;
+}
+
+.friend-buttons {
+  display: flex;
+  margin-left:80%
+}
+
+#friend-tag {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#friend-tag > input {
+  font-size: 10px;
+  width: 90%;
+  border-radius: 5px;
+  border: none;
+  z-index: 10;
+  height: 20px;
+  color: grey;
+  background-color: rgb(32, 30, 30);
+  padding-left: 5px;
+}

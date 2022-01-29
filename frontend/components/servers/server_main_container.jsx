@@ -23,7 +23,7 @@ const mapDispatchToProps = dispatch => {
     getUserInfo: (userId) => dispatch(getUserInfo(userId)),
     openModal: modal => dispatch(openModal(modal)),
     closeModal: () => dispatch(closeModal()),
-    fetchChannel: (serverId, channelId) => dispatch(fetchChannel(serverId, channelId))
+    fetchChannel: (serverId, channelId) => dispatch(fetchChannel(serverId, channelId)),
   }
 }
 

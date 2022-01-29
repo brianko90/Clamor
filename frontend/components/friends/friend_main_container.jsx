@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import FriendMain from './friend_main';
-import { getUserFriends } from '../../actions/friend_actions';
+import { getUserFriends, removeFriend } from '../../actions/friend_actions';
 import {openModal, closeModal} from '../../actions/modal_actions'
 
 const mapStateToProps = state => {
@@ -17,7 +17,8 @@ const mapDispatchToProps = dispatch => {
   return {
     getUserFriends: (userId) => dispatch(getUserFriends(userId)),
     openModal: (modal) => dispatch(openModal(modal)),
-    closeModal: () => dispatch(closeModal())
+    closeModal: () => dispatch(closeModal()),
+    removeFriend: (userId, friendId) => dispatch(removeFriend(userId, friendId))
   }
 }
 

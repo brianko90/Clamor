@@ -41,7 +41,7 @@ class ServerList extends React.Component {
     return (
       <div id="server-list-container">
         <div id="main-logo">
-          <div id="home-icon">
+          <div className="home-icon server-list-item">
             <Link to="/channels/@me"><i className="fab fa-discord fa-1x"></i></Link>
           </div>
         </div>

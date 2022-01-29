@@ -46,6 +46,8 @@ json.outgoing do
   end
 end
 
+json.friendships 
+
 
 
 

@@ -7,3 +7,8 @@ export const getUserFriends = userId => dispatch => {
   return friendApiUtil.getUserFriends(userId)
     .then(payload => dispatch(receiveCurrentUser(payload)))
 }
+
+export const removeFriend = (userId, friendId) => dispatch => {
+  return friendApiUtil.removeFriend(userId, friendId)
+    .then((payload) => dispatch(receiveCurrentUser(payload)))
+}

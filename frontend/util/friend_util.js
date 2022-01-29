@@ -4,3 +4,10 @@ export const getUserFriends = userId => {
     url: `/api/users/${userId}`
   })
 }
+
+export const removeFriend = (userId, friendId) => {
+  return $.ajax({
+    method: "DELETE",
+    url: `/api/users/${userId}/friendships/${friendId}`
+  })
+}

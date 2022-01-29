@@ -8,21 +8,21 @@
   align-items: center;
 }
 
-#home-icon {
+.home-icon {
   display: flex;
   justify-content: center;
   align-items: center;
   text-align: center;
 }
 
-#home-icon > a {
+.home-icon > a {
   width: 36px;
   height: 36px;
   background-color: #5865F2;
   border-radius: 50%;
 }
 
-#home-icon > a > i {
+.home-icon > a > i {
   padding-top: 7px;
   font-size: 22px;
 }
@@ -34,7 +34,7 @@
 }
 
 
-#home-icon > a:hover {
+.home-icon > a:hover {
   border-radius: 12px;
 }
 
@@ -89,6 +89,10 @@
 }
 
 .selected-server > a > .server-pic{
+  border-radius: 35%;
+}
+
+.selected-server > a > i {
   border-radius: 35%;
 }
 

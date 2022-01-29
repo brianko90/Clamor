@@ -22,7 +22,8 @@ class Api::FriendsController < ApplicationController
   def destroy
     #this params[:id] may not suffice depending on how the url wildcard is setup. May not even show up 
     @friendship = Friendship.find_by(id: params[:id])
-    @friendship.destroy 
+    @friendship.destroy
+    render '/api/users/show';
   end
 
   private 

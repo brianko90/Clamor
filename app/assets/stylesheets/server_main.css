@@ -86,7 +86,7 @@
 
 #profile {
   position: fixed;
-  width: 100%;
+  /* width: 100%; */
   font-family: 'Mukta', sans-serif;
   color: white;
   height: 40px;
