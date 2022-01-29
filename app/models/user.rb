@@ -64,6 +64,10 @@ class User < ApplicationRecord
     source: :friend,
     dependent: :destroy
 
+  has_many :messages,
+    foreign_key: :sender_id,
+    class_name: "Message"
+
 
   validates :username, :password_digest, presence: true
   validates :username, uniqueness: true

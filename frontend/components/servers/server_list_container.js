@@ -6,6 +6,7 @@ import {getUserInfo} from '../../actions/user_actions';
 const mapStateToProps = state => {
   return {
     currentUserId: state.session.id,
+    channels: Object.values(state.entities.serverChannels)
   }
 }
 

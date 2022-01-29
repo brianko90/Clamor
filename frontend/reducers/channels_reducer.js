@@ -1,4 +1,5 @@
 import { RECEIVE_SERVER } from "../actions/server_actions";
+import { RECEIVE_CHANNEL } from "../actions/channel_actions";
 
 const channelsReducer = (state = {}, action) => {
   Object.freeze(state);
@@ -10,6 +11,9 @@ const channelsReducer = (state = {}, action) => {
       } else {
         return {};
       }
+    case RECEIVE_CHANNEL:
+      nextState["chosenServer"] = action.payload.channel;
+      return nextState;
     default:
       return state;
   }

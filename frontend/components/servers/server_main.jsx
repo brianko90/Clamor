@@ -12,28 +12,29 @@ class ServerMain extends React.Component {
   }
 
   componentDidMount() {
-    console.log("TEST", this.props)
     this.props.getUserInfo(this.props.currentUserId)
       .then(() => {
         this.props.fetchServer(this.props.chosenServer.id)
       })
+    
   }
 
   render() {
-    if(!this.props.chosenServer) {
+    if (!this.props.chosenServer) {
       return null;
     }
+    // !this.props.chosenChannel makes my page refresh or return null when I select a channel also. 
     return (
       <div id="server">
         <div id="server-list">
-          <ServerListContainer chosenServer={this.props.chosenServer} servers={this.props.servers} openModal={this.props.openModal} closeModal={this.props.closeModal}/>
+          <ServerListContainer match={this.props.match} chosenServer={this.props.chosenServer} servers={this.props.servers} openModal={this.props.openModal} closeModal={this.props.closeModal}/>
         </div>
         <div id="channel-index">
           <div id="server-name">
             <h6>{this.props.chosenServer.name}</h6>
           </div>
           <div id="channel-list-container">
-            <ChannelListContainer channels={this.props.channels} server={this.props.chosenServer}/>
+            <ChannelListContainer match={this.props.match} channels={this.props.channels} server={this.props.chosenServer}/>
           </div>
           <div id="profile">
             <UserProfile user={this.props.user} openModal={this.props.openModal} closeModal={this.props.closeModal} />
@@ -41,7 +42,7 @@ class ServerMain extends React.Component {
         </div>
         <div id="server-main">
           <div id="server-main-top">
-            <h6>Channel Name goes here</h6>
+            <h6><i className="fas fa-hashtag"></i> <span>{this.props.chosenChannel ? this.props.chosenChannel.name.toLowerCase() : "general"}</span></h6>
             <div id="server-top-nav">
               <nav id="server-nav">
                 <a href="https://github.com/brianko90/Clamor" target="_blank">

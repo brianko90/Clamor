@@ -6,8 +6,10 @@ Rails.application.routes.draw do
     resources :users, only:[:create, :show, :destroy, :update] do 
       resources :friends, only:[:create, :destroy]
     end
-    resources :servers, only:[:show, :create, :update, :destroy] do 
-        resources :channels, only:[:show, :create, :update, :destroy]
+    resources :servers, only:[:index, :show, :create, :update, :destroy] do 
+        resources :channels, only:[:show, :create, :update, :destroy] do 
+          resources :messages, only:[:index, :show, :create, :update, :destroy]
+        end
     end
     resource :session, only:[:create, :destroy]
   end

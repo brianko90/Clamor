@@ -16,7 +16,7 @@ const App = () => (
       <AuthRoute path='/login' component={LoginFormContainer} />
       <AuthRoute path='/signup' component={SignupFormContainer} />
       <ProtectedRoute path='/channels/@me' component={FriendMainContainer} />
-      <ProtectedRoute path='/channels/:serverId' component={ServerMainContainer} />
+      <ProtectedRoute path='/channels/:serverId/:channelId' component={ServerMainContainer} />
       <Redirect to="/" />
     </Switch>
   </div>
