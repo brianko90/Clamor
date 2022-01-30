@@ -7,3 +7,7 @@ export const getUserInfo = userId => dispatch => {
   return userApiUtil.getUserInfo(userId)
     .then(payload => dispatch(receiveCurrentUser(payload)))
 }
+
+export const deleteUser = userId => dispatch => {
+  return userApiUtil.deleteUser(userId)
+}

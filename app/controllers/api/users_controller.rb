@@ -27,7 +27,8 @@ class Api::UsersController < ApplicationController
 
   def delete
     @user = User.find_by(id: params[:id])
-    @user.destroy 
+    @user.destroy
+    redirect_to '/'
   end
 
   private
