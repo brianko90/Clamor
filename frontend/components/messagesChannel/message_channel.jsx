@@ -4,24 +4,40 @@ class MessageChannel extends React.Component {
   constructor(props) {
     super(props)
 
-    let url = window.location.href.split('/');
-    this.channelId = url[url.length - 1];
-    this.state = { body: '', channel_id: this.channelId }
+    this.state = { body: '', channel_id: this.props.match.params.channelId }
 
-    this.handleSubmit = this.handleSubmit.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this);
+    // this.messagesEnd;
   }
-
+  // Need to pass down channel ID from parent. 
   componentDidMount() {
-    this.props.fetchMessages(this.channelId);
-    // this.scrollToBottom();
-  }
-  // componentDidUpdate() {
-  //   this.scrollToBottom();
-  // }
+    // debugger;
+    // this.messagesEnd = document.getElementById('placeholder');
+    this.props.fetchChannel(this.state.channel_id);
 
-  // scrollToBottom() {
-  //   this.messagesEnd.scrollIntoView({ behavior: "auto" });
-  // }
+    this.props.fetchMessages(this.state.channel_id)
+      .then(() => {
+        this.props.cableApp.cable.subscriptions.create({
+          channel: 'ChannelsChannel',
+          id: this.state.channel_id
+        },
+        {
+          received: (msg) => {
+            this.props.receiveMessage(msg)
+          }
+        })
+      })
+    this.scrollToBottom();
+  }
+  componentDidUpdate() {
+    // debugger;
+    this.scrollToBottom();
+  }
+
+  scrollToBottom() {
+    // debugger;
+    this.messagesEnd.scrollIntoView({ behavior: "auto" });
+  }
 
   update(field) {
     return (e) => this.setState({ [field]: e.currentTarget.value });
@@ -29,6 +45,9 @@ class MessageChannel extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
+
+    this.setState({ channel_id: this.state.channel_id})
+    console.log("TEST", this.state);
     this.props.createMessage(this.state);
     this.setState({ body: '' });
   }
@@ -39,9 +58,9 @@ class MessageChannel extends React.Component {
   }
 
   render() {
-    if(!this.props.channel) {
-      return null;
-    }
+    // if(!this.props.channel) {
+    //   return null;
+    // }
     return (
        <div id="channel-container">
           <ul id="message-list">
@@ -49,8 +68,7 @@ class MessageChannel extends React.Component {
               <li className="message" key={message.id}>
                 <img src={message.pfp} />
                 <div className="message-container">
-                  {console.log(message)}
-                  <div className="message-username">{message.username} <span>{message.created_at}</span></div>
+                  <div className="message-username">{message.username} <span>{message.createdAt}</span></div>
                   <div className="message-body">{message.body}</div>
                 </div>
                 <div className="message-options">
@@ -61,8 +79,9 @@ class MessageChannel extends React.Component {
                 </div>
               </li>
             ))}
-            {/* <div style={{ float:"left", clear: "both" }} ref={(el) => { this.messagesEnd = el; }}></div> */}
           </ul>
+        <div id="placeholder" style={{ float: "left", clear: "both" }} ref={(el) => (this.messagesEnd = el)}></div>
+
           <div id="chat-input">
             <form id="message-input" onSubmit={this.handleSubmit}>
               <i className="fas fa-plus-circle"></i>

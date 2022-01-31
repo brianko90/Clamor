@@ -3,7 +3,7 @@
   margin-top: 40px;
   width: calc(100vw - 458px);
   font-family: 'Mukta', sans-serif;
-  height: calc(100vh - 40px);
+  height: calc(100vh - 105px);
 }
 
 .message {
@@ -24,7 +24,7 @@
 }
 
 #message-list > .message:last-child {
-  margin-bottom: 30px;
+  bottom: 70px;
 }
 
 #message-list > .message:first-child {
@@ -33,6 +33,7 @@
 
 #message-list {
   width: calc(100vw - 458px);
+  height: calc(100vh - 105px);
   overflow-y: scroll;
   overflow-x: hidden;
 }
@@ -61,12 +62,13 @@
 
 .message-tools i {
   padding: 4px;
+  /* padding-bottom: 20px; */
   color: #b9bbbe;
 }
 
-/* .message-tools i:hover {
+.message-tools i:hover {
   background-color: #5d616882;
-} */
+}
 
 .message-tools {
   display: flex;
@@ -74,7 +76,7 @@
   
 }
 
-.message-container:hover + .message-options {
+.message:hover > .message-options {
   display: block;
 }
 

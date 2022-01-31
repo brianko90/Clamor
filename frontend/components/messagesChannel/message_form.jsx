@@ -18,6 +18,7 @@ class MessageForm extends React.Component {
     e.preventDefault();
     this.props.createMessage(this.state);
     this.setState({body: ''});
+    this.props.fetchMessages(this.props.channel.id)
   }
 
   render() {

@@ -26,6 +26,8 @@
 #   "discordpurpleicon.png"
 # ]
 
+require 'open-uri'
+
 class User < ApplicationRecord
 
   has_one_attached :pfp
@@ -80,7 +82,7 @@ class User < ApplicationRecord
 
   def ensure_pfp
     if !self.pfp.attached?
-      file = File.open('app/assets/images/Pastel-Gray.png')
+      file = open('app/assets/images/Pastel-Gray.png')
       self.pfp.attach(io: file, filename: 'Pastel-Gray.png')
     end
   end

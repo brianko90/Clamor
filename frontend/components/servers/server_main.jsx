@@ -25,7 +25,10 @@ class ServerMain extends React.Component {
       })
       .then(() => {
         this.props.fetchChannel(channelId)
-      }) 
+      })
+      .then(() => {
+        this.props.fetchMessages(channelId)
+      })
     
   }
 
@@ -74,7 +77,7 @@ class ServerMain extends React.Component {
           </div>
           <div id="server-main-bottom">
             <div id="server-main-center">
-              <MessageChannel fetchChannel={this.props.fetchChannel} fetchMessages={this.props.fetchMessages} channel={this.props.chosenChannel} messages={this.props.messages} createMessage={this.props.createMessage}/>
+              <MessageChannel match={this.props.match} cableApp={this.props.cableApp} fetchChannel={this.props.fetchChannel} fetchMessages={this.props.fetchMessages} channel={this.props.chosenChannel} messages={this.props.messages} createMessage={this.props.createMessage} receiveMessage={this.props.receiveMessage}/>
             </div>
             <div id="server-main-right">
               <ServerMembersList serverMembers={this.props.serverMembers} fetchServer={this.props.fetchServer} />

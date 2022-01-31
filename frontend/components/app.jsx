@@ -8,7 +8,7 @@ import FriendMainContainer from './friends/friend_main_container';
 import ServerMainContainer from './servers/server_main_container';
 import Modal from './modal/modal'
 
-const App = () => (
+const App = ({cableApp}) => (
   <div>
     <Modal /> 
     <Switch>
@@ -16,7 +16,7 @@ const App = () => (
       <AuthRoute path='/login' component={LoginFormContainer} />
       <AuthRoute path='/signup' component={SignupFormContainer} />
       <ProtectedRoute path='/channels/@me' component={FriendMainContainer} />
-      <ProtectedRoute path='/channels/:serverId/:channelId' component={ServerMainContainer} />
+      <ProtectedRoute path='/channels/:serverId/:channelId' component={ServerMainContainer} cableApp={cableApp}/>
       <Redirect to="/" />
     </Switch>
   </div>
