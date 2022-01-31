@@ -12,9 +12,10 @@ export const deleteUser = userId => {
   })
 }
 
-export const updateUser = userId => {
+export const updateUser = user => {
   return $.ajax({
     method: "PATCH",
-    url: `/api/users/${userId}`
+    url: `/api/users/${user.id}`,
+    data: {user}
   })
 }

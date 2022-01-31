@@ -10,9 +10,6 @@ const serversListReducer = (state = {}, action) => {
       } else {
         return {};
       }
-      // nextState['servers'] = action.payload.servers;
-      // nextState['owned_servers'] = action.payload.owned_servers
-      // return action.payload.servers;
     case RECEIVE_SERVER:
       return Object.assign(nextState, action.payload.servers)
     default:

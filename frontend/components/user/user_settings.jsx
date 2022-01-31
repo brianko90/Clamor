@@ -4,11 +4,13 @@ class UserSettings extends React.Component {
   
   constructor(props) {
     super(props)
-    this.state = { toggle: false, username: this.props.user.username, email: this.props.user.email, password: "" };
+    this.state = { id: this.props.user.id, toggle: false, username: this.props.user.username, email: this.props.user.email, password: "1234" };
 
     this.handleLogout = this.handleLogout.bind(this);
-    this.modalButtonClick = this.modalButtonClick.bind(this.modalButtonClick);
-    this.modalCloseClick = this.modalCloseClick.bind(this.modalCloseClick);
+    this.modalButtonClick = this.modalButtonClick.bind(this);
+    this.modalCloseClick = this.modalCloseClick.bind(this);
+    this.handleUpdate = this.handleUpdate.bind(this);
+    this.handleDelete = this.handleDelete.bind(this);
   }
 
   handleLogout(e) {
@@ -17,9 +19,16 @@ class UserSettings extends React.Component {
     this.props.logout();
   }
 
-  handleSubmit(e) {
+  handleUpdate(e) {
     e.preventDefault();
-    
+    this.props.updateUser(this.state)
+  }
+
+  handleDelete(e) {
+    e.preventDefault();
+    this.props.logout();
+    this.props.deleteUser(this.props.user.id)
+
   }
 
   update(field) {
@@ -86,7 +95,7 @@ class UserSettings extends React.Component {
                           <span className="close" onClick={this.modalCloseClick} >&times;</span>
                           <h2>Change your username</h2>
                           <div>Enter a new username and your existing password.</div>
-                          <form className="username-form">
+                          <form className="username-form" onSubmit={this.handleUpdate}>
                             <label className="username-label">USERNAME
                               <input className="username-input" type="text" value={this.state.username} onChange={this.update('username')}/>
                             </label>
@@ -131,7 +140,9 @@ class UserSettings extends React.Component {
                   }
                 </div>
               </div>
-              <button id="delete-account">Delete Account</button>
+              <form>
+                <button id="delete-account" onClick={this.handleDelete}>Delete Account</button>
+              </form>
             </div>
           </div>
         </div>

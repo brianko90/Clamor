@@ -1,4 +1,5 @@
 import { RECEIVE_CURRENT_USER } from "../actions/session_actions";
+import { CURRENT_USER_FRIENDS } from "../actions/friend_actions";
 
 const friendListReducer = (state = {}, action) => {
   Object.freeze(state);
@@ -10,6 +11,8 @@ const friendListReducer = (state = {}, action) => {
       } else {
         return {};
       }
+    case CURRENT_USER_FRIENDS:
+      return action.payload.friends
     default:
       return state;
   }

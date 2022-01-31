@@ -11,9 +11,6 @@ const channelsReducer = (state = {}, action) => {
       } else {
         return {};
       }
-    case RECEIVE_CHANNEL:
-      nextState["chosenServer"] = action.payload.channel;
-      return nextState;
     default:
       return state;
   }

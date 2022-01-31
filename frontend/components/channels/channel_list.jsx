@@ -43,11 +43,12 @@ class ChannelList extends React.Component {
       <div>
         <ul id="channel-list">
           <li>TEXT CHANNELS <span id="add-class">+</span></li>
-          {this.props.channels.map(channel => <li onClick={this.handleSelect} id={channel.id} className="channel-item" key={channel.id}>
-                                                <Link to={`/channels/${this.props.server.id}/${channel.id}`}>
-                                                  <i className="fas fa-hashtag"></i>  {channel.name.toLowerCase()}
-                                                </Link>
-                                              </li>)
+          {this.props.channels.map(channel => 
+            <li onClick={this.handleSelect} id={channel.id} className="channel-item" key={channel.id}>
+              <Link onClick={() => this.props.fetchMessages(channel.id)} to={`/channels/${this.props.server.id}/${channel.id}`}>
+                <i className="fas fa-hashtag"></i>  {channel.name.toLowerCase()}
+              </Link>
+            </li>)
           }
         </ul>
       </div>

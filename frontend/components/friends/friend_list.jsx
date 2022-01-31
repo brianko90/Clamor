@@ -16,7 +16,7 @@ class FriendList extends React.Component {
   handleDelete(e, friendId) {
     e.preventDefault();
     this.props.deleteFriend(this.props.currentUserId, friendId)
-      .then(() => this.componentDidMount());
+      .then(() => this.props.getUserFriends(this.props.currentUserId));
   }
 
   render() {

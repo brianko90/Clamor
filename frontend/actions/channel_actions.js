@@ -9,7 +9,7 @@ const receiveChannel = payload => {
   }
 }
 
-export const fetchChannel = (serverId, channelId) => dispatch => {
-  return ChannelApiUtil.fetchChannel(serverId, channelId)
+export const fetchChannel = (channelId) => dispatch => {
+  return ChannelApiUtil.fetchChannel(channelId)
     .then((channel) => dispatch(receiveChannel(channel)))
 }

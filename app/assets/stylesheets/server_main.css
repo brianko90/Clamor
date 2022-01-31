@@ -68,8 +68,8 @@
 }
 
 .channel-item:hover {
-  background-color:#444548;
-  border-radius: 10px;
+  background-color:#393c43;
+  border-radius: 5px;
 }
 
 .channel-item > a {
@@ -147,7 +147,7 @@
 }
 
 .member-item:hover {
-  background-color:#444548;
+  background-color:#393c43;
   border-radius: 10px;
 }
 
@@ -188,7 +188,7 @@
 }
 
 #channel-list > .selected-channel {
-  background-color:#444548;
+  background-color:#393c43;
   border-radius: 10px;
 }
 

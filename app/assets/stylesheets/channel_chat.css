@@ -1,0 +1,138 @@
+#channel-container {
+  background-color: #36393f;
+  margin-top: 40px;
+  width: calc(100vw - 458px);
+  font-family: 'Mukta', sans-serif;
+  height: calc(100vh - 40px);
+}
+
+.message {
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  color: #dbdcdd;
+  font-size: 14px;
+  padding-left: 15px;
+  padding-top: 3px;
+  padding-bottom: 3px;
+}
+
+.message img {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+}
+
+#message-list > .message:last-child {
+  margin-bottom: 30px;
+}
+
+#message-list > .message:first-child {
+  margin-top: 10px;
+}
+
+#message-list {
+  width: calc(100vw - 458px);
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+.message-container {
+  margin-left: 8px;
+  width: calc(100vw - 458px);
+}
+
+.message:hover {
+  background-color: #33343a;
+}
+
+.message-username {
+  font-weight: 600;
+  color: white;
+}
+
+.message-options {
+  display: none;
+  background-color: #36393f;
+  position: relative;
+  top: -18px;
+  left: -15px;
+}
+
+.message-tools i {
+  padding: 4px;
+  color: #b9bbbe;
+}
+
+/* .message-tools i:hover {
+  background-color: #5d616882;
+} */
+
+.message-tools {
+  display: flex;
+  border-radius: 10px;
+  
+}
+
+.message-container:hover + .message-options {
+  display: block;
+}
+
+.message-body {
+  margin-top: 5px;
+  font-weight: 200;
+  font-size: 13px;
+}
+
+#chat-input {
+  bottom: 0;
+  position: fixed;
+  background-color: #36393f;
+  padding-left: 15px;
+  padding-top: 15px;
+  padding-right: 15px;
+  padding-bottom: 19px;
+  padding-right: 215px;
+}
+
+#message-input > input {
+  padding: 8px;
+  background-color: #40444b;
+  border: none;
+  border-radius: 5px;
+  color: #dbdcdd;
+  width: calc(100vw - 550px);
+  padding-left: 40px;
+  font-weight: 100;
+  font-size: 13px;
+}
+
+#message-input > input:focus {
+  outline: none;
+}
+
+#channel-container {
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+.message-username > span {
+  color: #72767d;
+  font-size: 10px;
+}
+
+#message-input {
+  display: flex;
+  align-items: center;
+}
+
+#message-input > i {
+  position: fixed;
+  margin-left: 15px;
+  color: #b9bbbe;
+  border-radius: 50%;
+}
+
+#message-input > i:hover {
+  color: white;
+}

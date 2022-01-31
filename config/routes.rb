@@ -7,10 +7,12 @@ Rails.application.routes.draw do
       resources :friendships, only:[:create, :destroy]
     end
     resources :servers, only:[:index, :show, :create, :update, :destroy] do 
-        resources :channels, only:[:show, :create, :update, :destroy] do 
-          resources :messages, only:[:index, :show, :create, :update, :destroy]
-        end
+      resources :channels, only:[:create]
     end
     resource :session, only:[:create, :destroy]
+    resources :messages, only:[:index, :show, :update, :destroy]
+    resources :channels, only:[:show, :update, :destroy] do
+      resources :messages, only:[:create]
+    end
   end
 end

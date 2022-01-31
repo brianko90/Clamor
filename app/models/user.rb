@@ -25,6 +25,7 @@
 #   "discordgreenicon.png",
 #   "discordpurpleicon.png"
 # ]
+
 class User < ApplicationRecord
 
   has_one_attached :pfp
@@ -74,7 +75,7 @@ class User < ApplicationRecord
   validates :password, length: {minimum: 4}, allow_nil: true
 
   after_initialize :ensure_session_token, :ensure_pfp, :ensure_tag
-  # after_save :ensure_pfp
+
   attr_reader :password
 
   def ensure_pfp
@@ -86,16 +87,16 @@ class User < ApplicationRecord
 
   def ensure_tag
     if !self.tag 
-      tag = rand(1..9999);
-      if tag < 1000 
-        tag = "0" + tag.to_s
+      tag = rand(1..9999)
+      if tag < 10 
+        tag = "000" + tag.to_s
       elsif tag < 100
         tag = "00" + tag.to_s
-      elseif tag < 10
-        tag = "000" + tag.to_s
+      elsif tag < 1000
+        tag = "0" + tag.to_s
       end
     end
-    self.tag = tag;
+    self.tag = tag
   end
 
   def self.find_by_credentials(username, password)

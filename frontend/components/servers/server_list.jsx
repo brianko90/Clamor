@@ -5,13 +5,19 @@ import { Link } from 'react-router-dom';
 class ServerList extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {chosenChannel: ''}
+    this.state = {chosenChannel: this.props.channels[0]}
     this.handleSelect = this.handleSelect.bind(this);
   }
+
+  // componentDidMount(){
+  //   this.props.fetchServer(serverId);
+  //   this.props.fetchMessages(this.props.channels[0].id)
+  // }
 
   handleSelect(e, serverId) {
     e.preventDefault();
     this.props.fetchServer(serverId);
+    // this.props.fetchMessages(this.props.channels[0].id) //added this code here 
     let nonSelected = document.getElementsByClassName('server-list-item');
     nonSelected = Array.prototype.slice.call(nonSelected);
     nonSelected.map((ele) => {

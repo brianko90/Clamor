@@ -1,7 +1,7 @@
 class Api::MessagesController < ApplicationController
   def index 
     @messages = Message.all 
-    render :index
+    render 'api/channels/show'
   end 
 
   def show
@@ -11,10 +11,11 @@ class Api::MessagesController < ApplicationController
 
   def create 
     @message = Message.new(message_params)
+    @message.sender_id = current_user.id 
     @message.channel_id = params[:channel_id]
-    @message.sender_id = current_user.id
+    @channel = Channel.find_by(id: params[:channel_id])
     if @message.save 
-      render :show
+      render '/api/channels/show'
     else  
       render json: @message.errors, status: 422
     end 
