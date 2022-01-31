@@ -22,6 +22,8 @@ class UserSettings extends React.Component {
   handleUpdate(e) {
     e.preventDefault();
     this.props.updateUser(this.state)
+    this.modalCloseClick();
+    this.modalEmailClose();
   }
 
   handleDelete(e) {
