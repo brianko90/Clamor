@@ -72,7 +72,7 @@ class FriendMain extends React.Component {
             }
             {
               this.state.pending && 
-                <FriendListContainer pendingStatus={this.state.pending} deleteFriend={this.props.deleteFriend} friends={this.props.pending} pending={this.props.incoming.concat(this.props.outgoing)} />
+              <FriendListContainer pendingStatus={this.state.pending} deleteFriend={this.props.deleteFriend} friends={this.props.pending} pending={this.props.incoming.concat(this.props.outgoing)} />
             }
           </div>
         </div>

@@ -7,6 +7,7 @@ import outgoingReducer from './outgoing_reducer';
 import channelsReducer from './channels_reducer';
 import serverMembersReducer from "./server_members_reducer";
 import channelMessagesReducer from "./message_channel_reducer";
+import conversationMessagesReducer from "./dm_channels_reducer";
 
 const entitiesReducer = combineReducers({
   users: usersReducer,
@@ -16,7 +17,9 @@ const entitiesReducer = combineReducers({
   outgoing: outgoingReducer,
   serverChannels: channelsReducer,
   serverMembers: serverMembersReducer,
-  channelMessages: channelMessagesReducer
+  channelMessages: channelMessagesReducer,
+  conversationMessages: conversationMessagesReducer,
+  
 });
 
 export default entitiesReducer;

@@ -49,6 +49,12 @@ json.outgoing do
   end
 end
 
-
-
+json.conversations do
+  @user.conversations.each do |conversation|
+    json.set! conversation.id do 
+      json.extract! conversation, :owner_id 
+      json.members conversation.members
+    end
+  end
+end
 

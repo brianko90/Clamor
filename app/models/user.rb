@@ -21,10 +21,14 @@
 COLORS = [
   "Pastel-Black.png",
   "Pastel-Blue.png",
-  "discordorangeicon.png",
-  "discordyellowicon.png",
-  "discordgreenicon.png",
-  "discordpurpleicon.png"
+  "Pastel-Orange.png",
+  "Pastel-Gray.png",
+  "Pastel-Green.png",
+  "Pastel-Indigo.png",
+  "Pastel-Pink.png",
+  "Pastel-Red.png",
+  "Pastel-Violet.png",
+  "Pastel-Yellow.png",
 ]
 
 require 'open-uri'
@@ -37,7 +41,7 @@ class User < ApplicationRecord
     foreign_key: :user_id,
     class_name: "ServerMembership",
     dependent: :destroy
-  
+
   has_many :servers,
     through: :server_memberships,
     source: :server,
@@ -73,6 +77,20 @@ class User < ApplicationRecord
     class_name: "Message",
     dependent: :destroy
 
+  has_many :direct_messages,
+    foreign_key: :user_id,
+    class_name: "DirectMessage",
+    dependent: :destroy
+
+  has_many :conversation_memberships,
+    foreign_key: :user_id,
+    class_name: "ConversationMembership",
+    dependent: :destroy
+
+  has_many :conversations,
+    through: :conversation_memberships,
+    source: :conversation,
+    dependent: :destroy
 
   validates :username, :password_digest, presence: true
   validates :username, uniqueness: true
@@ -84,8 +102,9 @@ class User < ApplicationRecord
 
   def ensure_pfp
     if !self.pfp.attached?
-      file = open('https://clamor-seeds.s3.us-west-1.amazonaws.com/Pastel-Blue.png')
-      self.pfp.attach(io: file, filename: 'Pastel-Blue.png')
+      color = COLORS.sample
+      file = open(`https://clamor-seeds.s3.us-west-1.amazonaws.com/#{color}`)
+      self.pfp.attach(io: file, filename: color)
     end
   end
 

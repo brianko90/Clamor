@@ -5,7 +5,6 @@ import {Link} from 'react-router-dom';
 class ChannelList extends React.Component {
   constructor(props) {
     super(props)
-    this.state = {toggle: true}
     this.handleSelect = this.handleSelect.bind(this);
   }
 
@@ -57,16 +56,3 @@ class ChannelList extends React.Component {
 }
 
 export default ChannelList;
-
-// handleSelect(e, serverId) {
-//   e.preventDefault();
-//   this.props.fetchServer(serverId);
-//   let nonSelected = document.getElementsByClassName('server-list-item');
-//   nonSelected = Array.prototype.slice.call(nonSelected);
-//   nonSelected.map((ele) => {
-//     if (ele.classList.contains('selected-server')) {
-//       ele.classList.remove('selected-server');
-//     }
-//   })
-//   e.currentTarget.classList.add('selected-server');
-// }

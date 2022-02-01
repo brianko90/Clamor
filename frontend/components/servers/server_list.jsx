@@ -10,8 +10,7 @@ class ServerList extends React.Component {
   }
 
   // componentDidMount(){
-  //   this.props.fetchServer(serverId);
-  //   this.props.fetchMessages(this.props.channels[0].id)
+  //   this.props.fetchServer(this.props.match.params.serverId);
   // }
 
   handleSelect(e, serverId) {

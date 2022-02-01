@@ -11,7 +11,7 @@ export const receiveMessage = payload => {
   }
 }
 
-const receiveMessages = payload => {
+export const receiveMessages = payload => {
   return {
     type: RECEIVE_MESSAGES,
     payload 

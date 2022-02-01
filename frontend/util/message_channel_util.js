@@ -5,3 +5,18 @@ export const createMessage = message => {
     data: {message}
   })
 }
+
+export const updateMessage = message => {
+  return $.ajax({
+    method: "PATCH",
+    url: `/api/messages/${message.id}`,
+    data: {message}
+  })
+}
+
+export const removeMessage = messageId => {
+  return $.ajax({
+    method: "DELETE",
+    url: `/api/messages/${messageId}`
+  })
+}
