@@ -20,6 +20,6 @@ class Conversation < ApplicationRecord
 
   has_many :members,
     through: :conversation_memberships,
-    source: :user
+    source: :user,
     dependent: :destroy
 end
