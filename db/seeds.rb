@@ -70,6 +70,8 @@ member12 = ServerMembership.create({user_id: user3.id, server_id: server1.id})
 member13 = ServerMembership.create({user_id: user4.id, server_id: server1.id})
 member14 = ServerMembership.create({user_id: user5.id, server_id: server1.id})
 member15 = ServerMembership.create({user_id: user1.id, server_id: server4.id})
+member16 = ServerMembership.create({user_id: user6.id, server_id: server2.id})
+
 
 friend1 = Friendship.create({user_id: user1.id, friend_id: user2.id, status: 3})
 friend2 = Friendship.create({user_id: user1.id, friend_id: user3.id, status: 3})

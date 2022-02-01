@@ -22,8 +22,7 @@ class ServerForm extends React.Component {
       .then(
         () => {
           this.props.closeModal();
-          // let lastServerId = this.props.servers[this.props.servers.length - 1].id;
-          // this.props.history.push(`/channels/${lastServerId}`)
+          // this.props.getUserInfo(this.props.currentUserId)
         }
       );
   }
@@ -50,11 +49,11 @@ class ServerForm extends React.Component {
       <div id="server-form-container">
         <form onSubmit={this.handleSubmit}>
           <div id="server-head">
+            <div onClick={() => this.props.closeModal()} id="server-form-close">X</div>
             <h2>Customize your server</h2>
-            <div id="server-form-close">X</div>
           </div>
           <p id="server-message"> Give your new server a personality with a name and an icon. You can always change it later.</p>
-          <div>UPLOAD PICTURE GOES HERE</div>
+          <div id="picture-upload">UPLOAD PICTURE GOES HERE</div>
           <div id="public-options">
             <button className="public-button" onClick={(e) => {this.handleClick(e, 'public')}} value="true" >
               For me and my friends <i className="fas fa-chevron-right"></i>
@@ -67,9 +66,11 @@ class ServerForm extends React.Component {
             <div>SERVER NAME</div>
             <input type="text" value={this.state.name} onChange={this.update('name')} />
           </div>
-          <button onClick={this.handleSubmit}>Create Server</button>
+          <div id="server-submit">
+            <div onClick={() => this.props.closeModal()}>Cancel</div>
+            <button id="create-server-button" onClick={this.handleSubmit}>Create Server</button>
+          </div>
         </form>
-        <div>Cancel</div>
       </div>
     )
   }
