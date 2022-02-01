@@ -15,6 +15,8 @@ class Api::ServersController < ApplicationController
     if @server.save
       selfMember = ServerMembership.new(user_id: current_user.id, server_id: @server.id)
       selfMember.save
+      channel = Channel.new(name: "general", server_id: @server.id)
+      channel.save
       render :show
     else 
       render json: @server.errors.full_messages, status: 422

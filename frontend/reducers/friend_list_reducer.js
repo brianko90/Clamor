@@ -7,7 +7,7 @@ const friendListReducer = (state = {}, action) => {
   switch (action.type) {
     case RECEIVE_CURRENT_USER:
       if (action.payload.friends) {
-        return Object.assign(nextState, action.payload.friends);
+        return action.payload.friends
       } else {
         return {};
       }

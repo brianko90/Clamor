@@ -27,7 +27,6 @@ class Api::UsersController < ApplicationController
   def destroy
     @user = User.find_by(id: params[:id])
     @user.destroy
-    redirect_to '/'
   end
 
   private

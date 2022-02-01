@@ -7,7 +7,7 @@ class MessageChannel extends React.Component {
     this.state = { body: '', channel_id: this.props.match.params.channelId }
 
     this.handleSubmit = this.handleSubmit.bind(this);
-    // this.messagesEnd;
+    this.scrollToBottom = this.scrollToBottom.bind(this);
   }
   // Need to pass down channel ID from parent. 
   componentDidMount() {
@@ -16,6 +16,7 @@ class MessageChannel extends React.Component {
     this.props.fetchChannel(this.state.channel_id);
 
     this.props.fetchMessages(this.state.channel_id)
+      .then(() => this.scrollToBottom())
       .then(() => {
         this.props.cableApp.cable.subscriptions.create({
           channel: 'ChannelsChannel',
@@ -27,7 +28,7 @@ class MessageChannel extends React.Component {
           }
         })
       })
-    this.scrollToBottom();
+    // this.scrollToBottom();
   }
   componentDidUpdate() {
     // debugger;
@@ -35,7 +36,7 @@ class MessageChannel extends React.Component {
   }
 
   scrollToBottom() {
-    // debugger;
+    console.log("TESTTESTTEST", this.messagesEnd)
     this.messagesEnd.scrollIntoView({ behavior: "auto" });
   }
 
@@ -79,15 +80,15 @@ class MessageChannel extends React.Component {
                 </div>
               </li>
             ))}
+            <div id="placeholder" style={{ float: "left", clear: "both" }} ref={(el) => (this.messagesEnd = el)}>TEST</div>
           </ul>
-        <div id="placeholder" style={{ float: "left", clear: "both" }} ref={(el) => (this.messagesEnd = el)}></div>
-
           <div id="chat-input">
             <form id="message-input" onSubmit={this.handleSubmit}>
               <i className="fas fa-plus-circle"></i>
               <input type="text" onChange={this.update('body')} value={this.state.body} />
             </form>
           </div>
+          {/* {this.scrollToBottom()} */}
        </div>
     )
   }

@@ -1,4 +1,55 @@
 #server-form-container {
   background-color: white;
   color: black;
+  margin: 20px;
+  width: 350px;
+  height: 300px;
+  padding: 30px;
+}
+
+#server-type {
+  text-align: center;
+}
+
+#server-head {
+  display: flex;
+}
+
+#server-type > div:first-child {
+  font-size: 16px;
+}
+
+#server-head > h2 {
+  font-size: 20px;
+
+}
+
+#public-options {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#public-options button {
+  width: 330px;
+  height: 50px;
+  font-size: 12px;
+  text-align: left;
+  padding-left: 20px;
+  align-items: center;
+  vertical-align: middle;
+  border: none;
+}
+
+#public-options button i {
+  padding-left: 200px;
+}
+
+#server-message {
+  font-size: 11px;
+  text-align: center;
+}
+
+.selected-public {
+  background-color: red;
 }

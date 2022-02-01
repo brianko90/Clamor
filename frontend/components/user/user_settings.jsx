@@ -28,8 +28,9 @@ class UserSettings extends React.Component {
 
   handleDelete(e) {
     e.preventDefault();
+    this.props.closeModal();
     this.props.logout();
-    this.props.deleteUser(this.props.user.id)
+    this.props.deleteUser(this.props.user.id);
 
   }
 
@@ -58,7 +59,9 @@ class UserSettings extends React.Component {
   }
 
   render() {
-
+      if(!this.props.user) {
+        return null;
+      }
       return (
         <div id="modal">
           <div id="modal-left">

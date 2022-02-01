@@ -14,6 +14,9 @@
 #  index_servers_on_name      (name)
 #  index_servers_on_owner_id  (owner_id)
 #
+
+require 'open-uri'
+
 class Server < ApplicationRecord
   
   has_one_attached :serverpic
@@ -31,4 +34,15 @@ class Server < ApplicationRecord
   has_many :channels,
   foreign_key: :server_id,
   class_name: "Channel"
+
+  after_initialize :ensure_server_pic
+
+  def ensure_server_pic
+    if !self.serverpic.attached? 
+      file = open('https://clamor-aa-dev.s3.us-west-1.amazonaws.com/Pastel-Gray.png')
+      self.serverpic.attach( io: file, filename: 'Pastel-Gray.png')
+    end
+  end
+
+
 end

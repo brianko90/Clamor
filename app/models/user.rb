@@ -18,13 +18,14 @@
 #
 
 
-# COLORS = ["discordblackicon.png",
-#   "discordblueicon.png",
-#   "discordorangeicon.png",
-#   "discordyellowicon.png",
-#   "discordgreenicon.png",
-#   "discordpurpleicon.png"
-# ]
+COLORS = [
+  "Pastel-Black.png",
+  "Pastel-Blue.png",
+  "discordorangeicon.png",
+  "discordyellowicon.png",
+  "discordgreenicon.png",
+  "discordpurpleicon.png"
+]
 
 require 'open-uri'
 
@@ -69,7 +70,8 @@ class User < ApplicationRecord
 
   has_many :messages,
     foreign_key: :sender_id,
-    class_name: "Message"
+    class_name: "Message",
+    dependent: :destroy
 
 
   validates :username, :password_digest, presence: true
@@ -82,23 +84,25 @@ class User < ApplicationRecord
 
   def ensure_pfp
     if !self.pfp.attached?
-      file = open('app/assets/images/Pastel-Gray.png')
-      self.pfp.attach(io: file, filename: 'Pastel-Gray.png')
+      file = open('https://clamor-seeds.s3.us-west-1.amazonaws.com/Pastel-Blue.png')
+      self.pfp.attach(io: file, filename: 'Pastel-Blue.png')
     end
   end
 
   def ensure_tag
-    if !self.tag 
-      tag = rand(1..9999)
-      if tag < 10 
-        tag = "000" + tag.to_s
-      elsif tag < 100
-        tag = "00" + tag.to_s
-      elsif tag < 1000
-        tag = "0" + tag.to_s
-      end
+    self.tag ||= build_tag
+  end
+
+  def build_tag 
+    tag = rand(1..9999)
+    if tag < 10 
+      tag = "000" + tag.to_s
+    elsif tag < 100
+      tag = "00" + tag.to_s
+    elsif tag < 1000
+      tag = "0" + tag.to_s
     end
-    self.tag = tag
+    tag
   end
 
   def self.find_by_credentials(username, password)

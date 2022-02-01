@@ -23,7 +23,7 @@ class Api::MessagesController < ApplicationController
           username: @message.sender.username,
           body: @message.body,
           createdAt: @message.created_at,
-          pfp: @message.sender.pfp
+          pfp: url_for(@message.sender.pfp)
         }
       })
     else  
