@@ -17,18 +17,18 @@ class ServerMain extends React.Component {
 
   componentDidMount() {
     // this.handleScroll();
-    let url = window.location.href.split('/');
-    let channelId = url[url.length - 1];
+    let channelId = this.props.match.params.channelId;
+    let serverId = this.props.match.params.serverId;
     this.props.getUserInfo(this.props.currentUserId)
       .then(() => {
-        this.props.fetchServer(this.props.chosenServer.id)
+        this.props.fetchServer(this.props.serverId)
       })
-      .then(() => {
-        this.props.fetchChannel(channelId)
-      })
-      .then(() => {
-        this.props.fetchMessages(channelId)
-      })
+      // .then(() => {
+      //   this.props.fetchChannel(channelId)
+      // })
+      // .then(() => {
+      //   this.props.fetchMessages(channelId)
+      // })
     
   }
 

@@ -16,7 +16,6 @@ class MessageChannel extends React.Component {
     this.props.fetchChannel(this.state.channel_id);
 
     this.props.fetchMessages(this.state.channel_id)
-      .then(() => this.scrollToBottom())
       .then(() => {
         this.props.cableApp.cable.subscriptions.create({
           channel: 'ChannelsChannel',
@@ -48,7 +47,6 @@ class MessageChannel extends React.Component {
     e.preventDefault();
 
     this.setState({ channel_id: this.state.channel_id})
-    console.log("TEST", this.state);
     this.props.createMessage(this.state);
     this.setState({ body: '' });
   }
