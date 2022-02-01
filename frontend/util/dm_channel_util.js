@@ -4,3 +4,10 @@ export const fetchConversation = (conversationId) => {
     method: "GET"
   })
 }
+
+export const getUserConversations = userId => {
+  return $.ajax({
+    method: "GET",
+    url: `/api/users/${userId}`
+  })
+}

@@ -2,6 +2,7 @@ import React from 'react';
 import ServerListContainer from '../servers/server_list_container';
 import UserProfile from '../servers/user_profile';
 import FriendListContainer from './friend_list_container';
+import DMList from '../conversations/dm_list';
 
 class FriendMain extends React.Component {
   constructor(props) {
@@ -10,7 +11,8 @@ class FriendMain extends React.Component {
   }
 
   componentDidMount() {
-    this.props.getUserFriends(this.props.user.id)
+    this.props.getUserFriends(this.props.user.id);
+    this.props.getUserConversations(this.props.user.id);
   }
 
   handleSelect(e) {
@@ -41,7 +43,7 @@ class FriendMain extends React.Component {
             <input type="text" placeholder="Find or start a conversation" value="" readOnly/>
           </div>
           <div id="dm-list-container">
-            <div>DM CONTAINER LIST GOES HERE</div>
+            <DMList fetchConversation={this.props.fetchConversation} conversations={this.props.conversations}/>
           </div>
           <div id="profile">
             <UserProfile user={this.props.user} openModal={this.props.openModal} closeModal={this.props.closeModal} />

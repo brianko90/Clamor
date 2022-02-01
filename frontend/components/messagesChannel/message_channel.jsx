@@ -9,10 +9,8 @@ class MessageChannel extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.scrollToBottom = this.scrollToBottom.bind(this);
   }
-  // Need to pass down channel ID from parent. 
+  
   componentDidMount() {
-    // debugger;
-    // this.messagesEnd = document.getElementById('placeholder');
     this.props.fetchChannel(this.state.channel_id);
 
     this.props.fetchMessages(this.state.channel_id)
@@ -30,12 +28,10 @@ class MessageChannel extends React.Component {
     // this.scrollToBottom();
   }
   componentDidUpdate() {
-    // debugger;
     this.scrollToBottom();
   }
 
   scrollToBottom() {
-    console.log("TESTTESTTEST", this.messagesEnd)
     this.messagesEnd.scrollIntoView({ behavior: "auto" });
   }
 

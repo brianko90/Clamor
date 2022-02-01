@@ -1,4 +1,5 @@
 import { RECEIVE_DM, RECEIVE_DMS } from "../actions/direct_message_actions";
+import { RECEIVE_CONVERSATION } from "../actions/dm_channel_actions";
 
 const conversationMessagesReducer = (state = {}, action) => {
   Object.freeze(state);
@@ -10,12 +11,12 @@ const conversationMessagesReducer = (state = {}, action) => {
       return nextState
     case RECEIVE_DMS:
       if (action.payload.conversationMessages) {
-        return action.payload.channelMessages
+        return action.payload.conversationMessages
       } else {
         return {};
       }
     case RECEIVE_CONVERSATION:
-      return {};
+      return action.payload.conversationMessages
     default:
       return state;
   }

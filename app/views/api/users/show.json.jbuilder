@@ -53,7 +53,11 @@ json.conversations do
   @user.conversations.each do |conversation|
     json.set! conversation.id do 
       json.extract! conversation, :owner_id 
-      json.members conversation.members
+      json.members conversation.members.each do |member|
+        json.username member.username
+        json.pfp url_for(member.pfp)
+        json.id member.id
+      end
     end
   end
 end

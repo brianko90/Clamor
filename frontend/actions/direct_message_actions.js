@@ -23,7 +23,7 @@ export const createMessage = dm => dispatch => {
     .then((payload) => dispatch(receiveDM(payload)))
 }
 
-export const fetchDMs = (conversationId) => dispatch => {
+export const fetchDMS = (conversationId) => dispatch => {
   return fetchConversation(conversationId)
     .then(payload => dispatch(receiveDMS(payload)))
 }
