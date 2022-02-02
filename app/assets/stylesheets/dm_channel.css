@@ -11,6 +11,7 @@
 .dm-info {
   padding-left: 10px;
   color: white;
+  width: 100%;
 }
 
 .dm-info > div:first-child > span {
@@ -24,11 +25,11 @@
 }
 
 #dm-list {
-  height: calc(100vh - 105px);
+  height: calc(100vh - 130px);
   position: fixed;
   overflow-y: scroll;
   overflow-x: hidden;
-  width: 100%;
+  width: calc(100% - 273px);
 }
 
 #dm-channel {
@@ -48,6 +49,7 @@
 #dm-index {
   /* position: fixed; */
   margin-left: 70px;
+  z-index: 2;
 } 
 
 /* ------------------ DM List CSS */
@@ -81,3 +83,4 @@
 .dm-list-item:hover {
   background-color: gray;
 }
+

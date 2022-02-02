@@ -1,6 +1,6 @@
 import {connect} from 'react-redux';
 import ServerMain from './server_main';
-import {fetchServer} from '../../actions/server_actions';
+import {fetchServer, deleteServer} from '../../actions/server_actions';
 import {fetchChannel} from '../../actions/channel_actions';
 import { getUserInfo } from '../../actions/user_actions';
 import {openModal, closeModal} from '../../actions/modal_actions'; 
@@ -31,7 +31,8 @@ const mapDispatchToProps = dispatch => {
     fetchChannel: (channelId) => dispatch(fetchChannel(channelId)),
     fetchMessages: (channelId) => dispatch(fetchMessages(channelId)),
     createMessage: (channelId, message) => dispatch(createMessage(channelId, message)),
-    receiveMessage: (message) => dispatch(receiveMessage(message))
+    receiveMessage: (message) => dispatch(receiveMessage(message)),
+    deleteServer: (serverId) => dispatch(deleteServer(serverId))
   }
 }
 

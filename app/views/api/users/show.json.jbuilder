@@ -12,7 +12,6 @@ json.servers do
     end
   end
 end
-# Had to add if else conditional in the reducer
 
 json.owned_servers do 
   @user.owned_servers.each do |server|

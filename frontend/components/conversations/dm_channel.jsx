@@ -9,6 +9,11 @@ class DMChannel extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
+  scrollToBottom() {
+    let list = document.getElementById('dm-list');
+    list.scrollTo(0, document.querySelector('#dm-list').scrollHeight);
+  }
+
   componentDidMount() {
     this.props.fetchConversation(this.props.match.params.conversationId)
       .then(()=> {
@@ -21,9 +26,14 @@ class DMChannel extends React.Component {
             this.props.receiveDM(msg)
           }
         })
-      });
+      })
+    this.scrollToBottom();
   }
-// IF THIS ERRORS CHECK id: this.props.match.params.conversationId
+
+  componentDidUpdate() {
+    this.scrollToBottom();
+  }
+
   update(field) {
     return (e) => this.setState({ [field]: e.currentTarget.value });
   }
@@ -36,29 +46,30 @@ class DMChannel extends React.Component {
       });
     this.setState({ body: '' });
   }
-   componentDidUpdate() {
-    this.scrollToBottom();
-  }
-
-  scrollToBottom() {
-    this.messagesEnd.scrollIntoView({ behavior: "auto" });
-  }
 
   render() {
     if (!this.props.conversationMessages) return null;
     return (
       <div id="dm-channel">
         <ul id="dm-list">
+          <li>
+            <div>This is the start of your conversation with BLAH</div>
+          </li>
           {this.props.conversationMessages.map(message => (
-            <li className="dm-item" key={message.id}>
+            <li className="message" key={message.id}>
               <img className="dm-pfp" src={message.pfp} alt="" />
               <div className="dm-info">
                 <div>{message.username} <span>{message.created_at}</span></div>
                 <div>{message.body}</div>
               </div>
+                <div className="message-options">
+                  <div className="message-tools">
+                    <i className="fas fa-trash-alt"></i>
+                    <i className="fas fa-wrench"></i>
+                  </div>
+              </div>           
             </li>
           ))}
-          <div id="placeholder" style={{ float: "left", clear: "both" }} ref={(el) => (this.messagesEnd = el)}>TEST</div>
         </ul>
         <div id="chat-input">
           <form id="message-input" onSubmit={this.handleSubmit}>

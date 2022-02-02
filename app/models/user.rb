@@ -101,11 +101,14 @@ class User < ApplicationRecord
   attr_reader :password
 
   def ensure_pfp
-    if !self.pfp.attached?
-      color = COLORS.sample
-      file = open(`https://clamor-seeds.s3.us-west-1.amazonaws.com/#{color}`)
-      self.pfp.attach(io: file, filename: color)
-    end
+    # debugger
+    self.pfp ||= attach_pfp
+  end
+
+  def attach_pfp 
+    color = COLORS.sample 
+    file = open(`https://clamor-aa-dev.s3.us-west-1.amazonaws.com/Pastel-Blue.png`)
+    self.pfp.attach(io: file, filename: 'Pastel-Blue.png')
   end
 
   def ensure_tag

@@ -4,6 +4,8 @@ import { connect } from 'react-redux';
 import UserSettingsContainer from '../user/user_settings_container';
 import EditProfileContainer from '../user/edit_profile_container';
 import ServerFormContainer from '../servers/server_form_container';
+import ServerSettingsContainer from '../modal/server_settings_modal_container';
+import DeleteServerContainer from '../modal/delete_server_container';
 
 function Modal({ modal, closeModal }) {
   if (!modal) {
@@ -19,6 +21,12 @@ function Modal({ modal, closeModal }) {
       break;
     case 'addServer':
       component = <ServerFormContainer />;
+      break;
+    case 'serverSettings':
+      component = <ServerSettingsContainer />;
+      break;
+    case 'deleteServer':
+      component = <DeleteServerContainer />;
       break;
     default:
       return null;

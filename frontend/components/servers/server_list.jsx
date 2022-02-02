@@ -5,16 +5,23 @@ import { Link } from 'react-router-dom';
 class ServerList extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {chosenChannel: ''};
+    // this.state = {chosenChannel: ''};
     this.handleSelect = this.handleSelect.bind(this);
   }
 
   // componentDidMount(){
-  //   this.props.fetchServer(this.props.match.params.serverId);
+  //   this.props.getUserInfo(this.props.currentUserId);
   // }
 
   handleSelect(e, serverId) {
     e.preventDefault();
+    // this.props.getUserInfo(this.props.currentUserId)
+    //   .then(() => {
+    //     this.props.fetchServer(serverId)
+    //   })
+    //   .then(() => {
+    //     this.props.fetchMessages(this.props.match.params.channelId)
+    //   })
     this.props.fetchServer(serverId)
       .then(()=> {
         this.props.fetchMessages(this.props.match.params.channelId)
@@ -30,6 +37,7 @@ class ServerList extends React.Component {
   }
 
   componentDidUpdate() {
+    // this.props.getUserInfo(this.props.currentUserId)
     let servers = document.getElementsByClassName('server-list-item');
     servers = Array.prototype.slice.call(servers);
 
@@ -45,6 +53,7 @@ class ServerList extends React.Component {
   }
 
   render() {
+    console.log(this.props.servers)
     return (
       <div id="server-list-container">
         <div id="main-logo">

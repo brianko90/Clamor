@@ -41,7 +41,7 @@ class DMList extends React.Component {
       <div id="dm-container">
         <div>Friends</div>
         <div>DIRECT MESSAGES <span>+</span></div>
-        <ul id="dm-list">
+        <ul id="dm-list-items">
           {this.props.conversations.map((conversation) => (
             <li key={conversation.id} className="dm-list-item">
               <Link onClick={() => this.props.fetchConversation(conversation.id)} to={`/channels/@me/${conversation.id}`}>

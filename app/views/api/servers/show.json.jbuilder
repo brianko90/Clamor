@@ -1,5 +1,6 @@
 json.server do
   json.extract! @server, :id, :name, :public, :owner_id
+  json.serverpic url_for(@server.serverpic)
   json.channels @server.channel_ids
 end 
 

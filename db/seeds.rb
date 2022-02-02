@@ -14,7 +14,7 @@ ServerMembership.destroy_all
 Friendship.destroy_all
 
 user1 = User.new({username: 'brian', email: 'brian@gmail.com', password: "1234", tag: "0001"})
-file = open('https://clamor-seeds.s3.us-west-1.amazonaws.com/Pastel-Blue.png')
+file = open('https://clamor-aa-dev.s3.us-west-1.amazonaws.com/Pastel-Blue.png')
 user1.pfp.attach(io: file, filename: 'Pastel-Blue.png')
 user1.save
 user2 = User.create({username: 'chris', email: 'chris@gmail.com', password: "1234", tag: "4218"})

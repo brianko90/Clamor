@@ -14,8 +14,6 @@ const channelMessagesReducer = (state = {}, action) => {
       } else {
         return {};
       }
-    case RECEIVE_SERVER:
-      return {};
     default: 
       return state;
   }

@@ -10,26 +10,61 @@ class ServerMain extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = {render: false}
+    this.state = {render: false},
+    this.deleteServer = this.deleteServer.bind(this);
   }
 
   componentDidMount() {
-    // this.handleScroll();
     let channelId = this.props.match.params.channelId;
     let serverId = this.props.match.params.serverId;
     this.props.getUserInfo(this.props.currentUserId)
       .then(() => {
-        this.props.fetchServer(this.props.serverId)
+        this.props.fetchServer(serverId)
       })
   }
 
-  // componentDidUpdate(){
-  //   this.handleScroll();
-  // }
+  deleteModalOpen() {
+    let modal = document.getElementById('deleteModal');
+    modal.style.display = "flex";
+  }
 
-  // handleScroll() {
-  //   this.messagesEndRef.current.scrollIntoView({ behavior: 'smooth'});
-  // }
+  deleteModalClose() {
+    let modal = document.getElementById('deleteModal');
+    modal.style.display = "none";
+  }
+
+  updateModalOpen() {
+    let modal = document.getElementById('updateModal');
+    modal.style.display = "flex";
+  }
+
+  updateModalClose() {
+    let modal = document.getElementById('updateModal');
+    modal.style.display = "none";
+  }
+
+  leaveModalOpen() {
+    let modal = document.getElementById('leaveModal');
+    modal.style.display = "flex";
+  }
+
+  leaveModalClose() {
+    let modal = document.getElementById('leaveModal');
+    modal.style.display = "none";
+  }
+
+  deleteServer(e) {
+    e.preventDefault();
+    this.props.deleteServer(this.props.match.params.serverId)
+      .then(() => this.deleteModalClose())
+      .then(() => this.props.history.push('/channels/@me'))
+  }
+
+  updateServer(e) {
+    e.preventDefault();
+    this.props.updateServer(this.props.match.params.serverId)
+      .then(() => this.updateModalClose())
+  }
 
   dropdown(e) {
     e.preventDefault();
@@ -40,36 +75,72 @@ class ServerMain extends React.Component {
     } else {
       settings.classList.add("show-server")
     }
-
-    // $(':not(.server-dropdown)').click(function () {
-    //   $('.show-server').toggle("show-server");
-    // });    
   }
 
-  // closeDropdown(e) {
-  //   e.preventDefault();
-  //   let elements = document.querySelectorAll("*:not(#server-dropdown")
-  //   elements = Array.prototype.slice.call(elements)
-  //   elements.map((el) => el.classList.remove('show-server'))
-  // }
+  checkOwner() {
+    if(this.props.chosenServer.owner_id !== this.props.currentUserId) {
+      return (
+        <div id="server-dropdown" className="server-drop-content">
+          <div onClick={this.leaveModalOpen}>Leave Server<i className="fas fa-arrow-circle-left"></i></div>
+        </div>
+      )
+    } else {
+      return (
+        <div id="server-dropdown" className="server-drop-content">
+          <div className="edit-server" onClick={this.updateModalOpen}>Edit Server<i className="fas fa-pencil-alt"></i></div>
+          <div onClick={this.deleteModalOpen}>Delete Server<i className="fas fa-minus-circle"></i></div>
+        </div>
+      )
+    }
+  }
 
   render() {
     if (!this.props.chosenServer) {
       return null;
     }
+  
     return (
       <div id="server">
+        <div id="deleteModal" className="modal">
+          <div className="server-modal-content">
+            <div className="server-header">Delete '{this.props.chosenServer.name}'</div>
+            <div className="server-question" >Are you sure you want to delete <span>{this.props.chosenServer.name}</span>?</div>
+            <div className="server-modal-buttons">
+              <div onClick={this.deleteModalClose}>Cancel</div>
+              <button onClick={this.deleteServer}>Delete Server</button>
+            </div>
+          </div>
+        </div>
+        <div id="leaveModal" className="modal">
+          <div className="server-modal-content">
+            <div className="server-header">Leave '{this.props.chosenServer.name}'</div>
+            <div className="server-question">Are you sure you want to leave <span>{this.props.chosenServer.name}</span>?</div>
+            <div className="server-modal-buttons">
+              <div onClick={this.leaveModalClose}>Cancel</div>
+              <button>Leave Server</button>
+            </div>
+          </div>
+        </div>
+        <div id="leaveModal" className="modal">
+          <div className="server-modal-content">
+            <div className="server-header">Change server name</div>
+            <form>
+              <input type="text" />
+              <div className="server-modal-buttons">
+                <div onClick={this.leaveModalClose}>Cancel</div>
+                <button>Leave Server</button>
+              </div>
+            </form>
+          </div>
+        </div>
         <div id="server-list">
-          <ServerListContainer match={this.props.match} channel={this.props.chosenChannel} fetchMessages={this.props.fetchMessages} chosenServer={this.props.chosenServer.name.toLowerCase()} servers={this.props.servers} openModal={this.props.openModal} closeModal={this.props.closeModal}/>
+          <ServerListContainer match={this.props.match} channel={this.props.chosenChannel} fetchMessages={this.props.fetchMessages} chosenServer={this.props.chosenServer.name.toLowerCase()} openModal={this.props.openModal} closeModal={this.props.closeModal}/>
         </div>
         <div id="channel-index">
           <div id="server-name" className="serverButton" onClick={this.dropdown}>
             <h6>{this.props.chosenServer.name}</h6>
             <i className="fas fa-chevron-down"></i>
-            <div id="server-dropdown" className="server-drop-content">
-              <div>Update Server</div>
-              <div>Delete Server</div>
-            </div>
+            {this.checkOwner()}
           </div>
           <div id="channel-list-container">
             <ChannelListContainer match={this.props.match} channels={this.props.channels} server={this.props.chosenServer} fetchMessages={this.props.fetchMessages}/>

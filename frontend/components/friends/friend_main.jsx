@@ -14,7 +14,7 @@ class FriendMain extends React.Component {
   componentDidMount() {
     this.props.getUserFriends(this.props.user.id)
       .then(() => {
-        this.props.getUserConversations(this.props.user.id)
+        this.props.getUserConversations(this.props.user.id);
       })
   }
 
@@ -39,10 +39,10 @@ class FriendMain extends React.Component {
       mainComponent = <DMChannelContainer match={this.props.match} cableApp={this.props.cableApp} />;
     }
     return (
-
+      // chosenChannel = { this.props.chosenChannel } chosenServer = { this.props.chosenServer }
       <div id="server">
-        <div id="server-list">
-          <ServerListContainer match={this.props.match} chosenServer={this.props.chosenServer} servers={this.props.servers} openModal={this.props.openModal} closeModal={this.props.closeModal} />
+        <div id="server-list"> 
+          <ServerListContainer match={this.props.match} openModal={this.props.openModal} closeModal={this.props.closeModal}/>
         </div>
         <div id="dm-index">
           <div id="friend-tag">

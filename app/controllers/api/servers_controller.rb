@@ -32,9 +32,11 @@ class Api::ServersController < ApplicationController
     end
   end
 
-  def delete
+  def destroy
     @server = Server.find_by(id: params[:id])
-    @server.destroy 
+    @server.destroy
+    @user = User.find_by(id: current_user.id)
+    render 'api/users/show'
   end
 
   private
