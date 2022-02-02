@@ -1,4 +1,4 @@
-class ConversationMembershipsController < ApplicationController
+class Api::ConversationMembershipsController < ApplicationController
   def create
     @convoMembership = ConversationMembership.new(conversation_membership_params)
     if @convoMembership.save

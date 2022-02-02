@@ -15,7 +15,8 @@ const App = ({cableApp}) => (
       <Route exact path='/' component={SplashContainer} />
       <AuthRoute path='/login' component={LoginFormContainer} />
       <AuthRoute path='/signup' component={SignupFormContainer} />
-      <ProtectedRoute path='/channels/@me' component={FriendMainContainer} />
+      <ProtectedRoute path='/channels/@me/:conversationId' component={FriendMainContainer} cableApp={cableApp}/>
+      <ProtectedRoute path='/channels/@me' component={FriendMainContainer} cableApp={cableApp}/>
       <ProtectedRoute path='/channels/:serverId/:channelId' component={ServerMainContainer} cableApp={cableApp}/>
       <Redirect to="/" />
     </Switch>

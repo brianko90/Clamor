@@ -7,7 +7,7 @@ const conversationMessagesReducer = (state = {}, action) => {
 
   switch (action.type) {
     case RECEIVE_DM:
-      nextState[action.payload.message.id] = action.payload.message
+      nextState[action.payload.direct_message.id] = action.payload.direct_message
       return nextState
     case RECEIVE_DMS:
       if (action.payload.conversationMessages) {

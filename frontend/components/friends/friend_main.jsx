@@ -3,6 +3,7 @@ import ServerListContainer from '../servers/server_list_container';
 import UserProfile from '../servers/user_profile';
 import FriendListContainer from './friend_list_container';
 import DMList from '../conversations/dm_list';
+import DMChannelContainer from '../conversations/dm_channel_container';
 
 class FriendMain extends React.Component {
   constructor(props) {
@@ -11,8 +12,10 @@ class FriendMain extends React.Component {
   }
 
   componentDidMount() {
-    this.props.getUserFriends(this.props.user.id);
-    this.props.getUserConversations(this.props.user.id);
+    this.props.getUserFriends(this.props.user.id)
+      .then(() => {
+        this.props.getUserConversations(this.props.user.id)
+      })
   }
 
   handleSelect(e) {
@@ -26,11 +29,14 @@ class FriendMain extends React.Component {
   }
 
   render() {
-    if(!this.props.servers) {
+    if(!this.props.servers || !this.props.friends) {
       return null;
     }
-    if(!this.props.friends) {
-      return null;
+    let mainComponent;
+    if(!this.props.match.params.conversationId) {
+      mainComponent = <FriendListContainer pendingStatus={this.state.pending} deleteFriend={this.props.deleteFriend} friends={this.props.friends} pending={this.props.incoming.concat(this.props.outgoing)} />;
+    } else {
+      mainComponent = <DMChannelContainer match={this.props.match} cableApp={this.props.cableApp} />;
     }
     return (
 
@@ -43,7 +49,7 @@ class FriendMain extends React.Component {
             <input type="text" placeholder="Find or start a conversation" value="" readOnly/>
           </div>
           <div id="dm-list-container">
-            <DMList fetchConversation={this.props.fetchConversation} conversations={this.props.conversations}/>
+            <DMList user={this.props.user} fetchConversation={this.props.fetchConversation} conversations={this.props.conversations}/>
           </div>
           <div id="profile">
             <UserProfile user={this.props.user} openModal={this.props.openModal} closeModal={this.props.closeModal} />
@@ -51,11 +57,24 @@ class FriendMain extends React.Component {
         </div>
         <div id="friend-main">
           <div id="friend-main-top">
-            <h6><i className="fas fa-user-friends"></i> <span>Friends</span></h6>
-            <div id="friend-option">
-              <div className="friend-nav selected-tab" onClick={(e) => { this.setState({ pending: false }); this.handleSelect(e)}}>All</div>
-              <div className="friend-nav" onClick={(e) => {this.setState({ pending: true }); this.handleSelect(e)}}>Pending</div>
-            </div>
+
+            {
+              this.props.match.params.conversationId && 
+
+              <div>
+                <h6><i className="fas fa-user-friends"></i> <span>Direct Message</span></h6>
+              </div>
+            }
+            {
+              !this.props.match.params.conversationId && 
+              <div id="friend-header">
+                <h6><i className="fas fa-user-friends"></i> <span>Friends</span></h6>
+                <div id="friend-option">
+                  <div className="friend-nav selected-tab" onClick={(e) => { this.setState({ pending: false }); this.handleSelect(e)}}>All</div>
+                  <div className="friend-nav" onClick={(e) => {this.setState({ pending: true }); this.handleSelect(e)}}>Pending</div>
+                </div>
+              </div>
+            }
             <div id="friend-top-nav">
               <nav id="friend-nav">
                 <a href="https://github.com/brianko90/Clamor" target="_blank">
@@ -68,14 +87,7 @@ class FriendMain extends React.Component {
             </div>
           </div>
           <div id="friend-main-bottom">
-            {
-              !this.state.pending &&
-              <FriendListContainer pendingStatus={this.state.pending} deleteFriend={this.props.deleteFriend} friends={this.props.friends} pending={this.props.incoming.concat(this.props.outgoing)} />
-            }
-            {
-              this.state.pending && 
-              <FriendListContainer pendingStatus={this.state.pending} deleteFriend={this.props.deleteFriend} friends={this.props.pending} pending={this.props.incoming.concat(this.props.outgoing)} />
-            }
+            {mainComponent}
           </div>
         </div>
       </div>

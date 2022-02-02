@@ -30,7 +30,7 @@ const mapDispatchToProps = dispatch => {
     closeModal: () => dispatch(closeModal()),
     fetchChannel: (channelId) => dispatch(fetchChannel(channelId)),
     fetchMessages: (channelId) => dispatch(fetchMessages(channelId)),
-    createMessage: (message) => dispatch(createMessage(message)),
+    createMessage: (channelId, message) => dispatch(createMessage(channelId, message)),
     receiveMessage: (message) => dispatch(receiveMessage(message))
   }
 }

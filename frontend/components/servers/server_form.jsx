@@ -19,12 +19,9 @@ class ServerForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     this.props.createServer(this.state)
-      .then(
-        () => {
-          this.props.closeModal();
-          // this.props.getUserInfo(this.props.currentUserId)
-        }
-      );
+      .then(() => {this.props.fetchChannel(this.props.match.params.channelId)})
+      // .then(() => {this.props.fetchServer(this.props.match.params.serverId)})
+      .then(() => {this.props.closeModal()}) 
   }
 
   removeClass() {

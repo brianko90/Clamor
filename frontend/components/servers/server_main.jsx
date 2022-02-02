@@ -10,8 +10,6 @@ class ServerMain extends React.Component {
 
   constructor(props) {
     super(props);
-    // this.handleScroll = this.handleScroll.bind(this);
-    // this.messagesEndRef = React.createRef();
     this.state = {render: false}
   }
 
@@ -23,13 +21,6 @@ class ServerMain extends React.Component {
       .then(() => {
         this.props.fetchServer(this.props.serverId)
       })
-      // .then(() => {
-      //   this.props.fetchChannel(channelId)
-      // })
-      // .then(() => {
-      //   this.props.fetchMessages(channelId)
-      // })
-    
   }
 
   // componentDidUpdate(){
@@ -40,6 +31,27 @@ class ServerMain extends React.Component {
   //   this.messagesEndRef.current.scrollIntoView({ behavior: 'smooth'});
   // }
 
+  dropdown(e) {
+    e.preventDefault();
+    let settings = document.getElementById("server-dropdown");
+
+    if (settings.classList.contains("show-server")) {
+      settings.classList.remove("show-server")
+    } else {
+      settings.classList.add("show-server")
+    }
+
+    // $(':not(.server-dropdown)').click(function () {
+    //   $('.show-server').toggle("show-server");
+    // });    
+  }
+
+  // closeDropdown(e) {
+  //   e.preventDefault();
+  //   let elements = document.querySelectorAll("*:not(#server-dropdown")
+  //   elements = Array.prototype.slice.call(elements)
+  //   elements.map((el) => el.classList.remove('show-server'))
+  // }
 
   render() {
     if (!this.props.chosenServer) {
@@ -51,8 +63,13 @@ class ServerMain extends React.Component {
           <ServerListContainer match={this.props.match} channel={this.props.chosenChannel} fetchMessages={this.props.fetchMessages} chosenServer={this.props.chosenServer.name.toLowerCase()} servers={this.props.servers} openModal={this.props.openModal} closeModal={this.props.closeModal}/>
         </div>
         <div id="channel-index">
-          <div id="server-name">
+          <div id="server-name" className="serverButton" onClick={this.dropdown}>
             <h6>{this.props.chosenServer.name}</h6>
+            <i className="fas fa-chevron-down"></i>
+            <div id="server-dropdown" className="server-drop-content">
+              <div>Update Server</div>
+              <div>Delete Server</div>
+            </div>
           </div>
           <div id="channel-list-container">
             <ChannelListContainer match={this.props.match} channels={this.props.channels} server={this.props.chosenServer} fetchMessages={this.props.fetchMessages}/>
@@ -77,7 +94,7 @@ class ServerMain extends React.Component {
           </div>
           <div id="server-main-bottom">
             <div id="server-main-center">
-              <MessageChannel match={this.props.match} cableApp={this.props.cableApp} fetchChannel={this.props.fetchChannel} fetchMessages={this.props.fetchMessages} channel={this.props.chosenChannel} messages={this.props.messages} createMessage={this.props.createMessage} receiveMessage={this.props.receiveMessage}/>
+              <MessageChannel server={this.props.chosenServer} match={this.props.match} fetchServer={this.props.fetchServer} cableApp={this.props.cableApp} fetchChannel={this.props.fetchChannel} fetchMessages={this.props.fetchMessages} channel={this.props.chosenChannel} messages={this.props.messages} createMessage={this.props.createMessage} receiveMessage={this.props.receiveMessage}/>
             </div>
             <div id="server-main-right">
               <ServerMembersList serverMembers={this.props.serverMembers} fetchServer={this.props.fetchServer} />

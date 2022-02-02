@@ -41,6 +41,8 @@
   padding-top: 10px;
   padding-left: 15px;
   padding-right: 15px;
+  position: fixed;
+  top: 45px;
 }
 
 #channel-list > li:first-child {
@@ -103,6 +105,7 @@
 
 #server-main-top {
   border-bottom: 1px solid rgb(27, 23, 23);
+  margin-left: 270px;
 }
 
 #server-top-nav {
@@ -210,4 +213,43 @@
 
 #server-main-top > h6 > a {
   color: rgba(255, 255, 255, 0.555);
+}
+
+#server-name {
+  position: relative;
+  display: inline-block;
+}
+
+.server-drop-content {
+  position: absolute;
+  display: none;
+  margin-left: 70px;
+  background-color: #18191c;
+  color: #b6b8bc;
+  border-radius: 5px;
+}
+
+.show-server {
+  display: block;
+}
+
+#server-name > i {
+  position: fixed;
+  margin-left: 170px;
+  top: 13px;
+}
+
+#server-dropdown {
+  padding: 10px;
+  z-index: 3;
+}
+
+#server-dropdown div {
+  padding: 5px;
+  font-size: 12px;
+}
+
+#server-dropdown div:hover {
+  background-color: #5865F2;
+  color: white;
 }

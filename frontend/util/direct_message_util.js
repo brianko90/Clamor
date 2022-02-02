@@ -1,16 +1,16 @@
-export const createDM = dm => {
+export const createDM = (conversationId, direct_message) => {
   return $.ajax({
     method: "POST",
-    url: `/api/conversations/${dm.conversation_id}/direct_messages`,
-    data: {dm}
+    url: `/api/conversations/${conversationId}/direct_messages`,
+    data: {direct_message}
   })
 }
 
-export const updateDM = dm => {
+export const updateDM = direct_message => {
   return $.ajax({
     method: "PATCH",
-    url: `/api/direct_messages/${dm.id}`,
-    data: {dm}
+    url: `/api/direct_messages/${direct_message.id}`,
+    data: {direct_message}
   })
 }
 

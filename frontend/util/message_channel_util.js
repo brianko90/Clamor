@@ -1,4 +1,4 @@
-export const createMessage = message => {
+export const createMessage = (message) => {
   return $.ajax({
     method: "POST",
     url: `/api/channels/${message.channel_id}/messages`,

@@ -1,0 +1,83 @@
+.dm-pfp {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+}
+
+.dm-item {
+  display: flex;
+}
+
+.dm-info {
+  padding-left: 10px;
+  color: white;
+}
+
+.dm-info > div:first-child > span {
+  font-size: 9px;
+}
+
+.dm-info > div:last-child {
+  padding-top: 5px;
+  font-size: 13px;
+  font-weight: 200;
+}
+
+#dm-list {
+  height: calc(100vh - 105px);
+  position: fixed;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  width: 100%;
+}
+
+#dm-channel {
+  width: 100vw;
+  height: calc(100vh - 105px);
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+
+
+#channel-container {
+  /* position: fixed; */
+  margin-left: 270px;
+}
+
+#dm-index {
+  /* position: fixed; */
+  margin-left: 70px;
+} 
+
+/* ------------------ DM List CSS */
+
+/* box-sizing: content-box; */
+
+.dm-list-pfp {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+}
+
+.dm-list-item a div {
+  display: flex;
+  align-items: center;
+}
+
+.dm-list-name {
+  margin-left: 10px;
+  color: white;
+}
+
+.dm-list-item {
+  padding-top: 5px;
+  padding-bottom: 5px;
+  width: 200px;
+  padding-left: 10px;
+  padding-right: 20px;
+}
+
+.dm-list-item:hover {
+  background-color: gray;
+}

@@ -3,37 +3,33 @@ import React from 'react';
 class MessageChannel extends React.Component {
   constructor(props) {
     super(props)
-
+    console.log(this.props.match.params.channelId)
     this.state = { body: '', channel_id: this.props.match.params.channelId }
 
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.scrollToBottom = this.scrollToBottom.bind(this);
+    // this.scrollToBottom = this.scrollToBottom.bind(this);
   }
   
   componentDidMount() {
-    this.props.fetchChannel(this.state.channel_id);
-
-    this.props.fetchMessages(this.state.channel_id)
+    this.props.fetchServer(this.props.match.params.serverId)
       .then(() => {
-        this.props.cableApp.cable.subscriptions.create({
-          channel: 'ChannelsChannel',
-          id: this.state.channel_id
-        },
-        {
-          received: (msg) => {
-            this.props.receiveMessage(msg)
-          }
-        })
+        this.props.fetchChannel(this.props.match.params.channelId)
+          .then(() => {
+            this.props.fetchMessages(this.props.match.params.channelId)
+              .then(() => {
+                this.props.cableApp.cable.subscriptions.create({
+                  channel: 'ChannelsChannel',
+                  id: this.state.channel_id
+                },
+                  {
+                    received: (msg) => {
+                      this.props.receiveMessage(msg)
+                    }
+                  })
+              })
+          })
       })
-    // this.scrollToBottom();
-  }
-  componentDidUpdate() {
-    this.scrollToBottom();
-  }
-
-  scrollToBottom() {
-    this.messagesEnd.scrollIntoView({ behavior: "auto" });
-  }
+    }
 
   update(field) {
     return (e) => this.setState({ [field]: e.currentTarget.value });
@@ -41,9 +37,8 @@ class MessageChannel extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-
-    this.setState({ channel_id: this.state.channel_id})
-    this.props.createMessage(this.state);
+    this.props.createMessage(this.state)
+      .then(() => this.props.fetchMessages(this.state.channel_id));
     this.setState({ body: '' });
   }
   // 2022-01-31T03:37:34.258Z
@@ -53,9 +48,10 @@ class MessageChannel extends React.Component {
   }
 
   render() {
-    // if(!this.props.channel) {
-    //   return null;
-    // }
+    if(!this.props.channel) {
+     
+      return null;
+    }
     return (
        <div id="channel-container">
           <ul id="message-list">

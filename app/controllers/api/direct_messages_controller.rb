@@ -11,11 +11,23 @@ class Api::DirectMessagesController < ApplicationController
 
   def create
     @direct_message = DirectMessage.new(dm_params)
+    @conversation = Conversation.find_by(id: params[:conversation_id])
     @direct_message.user_id = current_user.id
-    @direct_message.conversation_id = params[:conversation_id] 
-    @conversation = Channel.find_by(id: params[:conversation_id])
+    @direct_message.conversation_id = params[:conversation_id]
+
+    # debugger
     if @direct_message.save 
-      render :show 
+      ConversationsChannel.broadcast_to(@conversation, {
+        direct_message: {
+          id: @direct_message.id,
+          userId: @direct_message.user_id,
+          conversationId: @direct_message.conversation_id,
+          username: @direct_message.user.username,
+          body: @direct_message.body,
+          createdAt: @direct_message.created_at,
+          pfp: url_for(@direct_message.user.pfp)
+        }
+      })
     else  
       render json: @direct_message.errors.full_messages, status: 422
     end

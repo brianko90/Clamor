@@ -18,9 +18,8 @@ export const receiveDMS = payload => {
   }
 }
 
-export const createMessage = dm => dispatch => {
-  return DMApiUtil.createDM(dm)
-    .then((payload) => dispatch(receiveDM(payload)))
+export const createDM = (conversationId, dm) => dispatch => {
+  return DMApiUtil.createDM(conversationId, dm)
 }
 
 export const fetchDMS = (conversationId) => dispatch => {
