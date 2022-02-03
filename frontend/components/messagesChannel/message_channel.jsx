@@ -55,9 +55,8 @@ class MessageChannel extends React.Component {
   }
 
   formatDate(date) {
-    console.log(date, typeof date)
+    if (!date) return "";
     let formatDate = [date.slice(5,7), date.slice(8,10), date.slice(0,4)]
-    console.log(formatDate)
     return formatDate.join('/')
   }
 
@@ -69,7 +68,7 @@ class MessageChannel extends React.Component {
               <li className="message" key={message.id}>
                 <img src={message.pfp} />
                 <div className="message-container">
-                  <div className="message-username">{message.username} <span>{this.formatDate(message.created_at)}</span></div>
+                  <div className="message-username">{message.username} <span>{message.created_at ? this.formatDate(message.created_at) : this.formatDate(message.createdAt)}</span></div>
                   <div className="message-body">{message.body}</div>
                 </div>
                 <div className="message-options">

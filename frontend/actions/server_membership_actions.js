@@ -12,7 +12,8 @@ const receiveMembership = payload => {
 
 const removeServerMembership = payload => {
   return {
-    type: REMOVE_SERVER_MEMBERSHIP
+    type: REMOVE_SERVER_MEMBERSHIP,
+    payload
   }
 }
 

@@ -48,7 +48,8 @@ class DMChannel extends React.Component {
   }
 
   formatDate(date) {
-    console.log(date, typeof date)
+    if(!date) return "";
+    
     let formatDate = [date.slice(5, 7), date.slice(8, 10), date.slice(0, 4)]
     console.log(formatDate)
     return formatDate.join('/')
@@ -56,6 +57,9 @@ class DMChannel extends React.Component {
 
   render() {
     if (!this.props.conversationMessages) return null;
+
+
+
     return (
       <div id="dm-channel">
         <ul id="dm-list">

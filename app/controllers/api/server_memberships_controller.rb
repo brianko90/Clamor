@@ -9,6 +9,8 @@ class Api::ServerMembershipsController < ApplicationController
   def destroy 
     @membership = ServerMembership.find_by(server_membership_params)
     @membership.destroy
+    @user = User.find_by(id: current_user.id)
+    
   end
 
   private

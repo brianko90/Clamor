@@ -14,8 +14,6 @@ class Api::DirectMessagesController < ApplicationController
     @conversation = Conversation.find_by(id: params[:conversation_id])
     @direct_message.user_id = current_user.id
     @direct_message.conversation_id = params[:conversation_id]
-
-    # debugger
     if @direct_message.save 
       ConversationsChannel.broadcast_to(@conversation, {
         direct_message: {

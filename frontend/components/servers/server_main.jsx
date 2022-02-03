@@ -66,6 +66,12 @@ class ServerMain extends React.Component {
     this.props.updateServer(server)
   }
 
+  leaveServer(e) {
+    e.preventDefault();
+    this.leaveModalClose();
+    // this.props.
+  }
+
   update(field) {
     return e => this.setState({[field]: e.currentTarget.value})
   }
