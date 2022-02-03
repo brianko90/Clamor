@@ -4,6 +4,7 @@ export const RECEIVE_SERVERS = "RECEIVE_SERVERS";
 export const RECEIVE_SERVER = "RECEIVE_SERVER";
 export const REMOVE_SERVER = "REMOVE_SERVER";
 export const RECEIVE_NEW_SERVER = "RECEIVE_NEW_SERVER";
+export const RECEIVE_SERVER_OPTIONS = "RECEIVE_SERVER_OPTIONS";
 
 const receiveServers = (servers) => {
   return {

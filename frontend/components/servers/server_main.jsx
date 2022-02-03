@@ -137,6 +137,18 @@ class ServerMain extends React.Component {
             </form>
           </div>
         </div>
+        <div id="joinServerModal" className="modal">
+          <div className="server-join-content">
+            <div className="server-join-header">Change server name</div>
+            <form>
+              <input type="text" value={this.state.name} onChange={this.update("name")} />
+              <div className="server-join-buttons">
+                <div onClick={this.updateModalClose}>Cancel</div>
+                <button onClick={this.updateServer}>Join Server</button>
+              </div>
+            </form>
+          </div>
+        </div>
         <div id="server-list">
           <ServerListContainer match={this.props.match} channel={this.props.chosenChannel} fetchMessages={this.props.fetchMessages} chosenServer={this.props.chosenServer.name.toLowerCase()} openModal={this.props.openModal} closeModal={this.props.closeModal}/>
         </div>
