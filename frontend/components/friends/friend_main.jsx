@@ -60,7 +60,6 @@ class FriendMain extends React.Component {
 
             {
               this.props.match.params.conversationId && 
-
               <div>
                 <h6><i className="fas fa-user-friends"></i> <span>Direct Message</span></h6>
               </div>

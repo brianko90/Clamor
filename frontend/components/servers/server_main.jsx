@@ -1,5 +1,4 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
 import ServerListContainer from './server_list_container';
 import UserProfile from './user_profile';
 import ChannelListContainer from '../channels/channel_list_container';
@@ -10,12 +9,12 @@ class ServerMain extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = {render: false},
+    this.state = { name: '', public: '', owner_id: '' };
     this.deleteServer = this.deleteServer.bind(this);
+    this.updateServer = this.updateServer.bind(this);
   }
 
   componentDidMount() {
-    let channelId = this.props.match.params.channelId;
     let serverId = this.props.match.params.serverId;
     this.props.getUserInfo(this.props.currentUserId)
       .then(() => {
@@ -55,15 +54,20 @@ class ServerMain extends React.Component {
 
   deleteServer(e) {
     e.preventDefault();
+    this.deleteModalClose()
     this.props.deleteServer(this.props.match.params.serverId)
-      .then(() => this.deleteModalClose())
       .then(() => this.props.history.push('/channels/@me'))
   }
 
   updateServer(e) {
     e.preventDefault();
-    this.props.updateServer(this.props.match.params.serverId)
-      .then(() => this.updateModalClose())
+    this.updateModalClose()
+    let server = { id: this.props.chosenServer.id, name: this.state.name, public: this.props.chosenServer.public, owner_id: this.props.currentUserId}
+    this.props.updateServer(server)
+  }
+
+  update(field) {
+    return e => this.setState({[field]: e.currentTarget.value})
   }
 
   dropdown(e) {
@@ -121,14 +125,14 @@ class ServerMain extends React.Component {
             </div>
           </div>
         </div>
-        <div id="leaveModal" className="modal">
+        <div id="updateModal" className="modal">
           <div className="server-modal-content">
             <div className="server-header">Change server name</div>
             <form>
-              <input type="text" />
+              <input type="text" value={this.state.name} onChange={this.update("name")}/>
               <div className="server-modal-buttons">
-                <div onClick={this.leaveModalClose}>Cancel</div>
-                <button>Leave Server</button>
+                <div onClick={this.updateModalClose}>Cancel</div>
+                <button onClick={this.updateServer}>Update Server</button>
               </div>
             </form>
           </div>

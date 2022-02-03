@@ -17,7 +17,9 @@ const serversListReducer = (state = {}, action) => {
       nextState[action.payload.server.id] = action.payload.server; 
       return nextState;
     case REMOVE_SERVER:
-      return action.payload.servers
+      debugger
+      delete nextState[action.serverId]
+      return nextState
     default:
       return state;
   }

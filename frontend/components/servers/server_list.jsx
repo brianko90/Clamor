@@ -5,27 +5,29 @@ import { Link } from 'react-router-dom';
 class ServerList extends React.Component {
   constructor(props) {
     super(props);
-    // this.state = {chosenChannel: ''};
     this.handleSelect = this.handleSelect.bind(this);
   }
 
-  // componentDidMount(){
-  //   this.props.getUserInfo(this.props.currentUserId);
-  // }
+  componentDidMount(){
+    this.props.getUserInfo(this.props.currentUserId);
+  }
 
   handleSelect(e, serverId) {
     e.preventDefault();
-    // this.props.getUserInfo(this.props.currentUserId)
-    //   .then(() => {
-    //     this.props.fetchServer(serverId)
-    //   })
-    //   .then(() => {
-    //     this.props.fetchMessages(this.props.match.params.channelId)
-    //   })
     this.props.fetchServer(serverId)
       .then(()=> {
-        this.props.fetchMessages(this.props.match.params.channelId)
+        let channelId;
+        let server = this.props.servers[serverId];
+
+        if (!this.props.match.params.channelId) {
+          channelId = server.channels[0];
+        } else {
+          channelId = this.props.match.params.channelId;
+        }
+
+        this.props.fetchMessages(channelId)
       })
+      
     let nonSelected = document.getElementsByClassName('server-list-item');
     nonSelected = Array.prototype.slice.call(nonSelected);
     nonSelected.map((ele) => {
@@ -37,7 +39,6 @@ class ServerList extends React.Component {
   }
 
   componentDidUpdate() {
-    // this.props.getUserInfo(this.props.currentUserId)
     let servers = document.getElementsByClassName('server-list-item');
     servers = Array.prototype.slice.call(servers);
 

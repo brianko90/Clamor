@@ -7,7 +7,6 @@ class MessageChannel extends React.Component {
     this.state = { body: '', channel_id: this.props.match.params.channelId }
 
     this.handleSubmit = this.handleSubmit.bind(this);
-    // this.scrollToBottom = this.scrollToBottom.bind(this);
   }
 
   scrollToBottom() {

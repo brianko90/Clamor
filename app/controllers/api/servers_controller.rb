@@ -23,9 +23,10 @@ class Api::ServersController < ApplicationController
     end
   end
 
-  def update 
+  def update
+    debugger 
     @server = Server.find_by(id: params[:id])
-    if @server.update
+    if @server.update(server_params)
       render :show
     else  
       render json: @server.errors.full_messages, status: 422
@@ -36,7 +37,7 @@ class Api::ServersController < ApplicationController
     @server = Server.find_by(id: params[:id])
     @server.destroy
     @user = User.find_by(id: current_user.id)
-    render 'api/users/show'
+    render :show
   end
 
   private
