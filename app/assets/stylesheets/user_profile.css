@@ -35,7 +35,8 @@
 #profile-cog {
   padding:5px;
   width: 24px;
-  padding-left: 100px;
+  position: relative;
+  left: 95px;
   color: #b6b9bc;
 }
 
@@ -48,6 +49,9 @@
   border-radius: 5px;
 }
 
+#profile-username {
+  margin-top: 3px;
+}
 
 .tooltip {
   position: relative;
@@ -86,4 +90,9 @@
   border-style: solid;
   border-color: rgb(33, 31, 31) transparent transparent transparent;
   z-index: 10000;
+}
+
+#user-tag {
+  font-size: 10px;
+  color: #b0b3b6;
 }

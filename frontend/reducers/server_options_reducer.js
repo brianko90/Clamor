@@ -5,7 +5,8 @@ const serverOptionsReducer = (state = {}, action) => {
   let nextState = Object.assign({}, state);
 
   switch(action.type) {
-    case RECEIVE_SERVER_OPTIONS:
+    case RECEIVE_SERVERS:
+      debugger
       return action.payload
     default:
       return state;

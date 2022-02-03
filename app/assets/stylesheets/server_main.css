@@ -259,10 +259,22 @@
   color: white;
 }
 
-#server-dropdown div > i {
-  margin-left: 75px;
+#server-dropdown div > .fa-minus-circle {
   color: inherit;
-  font-size: 15px;
+  font-size: 10px;
+  margin-left: 68px;
+}
+
+#server-dropdown div > .fa-pencil-alt {
+  color: inherit;
+  font-size: 10px;
+  margin-left: 82px;
+}
+
+#server-dropdown div > .fa-arrow-circle-left {
+  color: inherit;
+  font-size: 10px;
+  margin-left: 73px;
 }
 
 #server-dropdown div:hover {
@@ -270,3 +282,18 @@
   background-color: #ed4245;
   border-radius: 3px;
 }
+
+.server-modal-content > form > input{
+  margin-left: 22px;
+  margin-top: 10px;
+  background-color: #40444b;
+  border-radius: 3px;
+  border: 1px solid gray;
+  color: white;
+}
+
+.server-modal-content >  p {
+  margin-left: 22px;
+  font-size: 10px;
+}
+

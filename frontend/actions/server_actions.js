@@ -23,7 +23,7 @@ const receiveServer = payload => {
 const removeServer = serverId => {
   return {
     type: REMOVE_SERVER,
-    serverId
+     serverId
   }
 }
 

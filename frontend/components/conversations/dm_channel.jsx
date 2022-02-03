@@ -47,19 +47,23 @@ class DMChannel extends React.Component {
     this.setState({ body: '' });
   }
 
+  formatDate(date) {
+    console.log(date, typeof date)
+    let formatDate = [date.slice(5, 7), date.slice(8, 10), date.slice(0, 4)]
+    console.log(formatDate)
+    return formatDate.join('/')
+  }
+
   render() {
     if (!this.props.conversationMessages) return null;
     return (
       <div id="dm-channel">
         <ul id="dm-list">
-          <li>
-            <div>This is the start of your conversation with BLAH</div>
-          </li>
           {this.props.conversationMessages.map(message => (
             <li className="message" key={message.id}>
               <img className="dm-pfp" src={message.pfp} alt="" />
               <div className="dm-info">
-                <div>{message.username} <span>{message.created_at}</span></div>
+                <div>{message.username} <span>{this.formatDate(message.created_at)}</span></div>
                 <div>{message.body}</div>
               </div>
                 <div className="message-options">
@@ -72,7 +76,7 @@ class DMChannel extends React.Component {
           ))}
         </ul>
         <div id="chat-input">
-          <form id="message-input" onSubmit={this.handleSubmit}>
+          <form id="dm-input" onSubmit={this.handleSubmit}>
             <i className="fas fa-plus-circle"></i>
             <input type="text" onChange={this.update('body')} value={this.state.body} />
           </form>

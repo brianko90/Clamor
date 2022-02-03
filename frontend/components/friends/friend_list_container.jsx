@@ -6,7 +6,7 @@ import { getUserFriends } from '../../actions/friend_actions';
 const mapStateToProps = state => {
   return {
     currentUserId: state.session.id,
-    // friends: Object.values(state.entities.friends),
+    friends: Object.values(state.entities.friends),
     pending: Object.values(state.entities.incoming).concat(Object.values(state.entities.outgoing))
   }
 }

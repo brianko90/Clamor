@@ -13,9 +13,6 @@ const usersReducer = (state = {}, action) => {
       return { [action.payload.user.id]: action.payload.user };
     case CURRENT_USER_FRIENDS:
       return { [action.payload.user.id]: action.payload.user };
-    // case RECEIVE_NEW_SERVER:
-    //   nextState["servers"].push(action.payload.server)
-    //   return { [action.payload.user.id]: action.payload.user };
     default:
       return state;
   }

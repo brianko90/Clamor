@@ -12,6 +12,7 @@
   padding-left: 10px;
   color: white;
   width: 100%;
+  font-family: 'Mukta', sans-serif;
 }
 
 .dm-info > div:first-child > span {
@@ -39,23 +40,37 @@
   overflow-x: hidden;
 }
 
-
-
 #channel-container {
-  /* position: fixed; */
   margin-left: 270px;
 }
 
 #dm-index {
-  /* position: fixed; */
   margin-left: 70px;
   z-index: 2;
 } 
+
+#friend-header {
+  display: flex;
+}
+
+#friend-header > h6 {
+  font-family: 'Mukta', sans-serif;
+  margin-left: 20px;
+  margin-top: 10px;
+}
+
+.dm-info > div:first-child > span {
+  color: #72767d;
+}
 
 /* ------------------ DM List CSS */
 
 /* box-sizing: content-box; */
 
+#dm-list-items {
+  font-family: 'Mukta', sans-serif;
+  color: #6d6f73;
+}
 .dm-list-pfp {
   width: 30px;
   height: 30px;
@@ -75,12 +90,92 @@
 .dm-list-item {
   padding-top: 5px;
   padding-bottom: 5px;
-  width: 200px;
-  padding-left: 10px;
-  padding-right: 20px;
+  padding-left: 5px;
+  padding-right: 15px;
+  margin-left: 5px;
+  margin-right: 5px;
+  border-radius: 4px;
 }
 
 .dm-list-item:hover {
-  background-color: gray;
+  background-color: #393c43;
 }
 
+#dm-list-items > li:first-child > a{
+  padding-left: 5px;
+  color: white;
+}
+
+#dm-list-friendtab {
+  padding-left: 13px;
+  color: white;
+}
+
+#dm-list-items > div {
+  padding-left: 12px;
+  font-size: 13px;
+  font-weight: 600;
+  padding-top:10px;
+  padding-bottom: 5px;
+}
+
+.selected-dm {
+  background-color: #393c43;
+  border-radius: 4px;
+}
+
+.dm-friend {
+  padding-top: 15px;
+  padding-bottom: 15px;
+  padding-left: 5px;
+  padding-right: 15px;
+  margin-left: 5px;
+  margin-right: 5px;
+  border-radius: 4px;
+  color: white;
+}
+
+.dm-friend:hover {
+  background-color: #393c43;
+  border-radius: 4px;
+  color: white;
+}
+
+#dm-input {
+  padding: 8px;
+  background-color: #40444b;
+  border: none;
+  border-radius: 5px;
+  color: #dbdcdd;
+  width: calc(100vw - 350px);
+  padding-left: 30px;
+  font-weight: 100;
+  font-size: 13px;
+}
+
+
+#dm-input {
+  display: flex;
+  align-items: center;
+}
+
+#dm-input > i {
+  position: fixed;
+  color: #b9bbbe;
+  border-radius: 50%;
+}
+
+#dm-input > i:hover {
+  color: white;
+}
+
+#dm-input > input {
+  background-color: #40444b;
+  border: none;
+  padding-left: 20px;
+  color: white;
+}
+
+#dm-input > input:focus {
+  outline: none;
+}

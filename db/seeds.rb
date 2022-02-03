@@ -54,6 +54,11 @@ server5.serverpic.attach(io: file, filename: 'valk.png')
 server6 = Server.create({name: 'Movies!', owner_id: user2.id, public: true})
 file = open('https://clamor-aa-dev.s3.us-west-1.amazonaws.com/popcorn.png')
 server6.serverpic.attach(io: file, filename: 'popcorn.png')
+server7 = Server.create({name: 'Very Private', owner_id: user1.id, public: private})
+file = open('https://clamor-aa-dev.s3.us-west-1.amazonaws.com/popcorn.png')
+server6.serverpic.attach(io: file, filename: 'popcorn.png')
+
+
 
 member1 = ServerMembership.create({user_id: user1.id, server_id: server1.id})
 member2 = ServerMembership.create({user_id: user5.id, server_id: server2.id})

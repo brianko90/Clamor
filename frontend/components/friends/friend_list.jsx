@@ -4,9 +4,6 @@ class FriendList extends React.Component {
   constructor(props) {
     super(props)
     this.handleDelete = this.handleDelete.bind(this);
-    this.state = {
-      friends: this.props.friends
-    }
   }
 
   componentDidMount() {
@@ -20,11 +17,21 @@ class FriendList extends React.Component {
   }
 
   render() {
+    let friends;
+    let header;
+    if (this.props.pendingStatus) {
+      header = `PENDING - ${this.props.pending.length}`;
+      friends = this.props.pending;
+    } else {
+      header = `ALL FRIENDS - ${this.props.friends.length}`;
+      friends = this.props.friends;
+    }
+
     return (
       <div id="friend">
         <ul id="friend-list">
-          <li className="friend-item">{this.props.pendingStatus ? `PENDING - ${this.props.friends.length}` : `ALL FRIENDS - ${this.props.friends.length}`}</li>
-          {this.props.friends.map(friend => 
+          <li className="friend-item">{header}</li>
+          {friends.map(friend => 
             <li className="friend-item" key={friend.id}>
               <div>
                 <img src={friend.pfp} />

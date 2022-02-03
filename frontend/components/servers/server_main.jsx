@@ -128,6 +128,7 @@ class ServerMain extends React.Component {
         <div id="updateModal" className="modal">
           <div className="server-modal-content">
             <div className="server-header">Change server name</div>
+            <p>You can customize your server by changing it's name</p>
             <form>
               <input type="text" value={this.state.name} onChange={this.update("name")}/>
               <div className="server-modal-buttons">

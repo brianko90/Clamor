@@ -34,12 +34,11 @@ class FriendMain extends React.Component {
     }
     let mainComponent;
     if(!this.props.match.params.conversationId) {
-      mainComponent = <FriendListContainer pendingStatus={this.state.pending} deleteFriend={this.props.deleteFriend} friends={this.props.friends} pending={this.props.incoming.concat(this.props.outgoing)} />;
+      mainComponent = <FriendListContainer pendingStatus={this.state.pending} deleteFriend={this.props.deleteFriend} />;
     } else {
       mainComponent = <DMChannelContainer match={this.props.match} cableApp={this.props.cableApp} />;
     }
     return (
-      // chosenChannel = { this.props.chosenChannel } chosenServer = { this.props.chosenServer }
       <div id="server">
         <div id="server-list"> 
           <ServerListContainer match={this.props.match} openModal={this.props.openModal} closeModal={this.props.closeModal}/>
@@ -49,7 +48,7 @@ class FriendMain extends React.Component {
             <input type="text" placeholder="Find or start a conversation" value="" readOnly/>
           </div>
           <div id="dm-list-container">
-            <DMList user={this.props.user} fetchConversation={this.props.fetchConversation} conversations={this.props.conversations}/>
+            <DMList match={this.props.match} user={this.props.user} fetchConversation={this.props.fetchConversation} conversations={this.props.conversations}/>
           </div>
           <div id="profile">
             <UserProfile user={this.props.user} openModal={this.props.openModal} closeModal={this.props.closeModal} />
@@ -60,7 +59,7 @@ class FriendMain extends React.Component {
 
             {
               this.props.match.params.conversationId && 
-              <div>
+              <div id="direct-message-header">
                 <h6><i className="fas fa-user-friends"></i> <span>Direct Message</span></h6>
               </div>
             }

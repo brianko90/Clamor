@@ -24,7 +24,6 @@ class Api::ServersController < ApplicationController
   end
 
   def update
-    debugger 
     @server = Server.find_by(id: params[:id])
     if @server.update(server_params)
       render :show

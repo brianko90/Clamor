@@ -54,31 +54,22 @@ class MessageChannel extends React.Component {
     this.setState({ body: '' , channel_id: this.props.match.params.channelId});
   }
 
-  // 2022-01-31T03:37:34.258Z
   formatDate(date) {
     console.log(date, typeof date)
-    // let messageDate = date.toString().slice(16,21);
-    let messageDate;
-    console.log(messageDate)
-    return messageDate
+    let formatDate = [date.slice(5,7), date.slice(8,10), date.slice(0,4)]
+    console.log(formatDate)
+    return formatDate.join('/')
   }
 
   render() {
-    // if(!this.props.channel) {
-     
-    //   return null;
-    // }
     return (
        <div id="channel-container">
           <ul id="message-list">
-            <li>
-              <div>This is the start of the conversation with BLAH</div>
-            </li>
             {this.props.messages.map((message) => (
               <li className="message" key={message.id}>
                 <img src={message.pfp} />
                 <div className="message-container">
-                  <div className="message-username">{message.username} <span>{message.created_at}</span></div>
+                  <div className="message-username">{message.username} <span>{this.formatDate(message.created_at)}</span></div>
                   <div className="message-body">{message.body}</div>
                 </div>
                 <div className="message-options">
