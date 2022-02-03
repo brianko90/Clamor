@@ -5,8 +5,6 @@ import { HashRouter } from 'react-router-dom';
 import actionCable from 'actioncable';
 
 const CableApp = {};
-
-const cableApp = {};
 if (!process.env.NODE_ENV || process.env.NODE_ENV === "development") {
   cableApp.cable = actionCable.createConsumer('ws://localhost:3000/cable')
 } else {
