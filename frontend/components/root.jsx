@@ -8,7 +8,7 @@ const CableApp = {};
 if (!process.env.NODE_ENV || process.env.NODE_ENV === "development") {
   CableApp.cable = actionCable.createConsumer('ws://localhost:3000/cable')
 } else {
-  CableApp.cable = actionCable.createConsumer('wss://clamor.herokuapp.com/cable')
+  CableApp.cable = actionCable.createConsumer('wss://clamorapp.herokuapp.com/cable')
 };
 
 
