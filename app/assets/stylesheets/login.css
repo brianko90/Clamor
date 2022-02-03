@@ -31,17 +31,18 @@ a {
 
 #login-form {
   border: 1px solid rgb(24, 23, 23);
+  height: 295px;
   display: flex;
-  width: 30%;
+  width: 400px;
   flex-direction: column;
   flex-wrap: wrap;
-  margin-top: 10%;
-  margin-left: 33%;
+  margin: auto;
   background-color: rgb(51, 49, 49);
   border-radius: 5px;
   color: white;
-  z-index: 5;
-  position: absolute;
+  position: relative;
+  top:170px;
+  right: 50px;
 }
 
 #login-form h2 {

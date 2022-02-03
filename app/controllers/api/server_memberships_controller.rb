@@ -7,10 +7,12 @@ class Api::ServerMembershipsController < ApplicationController
   end  
 
   def destroy 
-    @membership = ServerMembership.find_by(server_membership_params)
+    debugger
+    @membership = ServerMembership.find_by(user_id: server_membership_params[:user_id], server_id: server_membership_params[:server_id])
     @membership.destroy
+    @server = Server.find_by(id: server_membership_params[:server_id])
     @user = User.find_by(id: current_user.id)
-    
+    render 'api/servers/show'
   end
 
   private

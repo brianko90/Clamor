@@ -12,7 +12,8 @@
 #signup-form {
   border: 1px solid rgb(24, 23, 23);
   display: flex;
-  width: 30%;
+  width: 400px;
+  height: 340px;
   flex-direction: column;
   flex-wrap: wrap;
   margin-top: 10%;
@@ -65,3 +66,14 @@
   margin-bottom: 15px;
 }
  
+.email-error {
+  color: #ed4245;
+}
+
+.signup-error {
+  color: #ed4245;
+}
+
+.login-error {
+  color: #ed4245;
+}

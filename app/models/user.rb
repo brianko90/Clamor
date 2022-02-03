@@ -93,7 +93,7 @@ class User < ApplicationRecord
     dependent: :destroy
 
   validates :username, :password_digest, presence: true
-  validates :username, uniqueness: true
+  validates :username, :email, uniqueness: true
   validates :password, length: {minimum: 4}, allow_nil: true
 
   after_initialize :ensure_session_token, :ensure_pfp, :ensure_tag

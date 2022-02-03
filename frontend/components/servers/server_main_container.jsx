@@ -1,11 +1,12 @@
 import {connect} from 'react-redux';
 import ServerMain from './server_main';
 import {fetchServer, deleteServer, updateServer} from '../../actions/server_actions';
-import {fetchChannel} from '../../actions/channel_actions';
+import { fetchChannel } from '../../actions/channel_actions';
 import { getUserInfo } from '../../actions/user_actions';
-import {openModal, closeModal} from '../../actions/modal_actions'; 
+import { openModal, closeModal } from '../../actions/modal_actions'; 
 import { fetchMessages, createMessage } from '../../actions/message_channel_actions';
 import { receiveMessage } from '../../actions/message_channel_actions';
+import { destroyServerMembership } from '../../actions/server_membership_actions';
 
 const mapStateToProps = (state, ownProps) => {
   return {
@@ -18,7 +19,6 @@ const mapStateToProps = (state, ownProps) => {
     chosenChannel: state.entities.serverChannels[ownProps.match.params.channelId],
     messages: Object.values(state.entities.channelMessages),
     cableApp: ownProps.cableApp
-
   }
 }
 
@@ -33,7 +33,8 @@ const mapDispatchToProps = dispatch => {
     createMessage: (channelId, message) => dispatch(createMessage(channelId, message)),
     receiveMessage: (message) => dispatch(receiveMessage(message)),
     deleteServer: (serverId) => dispatch(deleteServer(serverId)),
-    updateServer: (server) => dispatch(updateServer(server))
+    updateServer: (server) => dispatch(updateServer(server)),
+    destroyServerMembership: (membership) => dispatch(destroyServerMembership(membership))
   }
 }
 

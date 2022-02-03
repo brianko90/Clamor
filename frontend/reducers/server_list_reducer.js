@@ -1,12 +1,15 @@
 import { RECEIVE_CURRENT_USER } from "../actions/session_actions";
 import { RECEIVE_SERVER, RECEIVE_NEW_SERVER, REMOVE_SERVER } from "../actions/server_actions";
+import { REMOVE_SERVER_MEMBERSHIP } from "../actions/server_actions";
+
 const serversListReducer = (state = {}, action) => {
   Object.freeze(state);
   let nextState = Object.assign({}, state);
   switch(action.type) {
     case RECEIVE_CURRENT_USER:
       if (action.payload.servers) {
-        return Object.assign(nextState, action.payload.servers);
+        return action.payload.servers
+        // return Object.assign(nextState, action.payload.servers);
       } else {
         return {};
       }
@@ -17,9 +20,11 @@ const serversListReducer = (state = {}, action) => {
       nextState[action.payload.server.id] = action.payload.server; 
       return nextState;
     case REMOVE_SERVER:
-      debugger
       delete nextState[action.serverId]
       return nextState
+    // case REMOVE_SERVER_MEMBERSHIP:
+    //   delete nextState[action.server.id]
+    //   return nextState
     default:
       return state;
   }

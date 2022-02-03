@@ -2,9 +2,9 @@
   background-color: white;
   color: black;
   margin: 20px;
-  width: 350px;
-  height: 350px;
-  padding-left: 30px;
+  width: 320px;
+  height: 312px;
+  padding-left: 20px;
   padding-right: 30px;
   padding-bottom: 30px;
   padding-top: 15px;
@@ -32,16 +32,17 @@
 #public-options {
   display: flex;
   flex-direction: column;
+  margin-top: 20px;
 }
 
 .public-button {
   display: flex;
   justify-content: left;
-  width: 350px;
+  width: 330px;
   height: 60px;
   font-size: 12px;
   text-align: left;
-  padding-left: 20px;
+  padding-left: 10px;
   align-items: center;
   border: 1px solid gray;
   background-color: white;
@@ -51,7 +52,7 @@
 }
 
 #server-form-close {
-  margin-left: 340px;
+  margin-left: 310px;
   height: 20px;
   width: 20px;
   display: flex;
@@ -67,15 +68,15 @@
 }
 
 .public-button:first-child > i {
-  padding-left: 185px;
+  padding-left: 124px;
 }
 
 .public-button:last-child > i {
-  padding-left: 176px;
+  padding-left: 116px;
 }
 
 .public-button:hover {
-  background-color: grey;
+  background-color: rgb(180, 175, 175);
   cursor: pointer;
 }
 
@@ -105,7 +106,7 @@
   display: flex;
   justify-content: end;
   align-items: center;
-  margin-top: 20px;
+  margin-top: 22px;
   margin-bottom: 20px;
 }
 
@@ -126,8 +127,27 @@
 }
 
 #server-name-input > input {
-  width: 342px;
+  width: 324px;
   height: 22px;
   border-radius: 3px;
   border: 1px solid gray;
+}
+
+#server-name-input > #server-error {
+  color: #ed4245;
+}
+
+.server-public-error {
+  color: #ed4245;
+  size: 12px;
+  margin-bottom: 5px;
+}
+
+#create-server-button {
+  padding: 8px;
+  font-size: 11px;
+  background-color: #5865f2;
+  color: white;
+  border: none;
+  border-radius: 5px;
 }

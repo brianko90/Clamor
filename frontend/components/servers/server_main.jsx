@@ -12,6 +12,7 @@ class ServerMain extends React.Component {
     this.state = { name: '', public: '', owner_id: '' };
     this.deleteServer = this.deleteServer.bind(this);
     this.updateServer = this.updateServer.bind(this);
+    this.leaveServer = this.leaveServer.bind(this);
   }
 
   componentDidMount() {
@@ -69,7 +70,9 @@ class ServerMain extends React.Component {
   leaveServer(e) {
     e.preventDefault();
     this.leaveModalClose();
-    // this.props.
+    this.props.destroyServerMembership({user_id: this.props.currentUserId, server_id: this.props.chosenServer.id})
+      .then(() => this.props.getUserInfo(this.props.currentUserId))
+      .then(() => this.props.history.push('/channels/@me'))
   }
 
   update(field) {

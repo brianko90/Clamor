@@ -31,8 +31,8 @@ export const createServerMembership = membership => dispatch => {
       error => dispatch(receiveServerMembershipErrors(error.responseJSON)))
 }
 
-export const destroyServerMembership = membershipId => dispatch => {
-  return ServerMembershipApiUtil.destroyServerMembership(membershipId)
-    .then(() => dispatch(removeServerMembership(membershipId)),
+export const destroyServerMembership = membership => dispatch => {
+  return ServerMembershipApiUtil.destroyServerMembership(membership)
+    .then(() => dispatch(removeServerMembership(membership)),
       error => dispatch(receiveServerMembershipErrors(error.responseJSON)))
 }
