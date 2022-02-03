@@ -6,9 +6,9 @@ import actionCable from 'actioncable';
 
 const CableApp = {};
 if (!process.env.NODE_ENV || process.env.NODE_ENV === "development") {
-  cableApp.cable = actionCable.createConsumer('ws://localhost:3000/cable')
+  CableApp.cable = actionCable.createConsumer('ws://localhost:3000/cable')
 } else {
-  cableApp.cable = actionCable.createConsumer('wss://clamor.herokuapp.com/cable')
+  CableApp.cable = actionCable.createConsumer('wss://clamor.herokuapp.com/cable')
 };
 
 
