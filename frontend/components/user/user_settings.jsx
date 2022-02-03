@@ -62,6 +62,18 @@ class UserSettings extends React.Component {
       if(!this.props.user) {
         return null;
       }
+
+      // const demo = (this.props.user.id !== 1) ? (
+        // <form>
+        //   <button id="delete-account" onClick={this.handleDelete}>Delete Account</button>
+        // </form>
+      // ) : (
+      //   <form>
+      //     <button id="delete-account">Delete Account</button>
+      //     <div id="demo-delete">Demo account can not delete</div>
+      //   </form>
+      // )
+
       return (
         <div id="modal">
           <div id="modal-left">
