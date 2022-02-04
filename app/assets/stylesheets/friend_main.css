@@ -281,3 +281,11 @@
 #direct-message-header > h6 > span {
   padding-left: 8px;
 }
+
+#channel-index {
+  z-index: 1;
+}
+
+#user-profile {
+  z-index: 1000000;
+}

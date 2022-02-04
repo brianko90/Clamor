@@ -35,7 +35,8 @@ class Server < ApplicationRecord
   foreign_key: :server_id,
   class_name: "Channel"
 
-  validates :name, :public, presence: true
+  validates :name, presence: true
+  validates :public, inclusion: { in: [true, false] }
   after_initialize :ensure_server_pic
 
   def ensure_server_pic

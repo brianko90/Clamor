@@ -96,3 +96,12 @@
   font-size: 10px;
   color: #b0b3b6;
 }
+
+#demo-delete {
+  padding-top: 10px;
+  font-size: 12px;
+}
+
+#demo-username {
+  font-size: 12;
+}

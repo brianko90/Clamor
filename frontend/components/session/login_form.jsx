@@ -25,7 +25,7 @@ class LoginForm extends React.Component {
 
   loginDemo(e) {
     e.preventDefault();
-    this.props.login({ username: 'brian', password: "1234" })
+    this.props.login({ username: 'demo', password: "1234" })
   }
 
   render() {

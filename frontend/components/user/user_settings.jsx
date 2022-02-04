@@ -63,16 +63,45 @@ class UserSettings extends React.Component {
         return null;
       }
 
-      // const demo = (this.props.user.id !== 1) ? (
-        // <form>
-        //   <button id="delete-account" onClick={this.handleDelete}>Delete Account</button>
-        // </form>
-      // ) : (
-      //   <form>
-      //     <button id="delete-account">Delete Account</button>
-      //     <div id="demo-delete">Demo account can not delete</div>
-      //   </form>
-      // )
+      const demo = (this.props.user.id !== 1) ? (
+        <form>
+          <button id="delete-account" onClick={this.handleDelete}>Delete Account</button>
+        </form>
+      ) : (
+        <form>
+          <button id="delete-account">Delete Account</button>
+          <div id="demo-delete">Demo account cannot delete</div>
+        </form>
+      )
+
+      const username = (this.props.user.id !== 1) ? (
+        <form className="username-form" onSubmit={this.handleUpdate}>
+          <label className="username-label">USERNAME
+            <input className="username-input" type="text" value={this.state.username} onChange={this.update('username')} />
+          </label>
+          <label className="username-label">PASSWORD
+            <input className="username-input" type="password" onChange={this.update('password')} />
+          </label>
+          <div className="username-buttons">
+            <div onClick={this.modalCloseClick}>Cancel</div>
+            <button>Done</button>
+          </div>
+        </form>
+      ) : (
+          <form className="username-form">
+            <label className="username-label">USERNAME
+              <input className="username-input" type="text" value={this.state.username} onChange={this.update('username')} />
+            </label>
+            <label className="username-label">PASSWORD
+              <input className="username-input" type="password" onChange={this.update('password')} />
+            </label>
+            <div id="demo-username">Demo account cannot edit username</div>
+            <div className="username-buttons">
+              <div onClick={this.modalCloseClick}>Cancel</div>
+              <button>Done</button>
+            </div>
+          </form>
+      )
 
       return (
         <div id="modal">
@@ -112,18 +141,7 @@ class UserSettings extends React.Component {
                           <span className="close" onClick={this.modalCloseClick} >&times;</span>
                           <h2>Change your username</h2>
                           <div>Enter a new username and your existing password.</div>
-                          <form className="username-form" onSubmit={this.handleUpdate}>
-                            <label className="username-label">USERNAME
-                              <input className="username-input" type="text" value={this.state.username} onChange={this.update('username')}/>
-                            </label>
-                            <label className="username-label">CURRENT PASSWORD
-                              <input className="username-input" type="password" value={this.state.password} onChange={this.update('password')} />
-                            </label>
-                            <div className="username-buttons">
-                              <div onClick={this.modalCloseClick}>Cancel</div>
-                              <button>Done</button>
-                            </div>
-                          </form>
+                          {username}
                         </div>
                       </div>
                     </div>
@@ -157,9 +175,7 @@ class UserSettings extends React.Component {
                   }
                 </div>
               </div>
-              <form>
-                <button id="delete-account" onClick={this.handleDelete}>Delete Account</button>
-              </form>
+              {demo}
             </div>
           </div>
         </div>
