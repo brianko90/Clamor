@@ -26,12 +26,15 @@
 
 #server-name:hover {
   background-color:#444548;
+  cursor: pointer;
 }
 
 #server-name > h6 {
   padding-top: 14px;
   padding-left: 16px;
 }
+
+#server-name
 
 #channel-list-container {
   margin-top: 40px;

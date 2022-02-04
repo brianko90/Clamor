@@ -71,6 +71,7 @@
 
 .message-tools i:hover {
   background-color: #5d616882;
+  cursor: pointer;
 }
 
 .message-tools {
@@ -135,4 +136,5 @@
 
 #message-input > i:hover {
   color: white;
+  cursor: pointer;
 }
