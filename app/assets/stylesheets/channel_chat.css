@@ -4,6 +4,9 @@
   width: calc(100vw - 458px);
   font-family: 'Mukta', sans-serif;
   height: calc(100vh - 105px);
+  padding-right: 20px;
+  overflow-y: scroll;
+  overflow-x: hidden;
 }
 
 .message {
@@ -111,11 +114,6 @@
 
 #message-input > input:focus {
   outline: none;
-}
-
-#channel-container {
-  overflow-y: scroll;
-  overflow-x: hidden;
 }
 
 .message-username > span {

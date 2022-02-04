@@ -30,17 +30,19 @@ class MessageChannel extends React.Component {
     this.scrollToBottom();
   }
 
-  componentDidUpdate() {
-    this.props.cableApp.cable.subscriptions.create({
-      channel: 'ChannelsChannel',
-      id: this.props.match.params.channelId
-    },
+  componentDidUpdate(prevProps) {
+    if (this.props.match.params.channelId !== prevProps.match.params.channelId) {
+      this.props.cableApp.cable.subscriptions.create({
+        channel: 'ChannelsChannel',
+        id: this.props.match.params.channelId
+      },
       {
         received: (msg) => {
           this.props.receiveMessage(msg)
         }
       })
-
+    }
+  
     this.scrollToBottom();
   }
 

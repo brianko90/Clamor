@@ -100,6 +100,7 @@ member26 = ServerMembership.create({user_id: user3.id, server_id: server2.id})
 member27 = ServerMembership.create({user_id: user3.id, server_id: server6.id})
 member28 = ServerMembership.create({user_id: user3.id, server_id: server2.id})
 
+member29 = ServerMembership.create({user_id: user10.id, server_id: server2.id})
 
 friend1 = Friendship.create({user_id: user1.id, friend_id: user2.id, status: 3})
 friend2 = Friendship.create({user_id: user1.id, friend_id: user3.id, status: 3})
@@ -128,6 +129,7 @@ friend21 = Friendship.create({user_id: user4.id, friend_id: demo.id, status: 3})
 friend22 = Friendship.create({user_id: user5.id, friend_id: demo.id, status: 3})
 friend23 = Friendship.create({user_id: user6.id, friend_id: demo.id, status: 3})
 friend24 = Friendship.create({user_id: user7.id, friend_id: demo.id, status: 3})
+friend25 = Friendship.create({user_id: user10.id, friend_id: demo.id, status: 3})
 
 channel1 = Channel.create({name: "General", server_id: server1.id})
 channel2 = Channel.create({name: "Homework", server_id: server1.id})
@@ -153,14 +155,12 @@ channel18 = Channel.create({name: "TV series", server_id: server6.id})
 channel18 = Channel.create({name: "Movies", server_id: server6.id})
 channel18 = Channel.create({name: "Recommendations", server_id: server6.id})
 
-
-
-user8 = User.create({username: 'Jimbo', email: 'jimbo@gmail.com', password: "1234", tag: "6782"})
+user11 = User.create({username: 'Jimbo', email: 'jimbo@gmail.com', password: "1234", tag: "6782"})
 file = open('https://clamor-aa-dev.s3.us-west-1.amazonaws.com/Pastel-Red.png')
-user8.pfp.attach(io: file, filename: 'discordblueicon.png')
-user9 = User.create({username: 'Earl', email: 'earl@gmail.com', password: "1234", tag: "8772"})
+user11.pfp.attach(io: file, filename: 'discordblueicon.png')
+user12 = User.create({username: 'Earl', email: 'earl@gmail.com', password: "1234", tag: "8772"})
 file = open('https://clamor-aa-dev.s3.us-west-1.amazonaws.com/Pastel-Yellow.png')
-user9.pfp.attach(io: file, filename: 'Pastel-Yellow.png')
+user12.pfp.attach(io: file, filename: 'Pastel-Yellow.png')
 
 incoming1 = Friendship.create({user_id: user1.id, friend_id: user8.id, status: 2})
 incoming2 = Friendship.create({user_id: user1.id, friend_id: user9.id, status: 2})
@@ -168,9 +168,9 @@ incoming3 = Friendship.create({user_id: demo.id, friend_id: user8.id, status: 2}
 incoming4 = Friendship.create({user_id: demo.id, friend_id: user9.id, status: 2})
 
 
-user10 = User.create({username: 'jane', email: 'jane@gmail.com', password: "1234", tag: "9999"})
+user13 = User.create({username: 'jane', email: 'jane@gmail.com', password: "1234", tag: "9999"})
 file = open('https://clamor-aa-dev.s3.us-west-1.amazonaws.com/Pastel-Violet.png')
-user10.pfp.attach(io: file, filename: 'Pastel-Violet.png')
+user13.pfp.attach(io: file, filename: 'Pastel-Violet.png')
 
 outgoing1 = Friendship.create({user_id: user1.id, friend_id: user10.id, status: 1})
 outgoing1 = Friendship.create({user_id: demo.id, friend_id: user10.id, status: 1})
@@ -180,11 +180,14 @@ message1 = Message.create({sender_id: user1.id, channel_id: channel1.id, body: "
 message2 = Message.create({sender_id: user2.id, channel_id: channel1.id, body: "hello"})
 message3 = Message.create({sender_id: user3.id, channel_id: channel1.id, body: "FSP time"})
 message4 = Message.create({sender_id: user4.id, channel_id: channel1.id, body: "lessgo"})
-message5 = Message.create({sender_id: user1.id, channel_id: channel3.id, body: "test"})
-message6 = Message.create({sender_id: user1.id, channel_id: channel5.id, body: "testing"})
+message5 = Message.create({sender_id: user1.id, channel_id: channel3.id, body: "anyone want to study tonight?"})
+message6 = Message.create({sender_id: user1.id, channel_id: channel5.id, body: "hey everyone"})
 message7 = Message.create({sender_id: user1.id, channel_id: channel6.id, body: "hello"})
 message8 = Message.create({sender_id: user1.id, channel_id: channel9.id, body: "lets watch something"})
 message9 = Message.create({sender_id: user2.id, channel_id: channel9.id, body: "sure what are you in the mood for?"})
+message10 = Message.create({sender_id: user10.id, channel_id: channel5.id, body: "bark bark"})
+message11 = Message.create({sender_id: user1.id, channel_id: channel5.id, body: "lets watch anime!!"})
+message12 = Message.create({sender_id: user5.id, channel_id: channel5.id, body: "mushoku tensei is sooo goood!"})
 
 convo1 = Conversation.create({owner_id: user1.id})
 convoMembership1 = ConversationMembership.create({conversation_id: convo1.id, user_id: user1.id})
