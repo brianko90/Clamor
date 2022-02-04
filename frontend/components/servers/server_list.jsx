@@ -53,7 +53,6 @@ class ServerList extends React.Component {
   }
 
   render() {
-    console.log(this.props.servers)
     return (
       <div id="server-list-container">
         <div id="main-logo">

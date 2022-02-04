@@ -3,7 +3,6 @@ import React from 'react';
 class MessageChannel extends React.Component {
   constructor(props) {
     super(props)
-    console.log("CHANNEL ID", this.props.match.params.channelId)
     this.state = { body: '', channel_id: this.props.match.params.channelId }
 
     this.handleSubmit = this.handleSubmit.bind(this);

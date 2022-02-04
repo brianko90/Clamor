@@ -162,18 +162,18 @@ user12 = User.create({username: 'Earl', email: 'earl@gmail.com', password: "1234
 file = open('https://clamor-aa-dev.s3.us-west-1.amazonaws.com/Pastel-Yellow.png')
 user12.pfp.attach(io: file, filename: 'Pastel-Yellow.png')
 
-incoming1 = Friendship.create({user_id: user1.id, friend_id: user8.id, status: 2})
-incoming2 = Friendship.create({user_id: user1.id, friend_id: user9.id, status: 2})
-incoming3 = Friendship.create({user_id: demo.id, friend_id: user8.id, status: 2})
-incoming4 = Friendship.create({user_id: demo.id, friend_id: user9.id, status: 2})
+incoming1 = Friendship.create({user_id: user1.id, friend_id: user11.id, status: 2})
+incoming2 = Friendship.create({user_id: user1.id, friend_id: user12.id, status: 2})
+incoming3 = Friendship.create({user_id: demo.id, friend_id: user11.id, status: 2})
+incoming4 = Friendship.create({user_id: demo.id, friend_id: user12.id, status: 2})
 
 
 user13 = User.create({username: 'jane', email: 'jane@gmail.com', password: "1234", tag: "9999"})
 file = open('https://clamor-aa-dev.s3.us-west-1.amazonaws.com/Pastel-Violet.png')
 user13.pfp.attach(io: file, filename: 'Pastel-Violet.png')
 
-outgoing1 = Friendship.create({user_id: user1.id, friend_id: user10.id, status: 1})
-outgoing1 = Friendship.create({user_id: demo.id, friend_id: user10.id, status: 1})
+outgoing1 = Friendship.create({user_id: user1.id, friend_id: user13.id, status: 1})
+outgoing1 = Friendship.create({user_id: demo.id, friend_id: user13.id, status: 1})
 
 
 message1 = Message.create({sender_id: user1.id, channel_id: channel1.id, body: "hey everyone!"})
@@ -216,8 +216,8 @@ convo4 = Conversation.create({owner_id: demo.id})
 convoMembership8 = ConversationMembership.create({conversation_id: convo4.id, user_id: demo.id})
 convoMembership9 = ConversationMembership.create({conversation_id: convo4.id, user_id: user1.id})
 
-dm8 = DirectMessage.create({user_id: user1.id, conversation_id: convo4.id, body: "hey whats up"})
-dm9 = DirectMessage.create({user_id: user2.id, conversation_id: convo4.id, body: "not much just chilling"})
+dm8 = DirectMessage.create({user_id: demo.id, conversation_id: convo4.id, body: "hey whats up"})
+dm9 = DirectMessage.create({user_id: user1.id, conversation_id: convo4.id, body: "not much just chilling"})
 
 convo5 = Conversation.create({owner_id: demo.id})
 convoMembership10 = ConversationMembership.create({conversation_id: convo5.id, user_id: demo.id})

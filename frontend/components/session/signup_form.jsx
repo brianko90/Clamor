@@ -46,7 +46,7 @@ class SignupForm extends React.Component {
         <input type="text" onChange={this.update('email')} value={this.state.email} />
       </label>
       )
-    console.log(this.props.errors)
+  
     return (
       <div id="signup-container">
         <img id="background" src={window.background} />

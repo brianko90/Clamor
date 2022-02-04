@@ -51,7 +51,6 @@ class DMChannel extends React.Component {
     if(!date) return "";
     
     let formatDate = [date.slice(5, 7), date.slice(8, 10), date.slice(0, 4)]
-    console.log(formatDate)
     return formatDate.join('/')
   }
 

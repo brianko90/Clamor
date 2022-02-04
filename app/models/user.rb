@@ -101,7 +101,6 @@ class User < ApplicationRecord
   attr_reader :password
 
   def ensure_pfp
-    # debugger
     self.pfp ||= attach_pfp
   end
 
