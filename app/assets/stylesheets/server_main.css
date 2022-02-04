@@ -155,6 +155,7 @@
 .member-item:hover {
   background-color:#393c43;
   border-radius: 10px;
+  cursor: pointer;
 }
 
 #members-list > li:first-child {

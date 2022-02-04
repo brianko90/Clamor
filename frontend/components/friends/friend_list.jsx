@@ -37,7 +37,6 @@ class FriendList extends React.Component {
                 <img src={friend.pfp} />
                 <div>{friend.username}</div>
               </div>
-              {/* {this.props.accepted ? (this.props.incoming.includes(friend) ? <div>Incoming Friend Request</div> : <div>Outgoing Friend Request</div>) : ""} */}
                 {this.props.pending.includes(friend) ? <div className="friend-buttons"><i onClick={(e) => this.handleDelete(e, friend.id)} className="tooltip fas fa-times"><span className="tooltiptext">Cancel</span></i></div> : <div className="friend-buttons">
                 <i className="tooltip fas fa-comment-alt"><span className="tooltiptext">Message</span></i>
                 <i onClick={(e) => this.handleDelete(e, friend.id)} className="tooltip fas fa-minus-circle"><span className="tooltiptext">Remove</span></i>

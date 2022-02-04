@@ -69,6 +69,7 @@
   color: white;
   border-radius: 5px;
   background-color: #36393e;
+  cursor: pointer;
 }
 
 #modal-right {
@@ -126,6 +127,7 @@
 
 #close-modal:hover {
   background-color: #585a5e7b;
+  cursor: pointer;
 }
 
 #modal-right-container {
