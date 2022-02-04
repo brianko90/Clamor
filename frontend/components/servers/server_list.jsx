@@ -15,10 +15,9 @@ class ServerList extends React.Component {
   handleSelect(e, serverId) {
     e.preventDefault();
     this.props.fetchServer(serverId)
-      .then(()=> {
+      .then(() => {
         let channelId;
-        let server = this.props.servers[serverId];
-
+        let server = this.props.servers[serverId - 1];
         if (!this.props.match.params.channelId) {
           channelId = server.channels[0];
         } else {
@@ -27,7 +26,7 @@ class ServerList extends React.Component {
 
         this.props.fetchMessages(channelId)
       })
-      
+
     let nonSelected = document.getElementsByClassName('server-list-item');
     nonSelected = Array.prototype.slice.call(nonSelected);
     nonSelected.map((ele) => {
