@@ -35,8 +35,8 @@
 #profile-cog {
   padding:5px;
   width: 24px;
-  position: relative;
-  left: 95px;
+  position: fixed;
+  margin-left: 162px;
   color: #b6b9bc;
 }
 

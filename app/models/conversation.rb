@@ -12,7 +12,8 @@ class Conversation < ApplicationRecord
 
   has_many :conversation_memberships,
     foreign_key: :conversation_id,
-    class_name: "ConversationMembership"
+    class_name: "ConversationMembership",
+    dependent: :destroy
 
   has_many :dms,
     foreign_key: :conversation_id,

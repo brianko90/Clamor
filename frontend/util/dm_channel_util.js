@@ -11,3 +11,18 @@ export const getUserConversations = userId => {
     url: `/api/users/${userId}`
   })
 }
+
+export const createConversation = conversation => {
+  return $.ajax({
+    method: "POST",
+    url: '/api/conversations',
+    data: {conversation}
+  })
+}
+
+export const destroyConversation = conversationId => {
+  return $.ajax({
+    method: "DELETE",
+    url: `/api/conversations/${conversationId}`
+  })
+}

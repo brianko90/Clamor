@@ -14,6 +14,6 @@ class Api::ConversationMembershipsController < ApplicationController
   private
 
   def conversation_membership_params
-    params.require(:conversation_membership).permit(:owner_id)
+    params.require(:conversation_membership).permit(:user_id, :conversation_id)
   end
 end

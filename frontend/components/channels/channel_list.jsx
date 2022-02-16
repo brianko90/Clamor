@@ -5,7 +5,15 @@ import {Link} from 'react-router-dom';
 class ChannelList extends React.Component {
   constructor(props) {
     super(props)
+    this.state = {name: '', server_id: this.props.match.params.serverId, id: '', errors: []}
+
     this.handleSelect = this.handleSelect.bind(this);
+    this.createChannel = this.createChannel.bind(this);
+    this.updateChannel = this.updateChannel.bind(this);
+    this.deleteChannel = this.deleteChannel.bind(this);
+    this.updateModalOpen = this.updateModalOpen.bind(this);
+    this.updateModalClose = this.updateModalClose.bind(this);
+    this.createModalClose = this.createModalClose.bind(this);
   }
 
   componentDidUpdate() {
@@ -24,8 +32,12 @@ class ChannelList extends React.Component {
     }
   }
 
-  handleSelect(e) {
+  handleSelect(e, channelId) {
     e.preventDefault();
+    this.props.fetchMessages(channelId)
+      .then(() => {
+        this.props.history.push(`/channels/${this.props.server.id}/${channelId}`)
+      })
     let nonSelected = document.getElementsByClassName('channel-item');
     nonSelected = Array.prototype.slice.call(nonSelected);
     nonSelected.map((ele) => {
@@ -36,17 +48,119 @@ class ChannelList extends React.Component {
     e.currentTarget.classList.add('selected-channel');
   }
 
+  checkOwner(channelId) {
+    let permission = [];
+    if(this.props.server.owner_id === this.props.currentUserId) {
+      permission.push(<li>TEXT CHANNELS <span onClick={this.createModalOpen} id="add-class">+</span></li>);
+      permission.push(<i className="fas fa-cog channel-cog" onClick={() => this.updateModalOpen(channelId)} />)
+    } else {
+      permission.push(<li>TEXT CHANNELS</li>);
+      permission.push('');
+    }
+    return permission;
+  }
+
+  updateModalOpen(channelId) {
+    let modal = document.getElementById('updateChannelModal');
+    modal.style.display = "flex";
+    this.setState({id: channelId})
+  }
+
+  updateModalClose() {
+    let modal = document.getElementById('updateChannelModal');
+    modal.style.display = "none";
+    this.setState({errors: []})
+  }
+
+  createModalOpen() {
+    let modal = document.getElementById('createChannelModal');
+    modal.style.display = "flex";
+  }
+
+  createModalClose() {
+    let modal = document.getElementById('createChannelModal');
+    modal.style.display = "none";
+    this.setState({errors: []})
+  }
+
+  createChannel(e) {
+    e.preventDefault();
+    this.props.createChannel(this.state).fail(()=> this.setState({errors: this.props.errors}))
+      .then(() => {
+        this.props.fetchServer(this.props.match.params.serverId);
+        this.createModalClose()
+      })
+  }
+
+  deleteChannel(e) {
+    e.preventDefault();
+    this.deleteModalClose();
+    this.props.deleteChannel(this.state.id)
+      .then(() => {
+        this.props.fetchServer(this.props.match.params.serverId)
+        this.updateModalClose();
+      })
+  }
+
+  updateChannel(e) {
+    e.preventDefault();
+    this.props.updateChannel(this.state).fail(() => this.setState({errors: this.props.errors}))
+      .then(() => {
+        this.props.fetchServer(this.props.match.params.serverId)
+        this.updateModalClose();
+        this.setState({name: ''})
+      })
+  }
+
+  update(field) {
+    return e => this.setState({[field]: e.currentTarget.value})
+  }
+
+  checkError() {
+    return this.state.errors.length > 0 ? (<div className="channel-error">Channel name cannot be blank</div>) : ("")
+  }
+
   render() {
 
     return(
       <div>
+        <div id="updateChannelModal" className="modal">
+          <div className="server-modal-content">
+            <div className="server-header">Update your channel</div>
+            <p>Change your channel name or delete channel</p>
+            <form>
+              <input type="text" value={this.state.name} onChange={this.update("name")}/>
+              {this.checkError()}
+              <div className="channel-modal-buttons">
+                <button className="delete-channel" onClick={this.deleteChannel}>Delete Channel</button>
+                <div onClick={this.updateModalClose}>Cancel</div>
+                <button className="channel-button" onClick={this.updateChannel}>Update Channel</button>
+              </div>
+            </form>
+          </div>
+        </div>
+        <div id="createChannelModal" className="modal">
+          <div className="server-modal-content">
+            <div className="server-header">Create a channel</div>
+            <p>Give your channel a name</p>
+            <form>
+              <input type="text" value={this.state.name} onChange={this.update("name")}/>
+              {this.checkError()}
+              <div className="channel-modal-buttons">
+                <div onClick={this.createModalClose}>Cancel</div>
+                <button className="channel-button" onClick={this.createChannel}>Create Channel</button>
+              </div>
+            </form>
+          </div>
+        </div>
         <ul id="channel-list">
-          <li>TEXT CHANNELS <span id="add-class">+</span></li>
+          {this.checkOwner()[0]}
           {this.props.channels.map(channel => 
-            <li onClick={this.handleSelect} id={channel.id} className="channel-item" key={channel.id}>
-              <Link onClick={() => this.props.fetchMessages(channel.id)} to={`/channels/${this.props.server.id}/${channel.id}`}>
+            <li onClick={(e) => this.handleSelect(e, channel.id)} key={channel.id} id={channel.id} className="channel-item">
+              {/* <li className="channel-item"> */}
                 <i className="fas fa-hashtag"></i>  {channel.name.toLowerCase()}
-              </Link>
+                {this.checkOwner(channel.id)[1]}
+              {/* </li> */}
             </li>)
           }
         </ul>

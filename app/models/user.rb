@@ -18,19 +18,6 @@
 #
 
 
-COLORS = [
-  "Pastel-Black.png",
-  "Pastel-Blue.png",
-  "Pastel-Orange.png",
-  "Pastel-Gray.png",
-  "Pastel-Green.png",
-  "Pastel-Indigo.png",
-  "Pastel-Pink.png",
-  "Pastel-Red.png",
-  "Pastel-Violet.png",
-  "Pastel-Yellow.png",
-]
-
 require 'open-uri'
 
 class User < ApplicationRecord
@@ -96,19 +83,19 @@ class User < ApplicationRecord
   validates :username, :email, uniqueness: true
   validates :password, length: {minimum: 4}, allow_nil: true
 
-  after_initialize :ensure_session_token, :ensure_pfp, :ensure_tag
+  after_initialize :ensure_session_token, :ensure_tag
+  # :attach_pfp
 
   attr_reader :password
 
-  def ensure_pfp
-    self.pfp ||= attach_pfp
-  end
+  # def ensure_pfp
+  #   self.pfp ||= attach_pfp
+  # end
 
-  def attach_pfp 
-    color = COLORS.sample 
-    file = open(`https://clamor-aa-dev.s3.us-west-1.amazonaws.com/Pastel-Blue.png`)
-    self.pfp.attach(io: file, filename: 'Pastel-Blue.png')
-  end
+  # def attach_pfp
+  #   file = open('https://clamor-aa-dev.s3.us-west-1.amazonaws.com/Pastel-Blue.png')
+  #   self.pfp.attach(io: file, filename: 'Pastel-Blue.png')
+  # end
 
   def ensure_tag
     self.tag ||= build_tag

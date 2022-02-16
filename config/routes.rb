@@ -7,7 +7,7 @@ Rails.application.routes.draw do
     resources :users, only:[:create, :show, :destroy, :update] do 
       resources :friendships, only:[:create, :destroy]
     end
-    resources :server_memberships, only:[:create]
+    resources :server_memberships, only:[:create, :destroy]
     resources :servers, only:[:index, :show, :create, :update, :destroy] do 
       resources :channels, only:[:create]
     end
@@ -19,8 +19,7 @@ Rails.application.routes.draw do
     resources :conversations, only:[:index, :show, :create, :update, :destroy] do
       resources :direct_messages, only:[:create]
     end
+    resources :conversation_memberships, only: [:create, :destroy]
     resources :direct_messages, only:[:index, :show, :update, :destroy]
-
-    delete 'server_memberships', to: 'server_memberships#destroy'
   end
 end

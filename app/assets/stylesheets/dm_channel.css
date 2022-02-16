@@ -174,8 +174,29 @@
   border: none;
   padding-left: 20px;
   color: white;
+  width: calc(100vw - 350px);
 }
 
 #dm-input > input:focus {
   outline: none;
+}
+
+.remove-dm {
+  position: fixed;
+  margin-left: 163px;
+  display: none;
+}
+
+.remove-dm > i {
+  color: #b8bbbe;
+  display: none;
+  z-index: 100;
+}
+
+.remove-dm > i:hover {
+  color: white;
+}
+
+.dm-list-item:hover > a > div > .remove-dm > i {
+  display: inline-block;
 }

@@ -1,4 +1,4 @@
-import {RECEIVE_CONVERSATION} from "../actions/dm_channel_actions.js";
+import {RECEIVE_CONVERSATION, REMOVE_CONVERSATION} from "../actions/dm_channel_actions.js";
 import { RECEIVE_CURRENT_USER } from "../actions/session_actions.js";
 
 const dmChannelsReducer = (state = {}, action) => {
@@ -6,6 +6,12 @@ const dmChannelsReducer = (state = {}, action) => {
   let nextState = Object.assign({}, state);
   switch(action.type) {
     case RECEIVE_CURRENT_USER:
+      if (action.payload.conversations) {
+        return action.payload.conversations
+      } else {
+        return {};
+      }
+    case REMOVE_CONVERSATION:
       if (action.payload.conversations) {
         return action.payload.conversations
       } else {

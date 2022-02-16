@@ -1,6 +1,13 @@
 json.user do 
   json.partial! "user", user: @user
-  json.pfp url_for(@user.pfp)
+  # json.pfp url_for(@user.pfp)
+  json.set! "serverMemberships" do 
+    @user.server_memberships.each do |membership|
+      json.set! membership.id do
+        json.extract! membership, :id, :user_id, :server_id
+      end
+    end
+  end
 end
 
 json.servers do 

@@ -6,7 +6,7 @@
   position: absolute;
   left: 0;
   top: 0;
-  font-family: 'whitneybook';
+  font-family: 'whitneybold';
 }
 
 #signup-form {
@@ -16,13 +16,13 @@
   height: 340px;
   flex-direction: column;
   flex-wrap: wrap;
-  margin-top: 10%;
-  margin-left: 33%;
   background-color: rgb(51, 49, 49);
   border-radius: 5px;
   color: white;
   z-index: 5;
-  position: absolute;
+  position: relative;
+  margin: auto;
+  top: 250px;
 }
 
 #signup-form h2 {

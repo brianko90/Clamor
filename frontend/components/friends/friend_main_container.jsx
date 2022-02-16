@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import FriendMain from './friend_main';
 import { getUserFriends, deleteFriend } from '../../actions/friend_actions';
 import {openModal, closeModal} from '../../actions/modal_actions'
-import { fetchConversation, getUserConversations } from '../../actions/dm_channel_actions';
+import { fetchConversation, getUserConversations, destroyConversation } from '../../actions/dm_channel_actions';
 import { fetchDMS, createDM } from '../../actions/direct_message_actions';
 
 
@@ -29,7 +29,8 @@ const mapDispatchToProps = dispatch => {
     fetchDMS: (conversationId) => dispatch(fetchDMS(conversationId)),
     getUserConversations: (userId) => dispatch(getUserConversations(userId)),
     fetchConversation: (conversationId) => dispatch(fetchConversation(conversationId)),
-    createDM: (dm) => dispatch(createDM(dm))
+    createDM: (dm) => dispatch(createDM(dm)),
+    destroyConversation: (conversationId) => dispatch(destroyConversation(conversationId))
   }
 }
 

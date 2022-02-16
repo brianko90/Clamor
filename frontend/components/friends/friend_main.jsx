@@ -11,12 +11,12 @@ class FriendMain extends React.Component {
     this.state = {pending: false}
   }
 
-  componentDidMount() {
-    this.props.getUserFriends(this.props.user.id)
-      .then(() => {
-        this.props.getUserConversations(this.props.user.id);
-      })
-  }
+  // componentDidMount() {
+  //   this.props.getUserFriends(this.props.user.id)
+  //     .then(() => {
+  //       this.props.getUserConversations(this.props.user.id);
+  //     })
+  // }
 
   handleSelect(e) {
     e.preventDefault();
@@ -48,7 +48,7 @@ class FriendMain extends React.Component {
             <input type="text" placeholder="Find or start a conversation" value="" readOnly/>
           </div>
           <div id="dm-list-container">
-            <DMList match={this.props.match} user={this.props.user} fetchConversation={this.props.fetchConversation} conversations={this.props.conversations}/>
+            <DMList match={this.props.match} destroyConversation={this.props.destroyConversation} user={this.props.user} fetchConversation={this.props.fetchConversation} conversations={this.props.conversations}/>
           </div>
           <div id="profile">
             <UserProfile user={this.props.user} openModal={this.props.openModal} closeModal={this.props.closeModal} />

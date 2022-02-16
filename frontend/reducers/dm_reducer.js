@@ -16,7 +16,11 @@ const conversationMessagesReducer = (state = {}, action) => {
         return {};
       }
     case RECEIVE_CONVERSATION:
-      return action.payload.conversationMessages
+      if (action.payload.conversationMessages) {
+        return action.payload.conversationMessages
+      } else {
+        return {};
+      }
     default:
       return state;
   }

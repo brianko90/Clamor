@@ -1,11 +1,13 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
+import {withRouter} from 'react-router-dom';
 
 class DMList extends React.Component {
   constructor(props) {
     super(props);
 
-    this.handleSelect = this.handleSelect.bind(this)
+    this.handleSelect = this.handleSelect.bind(this);
+    this.deleteDm = this.deleteDm.bind(this);
   }
 
   createName(conversation) {
@@ -71,7 +73,13 @@ class DMList extends React.Component {
         }
       })
     } 
+  }
 
+  deleteDm(e, conversationId) {
+    e.preventDefault();
+    e.stopPropagation();
+    this.props.history.push('/channels/@me')
+    this.props.destroyConversation(conversationId)
   }
 
   render() {
@@ -82,20 +90,23 @@ class DMList extends React.Component {
         <ul id="dm-list-items">
           <li className="dm-friend dm-list-item" onClick={this.handleHighlight}><Link to="/channels/@me"><i className="fas fa-users"></i><span id="dm-list-friendtab">Friends</span></Link></li>
           <div id="dm-message-plus">DIRECT MESSAGES <span>+</span></div>
-          {this.props.conversations.map((conversation) => (
-            <li id={conversation.id} key={conversation.id} className="dm-list-item" onClick={(e) => this.handleSelect(e, conversation)}>
+          {this.props.conversations.map((conversation) => {
+            return <li id={conversation.id} key={conversation.id} className="dm-list-item" onClick={(e) => this.handleSelect(e, conversation)}>
               <Link to={`/channels/@me/${conversation.id}`}>
                 <div>
                   <img className="dm-list-pfp" src={this.getPfp(conversation)} />
                   <div className="dm-list-name">{this.createName(conversation)}</div>
+                  <div className="remove-dm">
+                    <i onClick={(e) => this.deleteDm(e, conversation.id)} className="tooltip fas fa-minus-circle"><span className="tooltiptext">Remove</span></i>
+                  </div>
                 </div>
               </Link>
             </li>
-          ))}
+        })}
         </ul>
       </div>
     )
   }
 }
 
-export default DMList      
+export default withRouter(DMList)     

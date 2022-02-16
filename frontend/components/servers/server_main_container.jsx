@@ -18,7 +18,8 @@ const mapStateToProps = (state, ownProps) => {
     channels: Object.values(state.entities.serverChannels),
     chosenChannel: state.entities.serverChannels[ownProps.match.params.channelId],
     messages: Object.values(state.entities.channelMessages),
-    cableApp: ownProps.cableApp
+    cableApp: ownProps.cableApp,
+    errors: state.errors.server
   }
 }
 
@@ -34,7 +35,7 @@ const mapDispatchToProps = dispatch => {
     receiveMessage: (message) => dispatch(receiveMessage(message)),
     deleteServer: (serverId) => dispatch(deleteServer(serverId)),
     updateServer: (server) => dispatch(updateServer(server)),
-    destroyServerMembership: (membership) => dispatch(destroyServerMembership(membership))
+    destroyServerMembership: (membershipId) => dispatch(destroyServerMembership(membershipId))
   }
 }
 

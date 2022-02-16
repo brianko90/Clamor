@@ -9,10 +9,11 @@ class ServerMain extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = { name: '', public: '', owner_id: '' };
+    this.state = { name: '', public: '', owner_id: '', errors: []};
     this.deleteServer = this.deleteServer.bind(this);
     this.updateServer = this.updateServer.bind(this);
     this.leaveServer = this.leaveServer.bind(this);
+    this.updateModalClose = this.updateModalClose.bind(this);
   }
 
   componentDidMount() {
@@ -41,6 +42,7 @@ class ServerMain extends React.Component {
   updateModalClose() {
     let modal = document.getElementById('updateModal');
     modal.style.display = "none";
+    this.setState({errors: []})
   }
 
   leaveModalOpen() {
@@ -62,15 +64,20 @@ class ServerMain extends React.Component {
 
   updateServer(e) {
     e.preventDefault();
-    this.updateModalClose()
     let server = { id: this.props.chosenServer.id, name: this.state.name, public: this.props.chosenServer.public, owner_id: this.props.currentUserId}
-    this.props.updateServer(server)
+    this.props.updateServer(server).fail(() => this.setState({errors: this.props.errors}))
+      .then(() => {
+        this.updateModalClose()
+        this.setState({name: ''})
+      })
   }
 
   leaveServer(e) {
     e.preventDefault();
     this.leaveModalClose();
-    this.props.destroyServerMembership({user_id: this.props.currentUserId, server_id: this.props.chosenServer.id})
+    let serverMembershipId = Object.values(this.props.user.serverMemberships).filter((membership) => membership.server_id === this.props.chosenServer.id)[0].id
+    console.log(serverMembershipId);
+    this.props.destroyServerMembership(serverMembershipId)
       .then(() => this.props.getUserInfo(this.props.currentUserId))
       .then(() => this.props.history.push('/channels/@me'))
   }
@@ -107,6 +114,10 @@ class ServerMain extends React.Component {
     }
   }
 
+  checkErrors() {
+    return this.state.errors.length > 0 ? (<div className="channel-error">Server name cannot be blank</div>) : ("")
+  }
+
   render() {
     if (!this.props.chosenServer) {
       return null;
@@ -130,7 +141,7 @@ class ServerMain extends React.Component {
             <div className="server-question">Are you sure you want to leave <span>{this.props.chosenServer.name}</span>?</div>
             <div className="server-modal-buttons">
               <div onClick={this.leaveModalClose}>Cancel</div>
-              <button>Leave Server</button>
+              <button onClick={this.leaveServer}>Leave Server</button>
             </div>
           </div>
         </div>
@@ -140,6 +151,7 @@ class ServerMain extends React.Component {
             <p>You can customize your server by changing it's name</p>
             <form>
               <input type="text" value={this.state.name} onChange={this.update("name")}/>
+              {this.checkErrors()}
               <div className="server-modal-buttons">
                 <div onClick={this.updateModalClose}>Cancel</div>
                 <button onClick={this.updateServer}>Update Server</button>
