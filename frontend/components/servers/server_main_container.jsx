@@ -7,6 +7,7 @@ import { openModal, closeModal } from '../../actions/modal_actions';
 import { fetchMessages, createMessage } from '../../actions/message_channel_actions';
 import { receiveMessage } from '../../actions/message_channel_actions';
 import { destroyServerMembership } from '../../actions/server_membership_actions';
+import { fetchConversation, createConversation } from '../../actions/dm_channel_actions';
 
 const mapStateToProps = (state, ownProps) => {
   return {
@@ -19,7 +20,8 @@ const mapStateToProps = (state, ownProps) => {
     chosenChannel: state.entities.serverChannels[ownProps.match.params.channelId],
     messages: Object.values(state.entities.channelMessages),
     cableApp: ownProps.cableApp,
-    errors: state.errors.server
+    errors: state.errors.server,
+    conversations: Object.values(state.entities.conversations)
   }
 }
 
@@ -35,7 +37,9 @@ const mapDispatchToProps = dispatch => {
     receiveMessage: (message) => dispatch(receiveMessage(message)),
     deleteServer: (serverId) => dispatch(deleteServer(serverId)),
     updateServer: (server) => dispatch(updateServer(server)),
-    destroyServerMembership: (membershipId) => dispatch(destroyServerMembership(membershipId))
+    destroyServerMembership: (membershipId) => dispatch(destroyServerMembership(membershipId)),
+    fetchConversation: (conversationId) => dispatch(fetchConversation(conversationId)),
+    createConversation: (conversation) => dispatch(createConversation(conversation))
   }
 }
 

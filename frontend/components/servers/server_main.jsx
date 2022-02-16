@@ -206,7 +206,7 @@ class ServerMain extends React.Component {
               <MessageChannel server={this.props.chosenServer} match={this.props.match} fetchServer={this.props.fetchServer} cableApp={this.props.cableApp} fetchChannel={this.props.fetchChannel} fetchMessages={this.props.fetchMessages} channel={this.props.chosenChannel} messages={this.props.messages} createMessage={this.props.createMessage} receiveMessage={this.props.receiveMessage}/>
             </div>
             <div id="server-main-right">
-              <ServerMembersList serverMembers={this.props.serverMembers} fetchServer={this.props.fetchServer} />
+              <ServerMembersList serverMembers={this.props.serverMembers} fetchServer={this.props.fetchServer} conversations={this.props.conversations} fetchConversation={this.props.fetchConversation} createConversation={this.props.createConversation}/>
             </div>
           </div>
         </div>
