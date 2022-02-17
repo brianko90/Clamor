@@ -83,8 +83,7 @@ class User < ApplicationRecord
   validates :username, :email, uniqueness: true
   validates :password, length: {minimum: 4}, allow_nil: true
 
-  after_initialize :ensure_session_token, :ensure_tag
-  # :attach_pfp
+  after_initialize :ensure_session_token, :ensure_tag, :attach_pfp
 
   attr_reader :password
 
@@ -92,10 +91,12 @@ class User < ApplicationRecord
   #   self.pfp ||= attach_pfp
   # end
 
-  # def attach_pfp
-  #   file = open('https://clamor-aa-dev.s3.us-west-1.amazonaws.com/Pastel-Blue.png')
-  #   self.pfp.attach(io: file, filename: 'Pastel-Blue.png')
-  # end
+  def attach_pfp
+    if !self.pfp
+      file = open('https://clamor-aa-dev.s3.us-west-1.amazonaws.com/Pastel-Blue.png')
+      self.pfp.attach(io: file, filename: 'Pastel-Blue.png')
+    end
+  end
 
   def ensure_tag
     self.tag ||= build_tag

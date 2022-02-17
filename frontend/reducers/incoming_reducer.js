@@ -1,4 +1,5 @@
 import { RECEIVE_CURRENT_USER } from "../actions/session_actions";
+import { CURRENT_USER_FRIENDS } from "../actions/friend_actions";
 
 const incomingReducer = (state = {}, action) => {
   Object.freeze(state);
@@ -6,7 +7,13 @@ const incomingReducer = (state = {}, action) => {
   switch (action.type) {
     case RECEIVE_CURRENT_USER:
       if (action.payload.incoming) {
-        return Object.assign(nextState, action.payload.incoming);
+        return action.payload.incoming;
+      } else {
+        return {};
+      }
+    case CURRENT_USER_FRIENDS:
+      if (action.payload.incoming) {
+        return action.payload.incoming;
       } else {
         return {};
       }

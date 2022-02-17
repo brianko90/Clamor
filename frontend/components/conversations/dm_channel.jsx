@@ -4,9 +4,11 @@ import React from 'react';
 class DMChannel extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {body: ''}
+    this.state = {body: '', edit: ''}
 
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleDelete = this.handleDelete.bind(this);
+    this.handleUpdate = this.handleUpdate.bind(this);
   }
 
   scrollToBottom() {
@@ -44,7 +46,7 @@ class DMChannel extends React.Component {
       .then(()=> {
         this.props.fetchConversation(this.props.match.params.conversationId)
       });
-    this.setState({ body: '' });
+    this.setState({ body: ''});
   }
 
   formatDate(date) {
@@ -54,10 +56,31 @@ class DMChannel extends React.Component {
     return formatDate.join('/')
   }
 
+  handleDelete(e, message) {
+    e.preventDefault();
+    this.props.deleteDM(message);
+  }
+
+  handleUpdate(e, message) {
+    e.preventDefault();
+    let edit = {body: this.state.edit, id: message.id, conversation_id: message.conversation_id}
+    this.props.updateDM(edit)
+      .then(() => {
+        this.handleClick(e, edit.id)
+      })
+  }
+
+  handleClick(e, messageId) {
+    if(e.key === "Escape" || e.type === "click" || e.type === "submit") {
+      let element = document.getElementById(messageId);
+      element.classList.toggle("inActive")
+      let message = document.getElementsByClassName(`${messageId}`)[0]
+      message.classList.toggle("inActive")
+    }
+  }
+
   render() {
     if (!this.props.conversationMessages) return null;
-
-
 
     return (
       <div id="dm-channel">
@@ -67,12 +90,19 @@ class DMChannel extends React.Component {
               <img className="dm-pfp" src={message.pfp} alt="" />
               <div className="dm-info">
                 <div>{message.username} <span>{this.formatDate(message.created_at)}</span></div>
-                <div>{message.body}</div>
+                <div className={`message-hide ${message.id}`} >{message.body}</div>
+                <form onSubmit={e => this.handleUpdate(e, message)} id={message.id} className="message-edit inActive">
+                  <input onKeyUp={e => this.handleClick(e, message.id)} className="message-edit-input" type="text" onChange={this.update('edit')} value={this.state.edit}></input>
+                  <div className="message-edit-options">
+                    <div>escape to <span className="save" onClick={e => this.handleClick(e, message.id)}>cancel</span>  •</div>
+                    <div>enter to <span className="save" onClick={e => this.handleUpdate(e, message)}>save</span></div>
+                  </div>
+                </form>
               </div>
                 <div className="message-options">
                   <div className="message-tools">
-                    <i className="fas fa-trash-alt"></i>
-                    <i className="fas fa-wrench"></i>
+                    <i onClick={e => this.handleDelete(e, message)} className="fas fa-trash-alt"></i>
+                    <i onClick={e => this.handleClick(e, message.id)} className="fas fa-wrench"></i>
                   </div>
               </div>           
             </li>

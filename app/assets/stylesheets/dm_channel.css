@@ -13,6 +13,7 @@
   color: white;
   width: 100%;
   font-family: 'Mukta', sans-serif;
+  margin-top: 5px;
 }
 
 .dm-info > div:first-child > span {
@@ -22,6 +23,11 @@
 .dm-info > div:last-child {
   padding-top: 5px;
   font-size: 13px;
+  font-weight: 200;
+}
+
+.message-hide {
+  margin-top: 3px;
   font-weight: 200;
 }
 

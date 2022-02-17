@@ -33,9 +33,9 @@ class Api::DirectMessagesController < ApplicationController
 
   def update
     @direct_message = DirectMessage.find_by(id: params[:id])
-
+    @conversation = Conversation.find_by(id: dm_params[:conversation_id])
     if @direct_message.update(dm_params)
-      render :show 
+      render 'api/conversations/show'
     else  
       render json: @direct_message.errors.full_messages, status: 422
     end   
@@ -43,12 +43,14 @@ class Api::DirectMessagesController < ApplicationController
 
   def destroy
     @direct_message = DirectMessage.find_by(id: params[:id])
-    @direct_message.destroy 
+    @direct_message.destroy
+    @conversation = Conversation.find_by(id: dm_params[:conversation_id])
+    render 'api/conversations/show'
   end
 
   private 
 
   def dm_params
-    params.require(:direct_message).permit(:body)
+    params.require(:direct_message).permit(:body, :conversation_id)
   end
 end

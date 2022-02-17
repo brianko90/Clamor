@@ -14,9 +14,10 @@ export const updateDM = direct_message => {
   })
 }
 
-export const removeDM = dmId => {
+export const removeDM = direct_message => {
   return $.ajax({
     method: "DELETE",
-    url: `/api/direct_messages/${dmId}`
+    url: `/api/direct_messages/${direct_message.id}`,
+    data: {direct_message}
   })
 }

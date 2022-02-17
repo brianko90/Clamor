@@ -26,3 +26,13 @@ export const fetchDMS = (conversationId) => dispatch => {
   return fetchConversation(conversationId)
     .then(payload => dispatch(receiveDMS(payload)))
 }
+
+export const updateDM = (dm) => dispatch => {
+  return DMApiUtil.updateDM(dm)
+    .then(payload => dispatch(receiveDMS(payload)))
+}
+
+export const deleteDM = (dm) => dispatch => {
+  return DMApiUtil.removeDM(dm)
+    .then(payload => dispatch(receiveDMS(payload)))
+}

@@ -17,6 +17,17 @@ export const getUserFriends = userId => dispatch => {
     .then(payload => dispatch(receiveCurrentUser(payload)))
 }
 
+export const createFriend = (friendship) => dispatch => {
+  return friendApiUtil.createFriend(friendship)
+    .then(payload => dispatch(receiveCurrentUser(payload)))
+}
+
+export const updateFriend = (userId, friendId) => dispatch => {
+  console.log(friendId, userId)
+  return friendApiUtil.updateFriend(userId, friendId)
+    .then(payload => dispatch(receiveCurrentUser(payload)))
+}
+
 export const deleteFriend = (userId, friendId) => dispatch => {
   return friendApiUtil.deleteFriend(userId, friendId)
     .then((payload) => dispatch(removeFriend(payload)))

@@ -26,3 +26,13 @@ export const fetchMessages = (channelId) => dispatch => {
   return fetchChannel(channelId)
     .then(payload => dispatch(receiveMessages(payload)))
 }
+
+export const updateMessage = message => dispatch => {
+  return MessageApiUtil.updateMessage(message)
+    .then(payload => dispatch(receiveMessages(payload)))
+}
+
+export const deleteMessage = message => dispatch => {
+  return MessageApiUtil.removeMessage(message)
+    .then(payload => dispatch(receiveMessages(payload)))
+}

@@ -8,6 +8,8 @@ import { fetchMessages, createMessage } from '../../actions/message_channel_acti
 import { receiveMessage } from '../../actions/message_channel_actions';
 import { destroyServerMembership } from '../../actions/server_membership_actions';
 import { fetchConversation, createConversation } from '../../actions/dm_channel_actions';
+import { createFriend } from '../../actions/friend_actions';
+import { updateMessage, deleteMessage } from '../../actions/message_channel_actions';
 
 const mapStateToProps = (state, ownProps) => {
   return {
@@ -21,7 +23,8 @@ const mapStateToProps = (state, ownProps) => {
     messages: Object.values(state.entities.channelMessages),
     cableApp: ownProps.cableApp,
     errors: state.errors.server,
-    conversations: Object.values(state.entities.conversations)
+    conversations: Object.values(state.entities.conversations),
+    friends: Object.values(state.entities.friends).concat(Object.values(state.entities.incoming)).concat(Object.values(state.entities.outgoing))
   }
 }
 
@@ -39,7 +42,10 @@ const mapDispatchToProps = dispatch => {
     updateServer: (server) => dispatch(updateServer(server)),
     destroyServerMembership: (membershipId) => dispatch(destroyServerMembership(membershipId)),
     fetchConversation: (conversationId) => dispatch(fetchConversation(conversationId)),
-    createConversation: (conversation) => dispatch(createConversation(conversation))
+    createConversation: (conversation) => dispatch(createConversation(conversation)),
+    createFriend: (friendship) => dispatch(createFriend(friendship)),
+    updateMessage: (message) => dispatch(updateMessage(message)),
+    deleteMessage: (message) => dispatch(deleteMessage(message))
   }
 }
 

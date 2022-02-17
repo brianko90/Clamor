@@ -265,6 +265,10 @@
   margin-left: 10px;
 }
 
+.friend-buttons > .fa-circle-check {
+  color: white;
+}
+
 .selected-tab {
   color: white;
   background-color: #3e4247;

@@ -33,22 +33,24 @@ class Api::MessagesController < ApplicationController
 
   def update 
     @message = Message.find_by(id: params[:id])
-
+    @channel = Channel.find_by(id: message_params[:channel_id])
     if @message.update(message_params)
-      render :show
+      render 'api/channels/show'
     else  
-      render json: @message.errors, status: 422
+      render json: @message.errors.full_messages, status: 422
     end
   end 
 
   def destroy 
     @message = Message.find_by(id: params[:id])
     @message.destroy
+    @channel = Channel.find_by(id: message_params[:channel_id])
+    render 'api/channels/show'
   end 
 
   private 
 
   def message_params
-    params.require(:message).permit(:body)
+    params.require(:message).permit(:body, :channel_id)
   end 
 end

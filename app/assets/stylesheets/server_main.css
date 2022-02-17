@@ -201,7 +201,7 @@
 }
 
 #members-list {
-  padding-left: 20px;
+  padding-left: 10px;
   padding-right: 5px;
 }
 
@@ -406,4 +406,60 @@
   margin-top: 10px;
   font-size: 10px;
   color: #ed4245;
+}
+
+/* Edit Message CSS */
+
+.inActive {
+  display: none;
+}
+
+.message-edit-options {
+  display: flex;
+  font-size: 10px;
+  margin-top: 3px;
+}
+
+.message-edit-options > div:last-child {
+  margin-left: 3px;
+}
+
+.message-edit-input {
+  width: calc(100vw - 370px);
+  background-color: #40444b;
+  border: none;
+  padding: 5px;
+  color: white;
+  margin-top: 5px;
+  border-radius: 5px;
+}
+
+.message-edit-input:focus {
+  outline: none;
+}
+
+.save {
+  color: #0f9cd7;
+}
+
+.save:hover {
+  cursor: pointer;
+}
+
+.channel-message-edit-input {
+  width: calc(100vw - 550px);
+  background-color: #40444b;
+  border: none;
+  padding: 5px;
+  color: white;
+  margin-top: 5px;
+  border-radius: 5px;
+}
+
+.channel-message-edit-input:focus {
+  outline: none;
+}
+
+.active {
+  display: none;
 }

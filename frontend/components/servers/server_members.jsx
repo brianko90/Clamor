@@ -5,6 +5,7 @@ class ServerMembersList extends React.Component {
   constructor(props) {
     super(props);
     this.handleMessage = this.handleMessage.bind(this);
+    this.checkFriend = this.checkFriend.bind(this);
   }
 
   handleMessage(e, friendId) {
@@ -29,6 +30,29 @@ class ServerMembersList extends React.Component {
     }
   }
 
+  handleFriend(e, memberId) {
+    e.preventDefault();
+    this.props.createFriend({user_id: this.props.currentUserId, friend_id: memberId, status: 1})
+  }
+
+  checkFriend(memberId) {
+    if(memberId === this.props.currentUserId) {
+      return
+    }
+    let friendCheck = this.props.friends.filter(friend => friend.id === memberId)
+    if (friendCheck.length === 0) {
+      return <div className="member-icons">
+        <i onClick={(e) => this.handleMessage(e, memberId)} className="tooltip fas fa-comment-alt"><span className="tooltiptext">Message</span></i>
+        <i onClick={(e) => this.handleFriend(e, memberId)} className="tooltip fas fa-user-plus"><span className="tooltiptext">Add friend</span></i>
+      </div>
+    } else {
+      return <div className="member-icons">
+        <i onClick={(e) => this.handleMessage(e, memberId)} className="tooltip fas fa-comment-alt"><span className="tooltiptext">Message</span></i>
+      </div>
+    }
+  }
+
+
   render() {
     return (
       <div>
@@ -37,11 +61,9 @@ class ServerMembersList extends React.Component {
           {this.props.serverMembers.map(member => <li className="member-item" key={member.id}>
                                                     <img src={member.pfp} alt="" />
                                                     <span>{member.username}</span>
-                                                    <div className="member-icons">
-                                                      <i onClick={(e) => this.handleMessage(e, member.id)} className="tooltip fas fa-user-plus"><span className="tooltiptext">Add friend</span></i>
-                                                      <i onClick={(e) => this.handleMessage(e, member.id)} className="tooltip fas fa-comment-alt"><span className="tooltiptext">Message</span></i>
-                                                    </div>
-                                                  </li>)}
+                                                    {this.checkFriend(member.id)}
+                                                  </li>)
+          }
         </ul>
       </div>
     )

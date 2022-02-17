@@ -34,7 +34,7 @@ class FriendMain extends React.Component {
     }
     let mainComponent;
     if(!this.props.match.params.conversationId) {
-      mainComponent = <FriendListContainer pendingStatus={this.state.pending} deleteFriend={this.props.deleteFriend} />;
+      mainComponent = <FriendListContainer pendingStatus={this.state.pending} />;
     } else {
       mainComponent = <DMChannelContainer match={this.props.match} cableApp={this.props.cableApp} />;
     }
