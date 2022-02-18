@@ -73,7 +73,6 @@ class UserSettings extends React.Component {
           <div id="demo-delete">Demo account cannot delete</div>
         </form>
       )
-        console.log(this.props.user)
       const username = (this.props.user.username !== "demo") ? (
         <form className="username-form" onSubmit={this.handleUpdate}>
           <label className="username-label">USERNAME
