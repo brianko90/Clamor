@@ -14,7 +14,6 @@ class ServerList extends React.Component {
 
   handleSelect(e, serverId) {
     e.preventDefault();
-    console.log(serverId, "SERVERID")
     this.props.fetchServer(serverId)
       .then(() => {
         let channelId;

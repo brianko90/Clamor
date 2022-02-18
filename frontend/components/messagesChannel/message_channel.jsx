@@ -72,10 +72,8 @@ class MessageChannel extends React.Component {
   handleClick(e, messageId) {
     if(e.key === "Escape" || e.type === "click" || e.type === "submit") {
       let elements = document.getElementsByClassName(messageId);
-      console.log(elements)
       elements[0].classList.toggle("inActive")
       let message = Array.from(document.getElementsByClassName(`${messageId}`)).filter(el => el.classList.contains('message-body'))[0];
-      console.log("MESSAGE", message)
       elements[1].classList.toggle("inActive")
     }
   }

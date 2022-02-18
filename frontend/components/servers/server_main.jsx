@@ -76,7 +76,6 @@ class ServerMain extends React.Component {
     e.preventDefault();
     this.leaveModalClose();
     let serverMembershipId = Object.values(this.props.user.serverMemberships).filter((membership) => membership.server_id === this.props.chosenServer.id)[0].id
-    console.log(serverMembershipId);
     this.props.destroyServerMembership(serverMembershipId)
       .then(() => this.props.getUserInfo(this.props.currentUserId))
       .then(() => this.props.history.push('/channels/@me'))

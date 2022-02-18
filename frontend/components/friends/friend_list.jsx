@@ -20,7 +20,6 @@ class FriendList extends React.Component {
   }
 
   handleUpdate(e, friendId) {
-    console.log(friendId)
     e.preventDefault();
     this.props.updateFriend(this.props.currentUserId, friendId)
       // .then(() => this.props.getUserFriends(this.props.currentUserId));

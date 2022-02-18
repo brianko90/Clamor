@@ -23,7 +23,6 @@ export const createFriend = (friendship) => dispatch => {
 }
 
 export const updateFriend = (userId, friendId) => dispatch => {
-  console.log(friendId, userId)
   return friendApiUtil.updateFriend(userId, friendId)
     .then(payload => dispatch(receiveCurrentUser(payload)))
 }
