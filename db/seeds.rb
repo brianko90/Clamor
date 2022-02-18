@@ -162,9 +162,13 @@ file = open('https://clamor-aa-dev.s3.us-west-1.amazonaws.com/Pastel-Yellow.png'
 user12.pfp.attach(io: file, filename: 'Pastel-Yellow.png')
 
 incoming1 = Friendship.create({user_id: user1.id, friend_id: user11.id, status: 2})
-incoming2 = Friendship.create({user_id: user1.id, friend_id: user12.id, status: 2})
-incoming3 = Friendship.create({user_id: demo.id, friend_id: user11.id, status: 2})
-incoming4 = Friendship.create({user_id: demo.id, friend_id: user12.id, status: 2})
+incoming2 = Friendship.create({user_id: user11.id, friend_id: user1.id, status: 1})
+incoming3 = Friendship.create({user_id: user1.id, friend_id: user12.id, status: 2})
+incoming4 = Friendship.create({user_id: user12.id, friend_id: user1.id, status: 1})
+incoming5 = Friendship.create({user_id: demo.id, friend_id: user11.id, status: 2})
+incoming6 = Friendship.create({user_id: user11.id, friend_id: demo.id, status: 1})
+incoming7 = Friendship.create({user_id: demo.id, friend_id: user12.id, status: 2})
+incoming8 = Friendship.create({user_id: user12.id, friend_id: demo.id, status: 1})
 
 
 user13 = User.create({username: 'jane', email: 'jane@gmail.com', password: "1234", tag: "9999"})
