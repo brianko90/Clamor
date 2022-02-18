@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import UserSettingsContainer from '../user/user_settings_container';
 import EditProfileContainer from '../user/edit_profile_container';
 import ServerFormContainer from '../servers/server_form_container';
-
+import ServerJoinContainer from '../servers/server_join_container';
 
 function Modal({ modal, closeModal }) {
   if (!modal) {
@@ -26,6 +26,9 @@ function Modal({ modal, closeModal }) {
       break;
     case 'deleteServer':
       component = <DeleteServerContainer />;
+      break;
+    case 'serverJoin':
+      component = <ServerJoinContainer />;
       break;
     default:
       return null;

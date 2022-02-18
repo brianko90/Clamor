@@ -9,6 +9,7 @@ class DMChannel extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleDelete = this.handleDelete.bind(this);
     this.handleUpdate = this.handleUpdate.bind(this);
+    this.checkOwner = this.checkOwner.bind(this);
   }
 
   scrollToBottom() {
@@ -79,6 +80,21 @@ class DMChannel extends React.Component {
     }
   }
 
+  checkOwner(message) {
+    let tools;
+    if (message.user_id === this.props.currentUserId) {
+      tools = <div className="message-options">
+                <div className="message-tools">
+                  <i onClick={e => this.handleDelete(e, message)} className="fas fa-trash-alt"></i>
+                  <i onClick={e => this.handleClick(e, message.id)} className="fas fa-wrench"></i>
+                </div>
+              </div> 
+    } else {
+      tools = ""
+    }
+    return tools;
+  }
+
   render() {
     if (!this.props.conversationMessages) return null;
 
@@ -99,12 +115,7 @@ class DMChannel extends React.Component {
                   </div>
                 </form>
               </div>
-                <div className="message-options">
-                  <div className="message-tools">
-                    <i onClick={e => this.handleDelete(e, message)} className="fas fa-trash-alt"></i>
-                    <i onClick={e => this.handleClick(e, message.id)} className="fas fa-wrench"></i>
-                  </div>
-              </div>           
+              {this.checkOwner(message)}          
             </li>
           ))}
         </ul>

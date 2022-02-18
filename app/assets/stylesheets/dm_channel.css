@@ -36,7 +36,7 @@
   position: fixed;
   overflow-y: scroll;
   overflow-x: hidden;
-  width: calc(100% - 273px);
+  width: calc(100% - 270px);
 }
 
 #dm-channel {

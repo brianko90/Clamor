@@ -14,16 +14,21 @@ class ServerList extends React.Component {
 
   handleSelect(e, serverId) {
     e.preventDefault();
+    console.log(serverId, "SERVERID")
     this.props.fetchServer(serverId)
       .then(() => {
         let channelId;
-        let server = this.props.servers[serverId - 1];
-        if (!this.props.match.params.channelId) {
-          channelId = server.channels[0];
+        let serverFound;
+        this.props.servers.forEach(server => {
+          if(server.id === serverId) {
+            serverFound = server;
+          }
+        })
+        if(!this.props.match.params.channelId) {
+          channelId = serverFound.channels[0];
         } else {
-          channelId = this.props.match.params.channelId;
+           channelId = this.props.match.params.channelId;
         }
-
         this.props.fetchMessages(channelId)
       })
 
@@ -71,7 +76,7 @@ class ServerList extends React.Component {
               <div id="server-plus" onClick={() => this.props.openModal('addServer')}>+</div>
             </div>
             <div className="server-buttons">
-              <i className="fas fa-compass"></i>
+              <i onClick={() => this.props.openModal('serverJoin')} className="fas fa-compass"></i>
             </div>
           </div>
         </ul>

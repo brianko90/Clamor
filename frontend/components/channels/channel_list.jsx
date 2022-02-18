@@ -94,7 +94,6 @@ class ChannelList extends React.Component {
 
   deleteChannel(e) {
     e.preventDefault();
-    this.deleteModalClose();
     this.props.deleteChannel(this.state.id)
       .then(() => {
         this.props.fetchServer(this.props.match.params.serverId)

@@ -6,6 +6,7 @@ import { createDM, receiveDM, updateDM, deleteDM } from '../../actions/direct_me
 const mapStateToProps = (state, ownProps) => {
   return {
     conversationMessages: Object.values(state.entities.conversationMessages),
+    currentUserId: state.session.id
   }
 }
 

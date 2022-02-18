@@ -88,8 +88,7 @@ member17 = ServerMembership.create({user_id: demo.id, server_id: server1.id})
 member18 = ServerMembership.create({user_id: demo.id, server_id: server2.id})
 member19 = ServerMembership.create({user_id: demo.id, server_id: server3.id})
 member20 = ServerMembership.create({user_id: demo.id, server_id: server4.id})
-member21 = ServerMembership.create({user_id: demo.id, server_id: server5.id})
-member22 = ServerMembership.create({user_id: demo.id, server_id: server6.id})
+
 
 member23 = ServerMembership.create({user_id: user2.id, server_id: server2.id})
 member24 = ServerMembership.create({user_id: user2.id, server_id: server4.id})

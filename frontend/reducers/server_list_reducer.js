@@ -22,9 +22,6 @@ const serversListReducer = (state = {}, action) => {
     case REMOVE_SERVER:
       delete nextState[action.serverId]
       return nextState
-    // case REMOVE_SERVER_MEMBERSHIP:
-    //   delete nextState[action.server.id]
-    //   return nextState
     default:
       return state;
   }

@@ -4,6 +4,7 @@ import {fetchServer} from '../../actions/server_actions';
 import {getUserInfo} from '../../actions/user_actions';
 import { fetchMessages } from '../../actions/message_channel_actions';
 
+
 const mapStateToProps = state => {
   return {
     currentUserId: state.session.id,

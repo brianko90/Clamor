@@ -1,4 +1,4 @@
-# require 'open-uri'
+require 'open-uri'
 
 class Api::UsersController < ApplicationController
   def show
@@ -8,8 +8,8 @@ class Api::UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-    # add_pfp(@user)
     if @user.save
+      add_pfp(@user)
       login!(@user)
       render :show
     else 
@@ -34,12 +34,10 @@ class Api::UsersController < ApplicationController
 
   private
 
-  # def add_pfp(user)
-  #   if !user.pfp
-  #     file = File.open(`https://clamor-aa-dev.s3.us-west-1.amazonaws.com/Pastel-Blue.png`)
-  #     user.pfp.attach(io: file, filename: 'Pastel-Blue.png')
-  #   end
-  # end
+  def add_pfp(user)
+    file = open('https://clamor-aa-dev.s3.us-west-1.amazonaws.com/Pastel-Blue.png')
+    user.pfp.attach(io: file, filename: 'Pastel-Blue.png')
+  end
 
   def user_params
     params.require(:user).permit(:username, :password, :email, :tag)

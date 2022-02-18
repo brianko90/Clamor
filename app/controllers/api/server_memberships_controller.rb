@@ -1,16 +1,15 @@
 class Api::ServerMembershipsController < ApplicationController
   def create
+    @user = User.find_by(id: current_user.id)
     @membership = ServerMembership.new(server_membership_params)
     if @membership.save 
-      render :show
+      render 'api/users/show'
     end 
   end  
 
   def destroy 
-    puts params
     @membership = ServerMembership.find_by(id: params[:id])
     @membership.destroy
-    # @server = Server.find_by(id: server_membership_params[:server_id])
     @user = User.find_by(id: current_user.id)
     render 'api/users/show'
   end

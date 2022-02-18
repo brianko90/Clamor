@@ -1,5 +1,4 @@
 import React from 'react';
-import {Redirect} from 'react-router-dom';
 
 class ServerForm extends React.Component {
   constructor(props) {
@@ -51,10 +50,10 @@ class ServerForm extends React.Component {
       <div id="public-options">
         <div className="server-public-error">Server type needs to be selected!</div>
         <button className="public-button" onClick={(e) => { this.handleClick(e, 'public') }} value="true" >
-          For me and my friends <i className="fas fa-chevron-right"></i>
+          <img src={window.private} />For me and my friends <i className="fas fa-chevron-right"></i>
         </button>
         <button className="public-button" onClick={(e) => { this.handleClick(e, 'public') }} value="false">
-          For a club or community <i className="fas fa-chevron-right"></i>
+          <img src={window.public} />For a club or community <i className="fas fa-chevron-right"></i>
         </button>
       </div>
     ) : (
