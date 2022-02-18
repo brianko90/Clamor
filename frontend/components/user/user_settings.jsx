@@ -63,7 +63,7 @@ class UserSettings extends React.Component {
         return null;
       }
 
-      const demo = (this.props.user.id !== 1 || this.props.user.username === "demo") ? (
+      const demo = (this.props.user.username !== "demo" || this.props.user.id !== 1) ? (
         <form>
           <button id="delete-account" onClick={this.handleDelete}>Delete Account</button>
         </form>
@@ -74,7 +74,7 @@ class UserSettings extends React.Component {
         </form>
       )
 
-      const username = (this.props.user.id !== 1 || this.props.user.username === "demo") ? (
+      const username = (this.props.user.username !== "demo" || this.props.user.id !== 1) ? (
         <form className="username-form" onSubmit={this.handleUpdate}>
           <label className="username-label">USERNAME
             <input className="username-input" type="text" value={this.state.username} onChange={this.update('username')} />
