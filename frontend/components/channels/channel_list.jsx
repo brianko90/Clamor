@@ -80,12 +80,13 @@ class ChannelList extends React.Component {
   createModalClose() {
     let modal = document.getElementById('createChannelModal');
     modal.style.display = "none";
-    this.setState({errors: []})
+    this.setState({errors: [], name: ""})
   }
 
   createChannel(e) {
     e.preventDefault();
-    this.props.createChannel(this.state).fail(()=> this.setState({errors: this.props.errors}))
+    let newChannel = {name: this.state.name, server_id: this.props.match.params.serverId, errors: [], id: ""}
+    this.props.createChannel(newChannel).fail(()=> this.setState({errors: this.props.errors}))
       .then(() => {
         this.props.fetchServer(this.props.match.params.serverId);
         this.createModalClose()
@@ -142,7 +143,7 @@ class ChannelList extends React.Component {
           <div className="server-modal-content">
             <div className="server-header">Create a channel</div>
             <p>Give your channel a name</p>
-            <form>
+            <form onSubmit={this.createChannel}>
               <input type="text" value={this.state.name} onChange={this.update("name")}/>
               {this.checkError()}
               <div className="channel-modal-buttons">

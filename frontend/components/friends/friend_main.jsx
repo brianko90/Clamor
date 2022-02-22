@@ -11,13 +11,6 @@ class FriendMain extends React.Component {
     this.state = {pending: false}
   }
 
-  // componentDidMount() {
-  //   this.props.getUserFriends(this.props.user.id)
-  //     .then(() => {
-  //       this.props.getUserConversations(this.props.user.id);
-  //     })
-  // }
-
   handleSelect(e) {
     e.preventDefault();
     let notSelected = document.getElementsByClassName('friend-nav');
