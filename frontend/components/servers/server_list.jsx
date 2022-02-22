@@ -71,11 +71,11 @@ class ServerList extends React.Component {
             </li>)
           )}
           <div id="server-buttons-container">
-            <div className="server-buttons">
-              <div id="server-plus" onClick={() => this.props.openModal('addServer')}>+</div>
+            <div className="server-buttons" onClick={() => this.props.openModal('addServer')}>
+              <div id="server-plus">+</div>
             </div>
-            <div className="server-buttons">
-              <i onClick={() => this.props.openModal('serverJoin')} className="fas fa-compass"></i>
+            <div className="server-buttons" onClick={() => this.props.openModal('serverJoin')}>
+              <i className="fas fa-compass"></i>
             </div>
           </div>
         </ul>

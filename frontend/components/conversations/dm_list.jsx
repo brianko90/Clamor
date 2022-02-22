@@ -88,7 +88,7 @@ class DMList extends React.Component {
     return (
       <div id="dm-container">
         <ul id="dm-list-items">
-          <li className="dm-friend dm-list-item" onClick={this.handleHighlight}><Link to="/channels/@me"><i className="fas fa-users"></i><span id="dm-list-friendtab">Friends</span></Link></li>
+          <Link to="/channels/@me"><li className="dm-friend dm-list-item" onClick={this.handleHighlight}><i className="fas fa-users"></i><span id="dm-list-friendtab">Friends</span></li></Link>
           <div id="dm-message-plus">DIRECT MESSAGES <span>+</span></div>
           {this.props.conversations.map((conversation) => {
             return <li id={conversation.id} key={conversation.id} className="dm-list-item" onClick={(e) => this.handleSelect(e, conversation)}>
