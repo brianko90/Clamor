@@ -18,7 +18,9 @@ class ServerForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     this.props.createServer(this.state).fail(() => this.setState({errors: this.props.errors}))
-      .then(() => {this.props.closeModal()}) 
+      .then(() => {
+        this.props.closeModal()
+      }) 
   }
 
   removeClass() {

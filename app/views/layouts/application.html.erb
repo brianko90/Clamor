@@ -6,6 +6,17 @@
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
+
+    <meta property="og:title" content="Clamor" />
+    <meta property="og:image" content="<%= image_url('project_pic.png')%>" />
+
+    <meta property="og:description"
+      content="Clamor is a clone website of the popular messaging platform Discord. Using Clamor, users can create accounts to join communities and to interact with friends in chatrooms. You can be as social as you want, joining popular public servers or just keeping a close knit community with your friends."
+    />
+    <meta property="og:url"
+      content="https://clamorapp.herokuapp.com"
+    />
+
     <script src="https://kit.fontawesome.com/073dad5c14.js" crossorigin="anonymous"></script>
     <script type="text/javascript">window.splash1URL = "<%= image_url('splashmain.png') %>";</script>
     <script type="text/javascript">window.splash2URL = "<%= image_url('splashimg2.png') %>";</script>
@@ -16,16 +27,6 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Mukta:wght@200;300;400;600;700&display=swap" rel="stylesheet">
-  
-    <meta property="og:title" content="Clamor" />
-    <meta property="og:image" content="<%= image_url('project_pic.png')%>" />
-
-    <meta property="og:description"
-      content="Clamor is a clone website of the popular messaging platform Discord. Using Clamor, users can create accounts to join communities and to interact with friends in chatrooms. You can be as social as you want, joining popular public servers or just keeping a close knit community with your friends."
-    />
-    <meta property="og:url"
-      content="https://clamorapp.herokuapp.com"
-    />
 
     <%= favicon_link_tag asset_path('favicon.png')%>
   </head>
