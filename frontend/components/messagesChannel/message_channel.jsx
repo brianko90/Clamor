@@ -30,6 +30,22 @@ class MessageChannel extends React.Component {
         })
       })
     this.scrollToBottom();
+    document.addEventListener('keydown', function(event) {
+      if(event.key === "Escape") {
+        let messages = Array.from(document.getElementsByClassName('message-body'));
+        let edits = Array.from(document.getElementsByClassName('message-edit'));
+        messages.forEach(message => {
+          if(message.classList.contains('inActive')) {
+            message.classList.toggle('inActive')
+          }
+        })
+        edits.forEach(edit => {
+          if(!edit.classList.contains('inActive')) {
+            edit.classList.toggle('inActive')
+          }
+        })
+      }
+    })
   }
 
   componentDidUpdate(prevProps) {
@@ -73,7 +89,6 @@ class MessageChannel extends React.Component {
     if(e.key === "Escape" || e.type === "click" || e.type === "submit") {
       let elements = document.getElementsByClassName(messageId);
       elements[0].classList.toggle("inActive")
-      let message = Array.from(document.getElementsByClassName(`${messageId}`)).filter(el => el.classList.contains('message-body'))[0];
       elements[1].classList.toggle("inActive")
     }
   }
@@ -83,13 +98,14 @@ class MessageChannel extends React.Component {
     let edit = {body: this.state.edit, id: message.id, channel_id: message.channel_id}
     this.props.updateMessage(edit)
       .then(() => {
-        this.handleClick(e, edit.id)
+        this.handleClick(e, edit.id);
+        this.setState({edit: ''})
       })
   }
 
   checkOwner(message) {
     let tools;
-    if (message.sender_id === this.props.currentUserId) {
+    if (message.sender_id === this.props.currentUserId || message.senderId === this.props.currentUserId) {
       tools = <div className="message-options">
                 <div className="message-tools">
                   <i onClick={e => this.handleDelete(e, message)} className="fas fa-trash-alt"></i>
@@ -113,11 +129,12 @@ class MessageChannel extends React.Component {
                   <div className="message-username">{message.username} <span>{message.created_at ? this.formatDate(message.created_at) : this.formatDate(message.createdAt)}</span></div>
                   <div className={`message-body ${message.id}`}>{message.body}</div>
                   <form onSubmit={e => this.handleUpdate(e, message)} className={`message-edit ${message.id} inActive`}>
-                    <input onKeyUp={e => this.handleClick(e, message.id)} className="channel-message-edit-input" type="text" onChange={this.update('edit')} value={this.state.edit}></input>
+                    <input onKeyUp={e => this.handleClick(e, message.id)} className="channel-message-edit-input" type="text" placeholder={message.body} onChange={this.update('edit')} value={this.state.edit}></input>
                     <div className="message-edit-options">
                       <div>escape to <span className="save" onClick={e => this.handleClick(e, message.id)}>cancel</span>  •</div>
                       <div>enter to <span className="save" onClick={e => this.handleUpdate(e, message)}>save</span></div>
                     </div>
+                    {this.state.edit.length ? <button className="hidden-button" type="submit">Submit</button> : <button className="hidden-button" disabled type="submit">Submit</button>}
                   </form>
                 </div>
                 {this.checkOwner(message)}
@@ -128,6 +145,7 @@ class MessageChannel extends React.Component {
             <form id="message-input" onSubmit={this.handleSubmit}>
               <i className="fas fa-plus-circle"></i>
               <input type="text" onChange={this.update('body')} value={this.state.body} />
+              {this.state.body.length ? <button className="hidden-button" type="submit">Submit</button> : <button className="hidden-button" disabled type="submit">Submit</button>}
             </form>
           </div>
        </div>

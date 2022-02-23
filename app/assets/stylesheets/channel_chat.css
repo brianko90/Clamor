@@ -138,3 +138,7 @@
   color: white;
   cursor: pointer;
 }
+
+.hidden-button {
+  display: none;
+}
