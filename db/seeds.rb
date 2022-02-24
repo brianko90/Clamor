@@ -200,14 +200,14 @@ convoMembership2 = ConversationMembership.create({conversation_id: convo1.id, us
 dm1 = DirectMessage.create({user_id: user1.id, conversation_id: convo1.id, body: "hi"})
 dm2 = DirectMessage.create({user_id: user6.id, conversation_id: convo1.id, body: "hello"})
 
-convo2 = Conversation.create({owner_id: user1.id})
-convoMembership3 = ConversationMembership.create({conversation_id: convo2.id, user_id: user1.id})
-convoMembership4 = ConversationMembership.create({conversation_id: convo2.id, user_id: user6.id})
-convoMembership5 = ConversationMembership.create({conversation_id: convo2.id, user_id: user2.id})
+# convo2 = Conversation.create({owner_id: user1.id})
+# convoMembership3 = ConversationMembership.create({conversation_id: convo2.id, user_id: user1.id})
+# convoMembership4 = ConversationMembership.create({conversation_id: convo2.id, user_id: user6.id})
+# convoMembership5 = ConversationMembership.create({conversation_id: convo2.id, user_id: user2.id})
 
-dm3 = DirectMessage.create({user_id: user1.id, conversation_id: convo2.id, body: "whats up"})
-dm4 = DirectMessage.create({user_id: user6.id, conversation_id: convo2.id, body: "just chilling"})
-dm5 = DirectMessage.create({user_id: user2.id, conversation_id: convo2.id, body: "yooo"})
+# dm3 = DirectMessage.create({user_id: user1.id, conversation_id: convo2.id, body: "whats up"})
+# dm4 = DirectMessage.create({user_id: user6.id, conversation_id: convo2.id, body: "just chilling"})
+# dm5 = DirectMessage.create({user_id: user2.id, conversation_id: convo2.id, body: "yooo"})
 
 convo3 = Conversation.create({owner_id: user3.id})
 convoMembership6 = ConversationMembership.create({conversation_id: convo3.id, user_id: user1.id})

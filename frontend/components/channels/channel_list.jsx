@@ -104,7 +104,8 @@ class ChannelList extends React.Component {
 
   updateChannel(e) {
     e.preventDefault();
-    this.props.updateChannel(this.state).fail(() => this.setState({errors: this.props.errors}))
+    let edit = {name: this.state.name, server_id: this.props.match.params.serverId, errors: this.state.errors, id: this.props.match.params.channelId}
+    this.props.updateChannel(edit).fail(() => this.setState({errors: this.props.errors}))
       .then(() => {
         this.props.fetchServer(this.props.match.params.serverId)
         this.updateModalClose();
