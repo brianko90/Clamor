@@ -24,6 +24,10 @@ class ServerMain extends React.Component {
       })
   }
 
+  componentDidUpdate() {
+    this.closeDropdown();
+  }
+
   deleteModalOpen() {
     let modal = document.getElementById('deleteModal');
     modal.style.display = "flex";
@@ -93,6 +97,13 @@ class ServerMain extends React.Component {
       settings.classList.remove("show-server")
     } else {
       settings.classList.add("show-server")
+    }
+  }
+
+  closeDropdown() {
+    let settings = document.getElementById("server-dropdown");
+    if(settings) {
+      settings.classList.remove("show-server");
     }
   }
 

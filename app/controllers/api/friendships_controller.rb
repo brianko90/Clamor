@@ -36,9 +36,9 @@ class Api::FriendshipsController < ApplicationController
 
   def destroy
     @friendship = Friendship.find_by(user_id: params[:user_id], friend_id: params[:id])
+    friendship2 = Friendship.find_by(user_id: params[:id], friend_id: params[:user_id])
     @user = User.find_by(id: current_user.id)
     @friendship.transaction do
-      friendship2 = Friendship.find_by(user_id: params[:id], friend_id: params[:user_id])
       @friendship.destroy
       friendship2.destroy
       render '/api/users/show';

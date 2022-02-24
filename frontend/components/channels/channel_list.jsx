@@ -132,11 +132,11 @@ class ChannelList extends React.Component {
               <input type="text" value={this.state.name} onChange={this.update("name")}/>
               {this.checkError()}
               <div className="channel-modal-buttons">
-                <button className="delete-channel" onClick={this.deleteChannel}>Delete Channel</button>
                 <div onClick={this.updateModalClose}>Cancel</div>
                 <button className="channel-button" onClick={this.updateChannel}>Update Channel</button>
               </div>
             </form>
+            <button className="delete-channel" onClick={this.deleteChannel}>Delete Channel</button>
           </div>
         </div>
         <div id="createChannelModal" className="modal">

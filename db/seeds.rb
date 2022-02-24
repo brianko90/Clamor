@@ -162,22 +162,23 @@ file = open('https://clamor-aa-dev.s3.us-west-1.amazonaws.com/Pastel-Yellow.png'
 user12.pfp.attach(io: file, filename: 'Pastel-Yellow.png')
 
 incoming1 = Friendship.create({user_id: user1.id, friend_id: user11.id, status: 2})
-incoming2 = Friendship.create({user_id: user11.id, friend_id: user1.id, status: 1})
-incoming3 = Friendship.create({user_id: user1.id, friend_id: user12.id, status: 2})
-incoming4 = Friendship.create({user_id: user12.id, friend_id: user1.id, status: 1})
-incoming5 = Friendship.create({user_id: demo.id, friend_id: user11.id, status: 2})
-incoming6 = Friendship.create({user_id: user11.id, friend_id: demo.id, status: 1})
-incoming7 = Friendship.create({user_id: demo.id, friend_id: user12.id, status: 2})
-incoming8 = Friendship.create({user_id: user12.id, friend_id: demo.id, status: 1})
+outgoing1 = Friendship.create({user_id: user11.id, friend_id: user1.id, status: 1})
+incoming2 = Friendship.create({user_id: user1.id, friend_id: user12.id, status: 2})
+outgoing2 = Friendship.create({user_id: user12.id, friend_id: user1.id, status: 1})
+incoming3 = Friendship.create({user_id: demo.id, friend_id: user11.id, status: 2})
+outgoing3 = Friendship.create({user_id: user11.id, friend_id: demo.id, status: 1})
+incoming4 = Friendship.create({user_id: demo.id, friend_id: user12.id, status: 2})
+outgoing4 = Friendship.create({user_id: user12.id, friend_id: demo.id, status: 1})
 
 
 user13 = User.create({username: 'jane', email: 'jane@gmail.com', password: "1234", tag: "9999"})
 file = open('https://clamor-aa-dev.s3.us-west-1.amazonaws.com/Pastel-Violet.png')
 user13.pfp.attach(io: file, filename: 'Pastel-Violet.png')
 
-outgoing1 = Friendship.create({user_id: user1.id, friend_id: user13.id, status: 1})
-outgoing1 = Friendship.create({user_id: demo.id, friend_id: user13.id, status: 1})
-
+outgoing5 = Friendship.create({user_id: user1.id, friend_id: user13.id, status: 1})
+incoming9 = Friendship.create({user_id: user13.id, friend_id: user1.id, status: 2})
+outgoing6 = Friendship.create({user_id: demo.id, friend_id: user13.id, status: 1})
+incoming10 = Friendship.create({user_id: user13.id, friend_id: demo.id, status: 2})
 
 message1 = Message.create({sender_id: user1.id, channel_id: channel1.id, body: "hey everyone!"})
 message2 = Message.create({sender_id: user2.id, channel_id: channel1.id, body: "hello"})

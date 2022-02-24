@@ -381,7 +381,7 @@
   background-color: #5865F2;
 }
 
-.channel-modal-buttons > .delete-channel {
+.delete-channel {
   padding-top: 8px;
   padding-bottom: 8px;
   border-radius: 5px;
@@ -389,14 +389,16 @@
   color: #ed4245;
   border: 1px solid #ed4245;
   background-color: #2f3136;
-  margin-right: 65px;
+  position: relative;
+  bottom: 48px;
+  left: 24px;
 }
 
 .channel-modal-buttons > .channel-button:hover {
   background-color: #5865f273;
 }
 
-.channel-modal-buttons > .delete-channel:hover {
+.delete-channel:hover {
   color: white;
   background-color: #ed4245;
 }
