@@ -1,5 +1,5 @@
 import React from 'react';
-
+import EditDM from './edit_dm';
 
 class DMChannel extends React.Component {
   constructor(props) {
@@ -8,7 +8,6 @@ class DMChannel extends React.Component {
 
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleDelete = this.handleDelete.bind(this);
-    this.handleUpdate = this.handleUpdate.bind(this);
     this.checkOwner = this.checkOwner.bind(this);
   }
 
@@ -31,22 +30,6 @@ class DMChannel extends React.Component {
         })
       })
     this.scrollToBottom();
-    document.addEventListener('keydown', function(event) {
-      if(event.key === "Escape") {
-        let messages = Array.from(document.getElementsByClassName('message-body'));
-        let edits = Array.from(document.getElementsByClassName('message-edit'));
-        messages.forEach(message => {
-          if(message.classList.contains('inActive')) {
-            message.classList.toggle('inActive')
-          }
-        })
-        edits.forEach(edit => {
-          if(!edit.classList.contains('inActive')) {
-            edit.classList.toggle('inActive')
-          }
-        })
-      }
-    })
   }
 
   componentDidUpdate() {
@@ -76,16 +59,6 @@ class DMChannel extends React.Component {
   handleDelete(e, message) {
     e.preventDefault();
     this.props.deleteDM(message);
-  }
-
-  handleUpdate(e, message) {
-    e.preventDefault();
-    let edit = {body: this.state.edit, id: message.id, conversation_id: message.conversation_id}
-    this.props.updateDM(edit)
-      .then(() => {
-        this.handleClick(e, edit.id);
-        this.setState({edit: ''})
-      })
   }
 
   handleClick(e, messageId) {
@@ -124,14 +97,7 @@ class DMChannel extends React.Component {
               <div className="dm-info">
                 <div>{message.username} <span>{this.formatDate(message.created_at)}</span></div>
                 <div className={`message-body ${message.id}`} >{message.body}</div>
-                <form onSubmit={e => this.handleUpdate(e, message)} id={message.id} className="message-edit inActive">
-                  <input onKeyUp={e => this.handleClick(e, message.id)} placeholder={message.body} className="message-edit-input" type="text" onChange={this.update('edit')} value={this.state.edit}></input>
-                  <div className="message-edit-options">
-                    <div>escape to <span className="save" onClick={e => this.handleClick(e, message.id)}>cancel</span>  •</div>
-                    <div>enter to <span className="save" onClick={e => this.handleUpdate(e, message)}>save</span></div>
-                  </div>
-                  {this.state.edit.length ? <button className="hidden-button" type="submit">Submit</button> : <button className="hidden-button" disabled type="submit">Submit</button>}
-                </form>
+                <EditDM message={message} updateDM={this.props.updateDM}/>
               </div>
               {this.checkOwner(message)}          
             </li>
