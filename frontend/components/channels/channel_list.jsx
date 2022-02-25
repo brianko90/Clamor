@@ -32,6 +32,10 @@ class ChannelList extends React.Component {
     }
   }
 
+  componentWillUnmount(){
+    this.setState({name: ''})
+  }
+
   handleSelect(e, channelId) {
     e.preventDefault();
     this.props.fetchMessages(channelId)
@@ -69,7 +73,7 @@ class ChannelList extends React.Component {
   updateModalClose() {
     let modal = document.getElementById('updateChannelModal');
     modal.style.display = "none";
-    this.setState({errors: []})
+    this.setState({errors: [], name: ""})
   }
 
   createModalOpen() {
@@ -118,7 +122,10 @@ class ChannelList extends React.Component {
   }
 
   checkError() {
-    return this.state.errors.length > 0 ? (<div className="channel-error">Channel name cannot be blank</div>) : ("")
+    console.log(this.state.errors)
+    if(this.state.errors.length > 0) {
+      return <div className="channel-error">{this.state.errors[0]}</div>
+    }
   }
 
   render() {

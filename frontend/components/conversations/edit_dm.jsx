@@ -8,7 +8,9 @@ const EditDM = (props) => {
 
   const handleUpdate = (e, message) => {
     e.preventDefault();
-    let edit = {body: editMessage, id: message.id, channel_id: message.channel_id}
+    let edit = {body: editMessage, id: message.id, conversation_id: message.conversation_id}
+    console.log(edit)
+    console.log(message)
     props.updateDM(edit)
       .then(() => {
         handleClick(e, edit.id);
@@ -37,17 +39,19 @@ const EditDM = (props) => {
     document.addEventListener('keydown', handler);
 
     return () => document.removeEventListener('keydown', handler);
-  }) 
+  })
+
   const handleClick = (e, messageId) => {
-    if(e.key === "Escape" || e.type === "click" || e.type === "submit") {
+    if(e.type === "click" || e.type === "submit") {
       let elements = document.getElementsByClassName(messageId);
+      console.log(elements, "ELEMENTS")
       elements[0].classList.toggle("inActive")
       elements[1].classList.toggle("inActive")
     }
   }
   
   return (
-    <form onSubmit={e => handleUpdate(e, props.message)} id={props.message.id} className="message-edit inActive">
+    <form onSubmit={e => handleUpdate(e, props.message)} id={props.message.id} className={`message-edit ${props.message.id} inActive`}>
       <input onKeyUp={e => handleClick(e, props.message.id)} placeholder={props.message.body} className="message-edit-input" type="text" onChange={(e) => setEdit(e.currentTarget.value)} value={editMessage}></input>
       <div className="message-edit-options">
         <div>escape to <span className="save" onClick={e => this.handleClick(e, props.message.id)}>cancel</span>  •</div>
