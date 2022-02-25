@@ -25,27 +25,44 @@ class SignupForm extends React.Component {
   }
 
   render() {
-    const username = this.state.errors.length > 0 ? (
-      <label className="form-label signup-error">USERNAME - Username or Email is already taken!
-        <input type="text" onChange={this.update('username')} value={this.state.username} />
-      </label>
-      )
-      : (
-      <label className="form-label">USERNAME
-        <input type="text" onChange={this.update('username')} value={this.state.username} />
-      </label>
-      )
-
-    const email = this.state.errors.length > 0 ? (
-      <label className="form-label email-error">EMAIL - Username or Email is already taken!
-        <input type="text" onChange={this.update('email')} value={this.state.email} />
-      </label>
-      )
-      : (
-      <label className="form-label">EMAIL
-        <input type="text" onChange={this.update('email')} value={this.state.email} />
-      </label>
-      )
+    let username;
+    if(this.state.errors.includes(`Username can't be blank`)) {
+      username = <label className="form-label signup-error">USERNAME - Username can't be blank!
+                    <input type="text" onChange={this.update('username')} value={this.state.username} />
+                  </label>
+    } else if(this.state.errors.includes('Username has already been taken')){
+      username = <label className="form-label signup-error">USERNAME - Username is already taken!
+                    <input type="text" onChange={this.update('username')} value={this.state.username} />
+                  </label>
+    } else {
+      username = <label className="form-label">USERNAME
+                    <input type="text" onChange={this.update('username')} value={this.state.username} />
+                  </label>
+    }
+    let email;
+    if(this.state.errors.includes('Email has already been taken')) {
+      email = <label className="form-label email-error">EMAIL - Email is already taken!
+                <input type="text" onChange={this.update('email')} value={this.state.email} />
+              </label>
+    } else if(this.state.errors.includes('Email invalid')) {
+      email = <label className="form-label email-error">EMAIL - Email invalid!
+                <input type="text" onChange={this.update('email')} value={this.state.email} />
+              </label>
+    } else {
+      email = <label className="form-label">EMAIL
+                <input type="text" onChange={this.update('email')} value={this.state.email} />
+              </label>
+    }
+    let password;
+    if(this.state.errors.includes('Password is too short (minimum is 4 characters)')) {
+      password = <label className="form-label password-error">PASSWORD - Password is too short!
+                    <input type="password" onChange={this.update('password')} value={this.state.password} />
+                  </label>
+    } else {
+      password = <label className="form-label">PASSWORD
+                    <input type="password" onChange={this.update('password')} value={this.state.password} />
+                  </label>
+    }
   
     return (
       <div id="signup-container">
@@ -57,9 +74,7 @@ class SignupForm extends React.Component {
           <form onSubmit={this.handleSubmit}>
             {username}
             {email}
-            <label className="form-label">PASSWORD
-              <input type="password" onChange={this.update('password')} value={this.state.password} />
-            </label>
+            {password}
             <button className="form-button" onClick={this.handleSubmit}>Continue</button>
           </form>
           <div id="alternate">Already have an account?  <Link to='/login'>Log In</Link></div>

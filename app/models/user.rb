@@ -80,7 +80,10 @@ class User < ApplicationRecord
     dependent: :destroy
 
   validates :username, :password_digest, presence: true
-  validates :username, :email, uniqueness: true
+  validates :username, uniqueness: true
+  validates :email, format: { with: /\A[\w+-.]+@[a-z\d-]+(.[a-z\d-]+)*.[a-z]+\z/i, message: "invalid"  },
+        uniqueness: { case_sensitive: false },
+        length: { minimum: 4, maximum: 254 }
   validates :password, length: {minimum: 4}, allow_nil: true
 
   after_initialize :ensure_session_token, :ensure_tag, :ensure_pfp
