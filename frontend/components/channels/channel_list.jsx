@@ -122,7 +122,6 @@ class ChannelList extends React.Component {
   }
 
   checkError() {
-    console.log(this.state.errors)
     if(this.state.errors.length > 0) {
       return <div className="channel-error">{this.state.errors[0]}</div>
     }
