@@ -9,8 +9,6 @@ const EditDM = (props) => {
   const handleUpdate = (e, message) => {
     e.preventDefault();
     let edit = {body: editMessage, id: message.id, conversation_id: message.conversation_id}
-    console.log(edit)
-    console.log(message)
     props.updateDM(edit)
       .then(() => {
         handleClick(e, edit.id);
@@ -44,7 +42,6 @@ const EditDM = (props) => {
   const handleClick = (e, messageId) => {
     if(e.type === "click" || e.type === "submit") {
       let elements = document.getElementsByClassName(messageId);
-      console.log(elements, "ELEMENTS")
       elements[0].classList.toggle("inActive")
       elements[1].classList.toggle("inActive")
     }
