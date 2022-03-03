@@ -17,9 +17,16 @@ class ServerForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    this.props.createServer(this.state).fail(() => this.setState({errors: this.props.errors}))
+    let button = document.getElementById('create-server-button');
+    button.setAttribute('disabled', "true");
+    this.props.createServer(this.state)
+      .fail(() => {
+        this.setState({errors: this.props.errors})
+        button.removeAttribute('disabled')
+      })
       .then(() => {
         this.props.closeModal()
+        button.removeAttribute("disabled")
       }) 
   }
 
